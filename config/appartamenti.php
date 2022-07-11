@@ -59,8 +59,8 @@ Istruzioni più dettagliate per l'affitto e l'host aiuterà per telefono se nece
 				"aria condizionata",
 				"camino"
 			],
-			"user_id" => 1
-		],
-		[]
+			"user_id" => 1,
+			"apartment_id" => 11
+		]
 	];
 ?>

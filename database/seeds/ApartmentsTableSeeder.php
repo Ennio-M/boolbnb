@@ -29,7 +29,7 @@ class ApartmentsTableSeeder extends Seeder
             $newApartment->address = $apartment['address'];
             $newApartment->longitude = $apartment['longitude'];
             $newApartment->latitude = $apartment['latitude'];
-            $newApartment->slug = Str::of($newApartment->title)->slug('-');
+            $newApartment->slug = Str::slug($newApartment->title);
             $newApartment->user_id = $apartment['user_id'];
             $newApartment->save();
         }

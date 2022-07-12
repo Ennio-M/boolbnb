@@ -33,5 +33,7 @@ export default {
 
 .container {
     background-color: red;
+    width: 100%;
+    height: 300px;
 }
 </style>

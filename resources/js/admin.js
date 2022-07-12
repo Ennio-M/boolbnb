@@ -20,9 +20,9 @@ window.Vue = require("vue");
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component("AppMain", require("./components/AppMain.vue").default);
-Vue.component("Header", require("./components/Header.vue").default);
-Vue.component("Footer", require("./components/Footer.vue").default);
+// Vue.component("AppMain", require("./components/AppMain.vue").default);
+// Vue.component("Header", require("./components/Header.vue").default);
+// Vue.component("Footer", require("./components/Footer.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

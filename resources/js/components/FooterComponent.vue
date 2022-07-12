@@ -1,16 +1,16 @@
 <template>
-    <header></header>
+    <footer></footer>
 </template>
 
 <script>
-export default { name: "Header" };
+export default { name: "FooterComponent" };
 </script>
 
 <style scoped lang="scss">
-// @import "@/assets/header.scss";
+// @import "@/assets/footer.scss";
 // @import "/sass/_variables.scss";
-header {
-    background-color: rgb(19, 0, 128);
+footer {
+    background-color: green;
     width: 100%;
     height: 300px;
 }

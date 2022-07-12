@@ -14,8 +14,20 @@
 
 <script>
 export default {
-    mounted() {
-        console.log("Component mounted.");
-    },
+    name: "AppMain",
+    data() {},
 };
 </script>
+
+<style lang="scss">
+@import "./resources/sass/_variables.scss";
+@import "./resources/sass/admin.scss";
+@import "./resources/sass/front.scss";
+
+#app {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+</style>

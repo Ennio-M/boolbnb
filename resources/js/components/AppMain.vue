@@ -30,4 +30,8 @@ export default {
     box-sizing: border-box;
     position: relative;
 }
+
+.container {
+    background-color: red;
+}
 </style>

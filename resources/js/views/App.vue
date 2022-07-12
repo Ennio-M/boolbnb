@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import AppMain from "./components/AppMain.vue";
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
+import AppMain from "../components/AppMain.vue";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 export default {
     name: "App",
     components: {
@@ -27,5 +27,5 @@ export default {
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
-@import "@/assets/_variables.scss";
+// @import "@/_variables.scss";
 </style>

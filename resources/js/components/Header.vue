@@ -8,7 +8,7 @@ export default { name: "Header" };
 
 <style scoped lang="scss">
 // @import "@/assets/header.scss";
-@import "./resources/sass/_variables.scss";
+// @import "/sass/_variables.scss";
 header {
     background-color: rgb(19, 0, 128);
     width: 100%;

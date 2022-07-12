@@ -8,7 +8,7 @@ export default { name: "Footer" };
 
 <style scoped lang="scss">
 // @import "@/assets/footer.scss";
-@import "./resources/sass/_variables.scss";
+// @import "/sass/_variables.scss";
 footer {
     background-color: green;
     width: 100%;

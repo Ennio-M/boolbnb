@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a href="{{route('admin.apartments.create')}}">crea appartamento</a>
                 </div>
             </div>
         </div>

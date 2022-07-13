@@ -69,11 +69,22 @@
     </div>
     <div class="form-group">
       <label for="image">Image Url</label>
-      <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" aria-describedby="image" placeholder="Enter image url" name="image[]" multiple value="{{old('image[]')}}">
+      <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" aria-describedby="image" placeholder="Enter image url" name="image[]" multiple value="{{old('image[]')}}">
       @error('image')
           <div class="alert alert-danger">{{$message}}</div>
       @enderror
     </div>
+    <div class="form-group">
+    <h5>Services</h5>
+    @foreach($services as $service)
+    <div class="form-check-inline">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="{{$service->slug}}" name="services[]" value="{{$service->id}}" {{in_array($service->id,old("services",[]))}}>
+            <label class="form-check-label" for="{{$service->slug}}">{{$service->name}}</label>
+        </div>
+    </div>
+    @endforeach
+</div>
 
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="visible" name="visible" {{old('visible') ? 'checked': ''}}>

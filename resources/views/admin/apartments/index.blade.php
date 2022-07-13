@@ -16,6 +16,7 @@
                             </div>
                         </div>
                     </a>
+                    <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica</a>
                 </div>
             @endforeach
              @foreach ($apartments as $apartment)

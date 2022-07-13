@@ -72,10 +72,9 @@ class ApartmentController extends Controller
         $newApartment->sponsored = false;
         $newApartment->nation = $data['nation'];
         $newApartment->address = $data['address'];
-        // $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json/?key=YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl&countryCode=FI&municipality=Nummi-Pusula');
-        // dd($response);
-        // $newApartment->longitude = 
-        // $newApartment->latitude = 
+
+        $newApartment->longitude = 
+        $newApartment->latitude = 
         $newApartment->slug = $this->getSlug($newApartment->title);
     }
 
@@ -126,6 +125,14 @@ class ApartmentController extends Controller
     {
         //
     }
+
+    public function fetch(){
+        $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
+            'key' => 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl',
+            'countryCode'   
+        ]);
+    }
+
     /**
      * Generate an unique slug
      *

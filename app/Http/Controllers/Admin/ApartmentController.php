@@ -10,6 +10,7 @@ use Monarobase\CountryList\CountryListFacade;
 use App\Apartment;
 use App\Image;
 use App\Service;
+use App\User;
 
 class ApartmentController extends Controller
 {
@@ -21,7 +22,7 @@ class ApartmentController extends Controller
         "bathrooms" => "required|integer|max:255",
         "square_meters" => "integer|max:65535|nullable",
         "visible" => "sometimes|accepted",
-        "price" => "required|numeric|digits_between:min=0,max=8",
+        "price" => "required|numeric",
         "nation" => "required|string|max:60",
         "address" => "required|string|max:255"
     ];
@@ -59,7 +60,7 @@ class ApartmentController extends Controller
 
         $request->validate($this->validationRules);
         $data = $request->all();
-
+        dd($data);
         $newApartment = new Apartment();
         $newApartment->title = $data['title'];
         $newApartment->description = $data['description'];
@@ -72,10 +73,17 @@ class ApartmentController extends Controller
         $newApartment->sponsored = false;
         $newApartment->nation = $data['nation'];
         $newApartment->address = $data['address'];
-
-        $newApartment->longitude = 
-        $newApartment->latitude = 
+        $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
+            'key' => 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl',
+            'countryCode' => $data['nation'],
+            'streetName' => $data['address']
+        ]);
+        $decoded = json_decode($response->body());
+        $newApartment->longitude = $decoded->results[0]->position->lon;
+        $newApartment->latitude = $decoded->results[0]->position->lat;
         $newApartment->slug = $this->getSlug($newApartment->title);
+        $newApartment->save();
+        return redirect()->route('admin.apartments.show', $newApartment->id);
     }
 
     /**
@@ -87,7 +95,8 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.show', compact('apartment'));
+        $country = CountryListFacade::getOne($apartment->nation,'it');
+        return view('admin.apartments.show', compact('apartment', 'country'));
     }
 
     /**
@@ -126,11 +135,8 @@ class ApartmentController extends Controller
         //
     }
 
-    public function fetch(){
-        $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
-            'key' => 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl',
-            'countryCode'   
-        ]);
+    public function fetch($data){
+        
     }
 
     /**

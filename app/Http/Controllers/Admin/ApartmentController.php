@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Monarobase\CountryList\CountryListFacade;
 use App\Apartment;
 use App\Image;
 use App\Service;
@@ -43,7 +44,8 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        return view('admin.apartments.create', compact('services'));
+        $countries = CountryListFacade::getList('it');
+        return view('admin.apartments.create', compact('services', 'countries'));
     }
 
     /**
@@ -98,7 +100,8 @@ class ApartmentController extends Controller
     public function edit(Apartment $apartment)
     {   
         $services = Service::all();
-        return view('admin.apartments.edit', compact('apartment, services'));
+        $countries = CountryListFacade::getList('it');
+        return view('admin.apartments.edit', compact('apartment', 'services', 'countries'));
     }
 
     /**

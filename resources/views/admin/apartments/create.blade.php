@@ -1,6 +1,7 @@
 @extends('layouts.admin');
 
 @section('content')
+
 <form action="{{route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">

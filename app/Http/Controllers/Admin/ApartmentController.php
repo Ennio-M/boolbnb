@@ -95,9 +95,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Apartment $apartment)
+    {   
+        $services = Service::all();
+        return view('admin.apartments.edit', compact('apartment, services'));
     }
 
     /**

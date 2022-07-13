@@ -8,19 +8,28 @@
    <div class="row">
       <div class="col">
          <div class="card" class="w-100">
-            @foreach ($apartment->images as $images)
-                <img src="{{$images->image}}" class="card-img-top" alt="{{ $apartment->title }}">
-            @endforeach
+            <div class="container">
+               <div class="row">
+                  @foreach ($apartment->images as $images)
+                  <div class="col-4 py-1">
+                     <img src="{{$images->image}}" class="img-thumbnail" alt="{{ $apartment->title }}">
+                  </div>
+                  @endforeach
+               </div>
+            </div>
             <div class="card-body">
-            <h5 class="card-title font-weight-bold">{{$apartment->title}}</h5>
-            <p class="card-text">{{$apartment->description}}</p>
-            <p class="card-text">Rooms in apartment: {{$apartment->rooms}}</p>
-            <p class="card-text">Number of bed: {{$apartment->beds}}</p>
-            <p class="card-text">Number of bathrooms: {{$apartment->bathrooms}}</p>
-            <p class="card-text">SM: {{$apartment->square_meters}}</p>
-            <p class="card-text">Price for Night: {{$apartment->price}}€</p>
-            <span class="card-text">Adress:{{$apartment->address}}</span>
-            <span class="card-text">-{{$apartment->nation}}</span>
+               <h5 class="card-title font-weight-bold">{{$apartment->title}}</h5>
+               <p class="card-text">{{$apartment->description}}</p>
+               <p class="card-text">Stanze: {{$apartment->rooms}}</p>
+               <p class="card-text">Letti: {{$apartment->beds}}</p>
+               <p class="card-text">Bagni: {{$apartment->bathrooms}}</p>
+               <p class="card-text">Mq: {{$apartment->square_meters}}</p>
+               <p class="card-text">Prezzo: €{{$apartment->price}}/notte</p>
+               <span class="card-text">Indirizzo: {{$apartment->address}}</span>
+               <span class="card-text">, {{$apartment->nation}}</span>
+               <div class="py-3">
+                  <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica appartamento</a>
+               </div>
             </div>
          </div>
       </div>

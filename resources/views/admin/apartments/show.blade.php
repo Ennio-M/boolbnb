@@ -26,7 +26,7 @@
                <p class="card-text">Mq: {{$apartment->square_meters}}</p>
                <p class="card-text">Prezzo: €{{$apartment->price}}/notte</p>
                <span class="card-text">Indirizzo: {{$apartment->address}}</span>
-               <span class="card-text">, {{$apartment->nation}}</span>
+               <span class="card-text">, {{$country}}</span>
                <div class="py-3">
                   <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica appartamento</a>
                </div>

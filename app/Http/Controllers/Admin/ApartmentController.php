@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Monarobase\CountryList\CountryListFacade;
+use Illuminate\Support\Facades\Storage;
 use App\Apartment;
 use App\Image;
 use App\Service;
@@ -60,7 +61,7 @@ class ApartmentController extends Controller
 
         $request->validate($this->validationRules);
         $data = $request->all();
-        dd($data);
+
         $newApartment = new Apartment();
         $newApartment->title = $data['title'];
         $newApartment->description = $data['description'];
@@ -82,7 +83,21 @@ class ApartmentController extends Controller
         $newApartment->longitude = $decoded->results[0]->position->lon;
         $newApartment->latitude = $decoded->results[0]->position->lat;
         $newApartment->slug = $this->getSlug($newApartment->title);
+
         $newApartment->save();
+
+        foreach($data['image'] as $img){
+            $newImage = new Image();
+            $path_image = Storage::put("uploads", $img);
+            $newImage->image = $path_image;
+            $newImage->apartment_id = $newApartment->id;
+            $newImage->save();
+        }
+        
+        if(isset($data['services'])){
+            $newApartment->services()->sync($data['services']);
+        }
+
         return redirect()->route('admin.apartments.show', $newApartment->id);
     }
 
@@ -133,10 +148,6 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function fetch($data){
-        
     }
 
     /**

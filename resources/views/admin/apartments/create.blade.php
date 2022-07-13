@@ -53,13 +53,24 @@
           <div class="alert alert-danger">{{$message}}</div>
       @enderror
     </div>
+
+    {{-- select --}}
+
     <div class="form-group">
-      <label for="nation">Nation</label>
-      <input type="text" class="form-control @error('nation') is-invalid @enderror" id="nation" aria-describedby="nation" placeholder="Nation" name="nation" value="{{old('nation')}}">
-      @error('nation')
-          <div class="alert alert-danger">{{$message}}</div>
+      <label for="countries" class="form-label">Country</label>
+      <select name="country" id="country" class="form-control @error('country') is-invalid @enderror">
+        <option value="">Select Country</option>
+        @foreach($countries as $key => $country)
+        <option value="{{$key}}">{{$country}}</option>
+        @endforeach
+      </select>
+        @error('category_id')
+        <div class="alert alert-danger">{{ $message }}</div>
       @enderror
     </div>
+
+    {{-- /select --}}
+
     <div class="form-group">
       <label for="address">Address</label>
       <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" placeholder="Address" name="address" value="{{old('address')}}">

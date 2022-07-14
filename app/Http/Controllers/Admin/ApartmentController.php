@@ -83,6 +83,7 @@ class ApartmentController extends Controller
         $newApartment->longitude = $decoded->results[0]->position->lon;
         $newApartment->latitude = $decoded->results[0]->position->lat;
         $newApartment->slug = $this->getSlug($newApartment->title);
+        $newApartment->user_id = Auth::user()->id;
 
         $newApartment->save();
 

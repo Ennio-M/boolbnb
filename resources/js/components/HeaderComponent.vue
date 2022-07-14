@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="container">
         <!--  -->
         <div
             class="upper-header d-flex justify-content-around align-items-center"
@@ -12,16 +12,10 @@
                 class="searchbar d-flex justify-content-center align-items-center"
             >
                 <div class="row justify-content-center align-items-center">
-                    <div class="col">
-                        <span class="fw-bold">Ovunque</span>
-                    </div>
-                    <div class="col">
-                        <span class="fw-bold">Qualunque settimana</span>
-                    </div>
                     <div
-                        class="col d-flex justify-content-center align-items-center"
+                        class="col d-flex justify-content-right align-items-center"
                     >
-                        Aggiungi Ospiti
+                        Ricerca
                         <div class="lens">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
@@ -31,12 +25,10 @@
 
             <nav class="d-flex justify-content-around align-items-center">
                 <h5>Diventa un Host</h5>
-                <i class="fa-solid fa-globe"></i>
 
                 <div
                     class="nav-menu d-flex justify-content-around align-items-center"
                 >
-                    <i class="fa-solid fa-bars"></i>
                     <i class="fa-solid fa-user"></i>
                 </div>
             </nav>
@@ -60,6 +52,7 @@ export default { name: "HeaderComponent" };
 header {
     background-color: #ffffff;
     height: 200px;
+    max-width: 90%;
 
     .fw-bold {
         font-weight: bold;
@@ -101,14 +94,10 @@ header {
     }
 
     .nav-menu {
-        width: 20%;
+        width: 50px;
         height: 50px;
         border: 1px solid gray;
-        border-radius: 30px;
-    }
-    nav {
-        width: 20%;
-        height: 100%;
+        border-radius: 50%;
     }
 }
 </style>

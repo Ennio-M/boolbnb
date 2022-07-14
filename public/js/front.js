@@ -2017,7 +2017,9 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("header", [_c("div", {
+  return _c("header", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "upper-header d-flex justify-content-around align-items-center"
   }, [_c("div", {
     attrs: {
@@ -2033,28 +2035,16 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row justify-content-center align-items-center"
   }, [_c("div", {
-    staticClass: "col"
-  }, [_c("span", {
-    staticClass: "fw-bold"
-  }, [_vm._v("Ovunque")])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("span", {
-    staticClass: "fw-bold"
-  }, [_vm._v("Qualunque settimana")])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex justify-content-center align-items-center"
-  }, [_vm._v("\n                    Aggiungi Ospiti\n                    "), _c("div", {
+    staticClass: "col d-flex justify-content-right align-items-center"
+  }, [_vm._v("\n                    Ricerca\n                    "), _c("div", {
     staticClass: "lens"
   }, [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass"
   })])])])]), _vm._v(" "), _c("nav", {
     staticClass: "d-flex justify-content-around align-items-center"
-  }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-globe"
-  }), _vm._v(" "), _c("div", {
+  }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("div", {
     staticClass: "nav-menu d-flex justify-content-around align-items-center"
   }, [_c("i", {
-    staticClass: "fa-solid fa-bars"
-  }), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-user"
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "lower-header"
@@ -6530,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .searchbar[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .nav-menu[data-v-153bfd55] {\n  width: 20%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader nav[data-v-153bfd55] {\n  width: 20%;\n  height: 100%;\n}", ""]);
+exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n  max-width: 90%;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .searchbar[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .nav-menu[data-v-153bfd55] {\n  width: 50px;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 50%;\n}", ""]);
 
 // exports
 

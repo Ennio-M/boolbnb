@@ -90,7 +90,7 @@ header {
 
     .lower-header {
         height: 50%;
-        background-color: #ff385c;
+        background-color: grey;
     }
 
     .searchbar {

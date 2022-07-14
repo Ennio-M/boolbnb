@@ -9,8 +9,22 @@
             </div>
 
             <div
-                class="searchbar input-group d-flex justify-content-center align-items-center"
-            ></div>
+                class="search-container d-flex justify-content-center align-items-center"
+            >
+                <div class="row justify-content-center align-items-center">
+                    <form action="/action_page.php">
+                        <input
+                            class="searchbar"
+                            type="text"
+                            placeholder="Ricerca Appartamenti"
+                            name="search"
+                        />
+                    </form>
+                    <button class="lens" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
 
             <nav class="d-flex justify-content-around align-items-center">
                 <h5>Diventa un Host</h5>
@@ -55,6 +69,7 @@ header {
 
     .lens {
         background-color: #ff385c;
+        border: none;
         height: 30px;
         width: 30px;
         border-radius: 50%;
@@ -75,11 +90,15 @@ header {
         background-color: grey;
     }
 
-    .searchbar {
+    .search-container {
         width: 25%;
         height: 50px;
         border: 1px solid gray;
         border-radius: 30px;
+    }
+
+    .searchbar {
+        border: none;
     }
 
     .nav-menu {

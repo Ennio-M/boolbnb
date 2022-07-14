@@ -2031,8 +2031,28 @@ var staticRenderFns = [function () {
       alt: "boolbnblogo"
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "searchbar input-group d-flex justify-content-center align-items-center"
-  }), _vm._v(" "), _c("nav", {
+    staticClass: "search-container d-flex justify-content-center align-items-center"
+  }, [_c("div", {
+    staticClass: "row justify-content-center align-items-center"
+  }, [_c("form", {
+    attrs: {
+      action: "/action_page.php"
+    }
+  }, [_c("input", {
+    staticClass: "searchbar",
+    attrs: {
+      type: "text",
+      placeholder: "Ricerca Appartamenti",
+      name: "search"
+    }
+  })]), _vm._v(" "), _c("button", {
+    staticClass: "lens",
+    attrs: {
+      type: "submit"
+    }
+  }, [_c("i", {
+    staticClass: "fa fa-search"
+  })])])]), _vm._v(" "), _c("nav", {
     staticClass: "d-flex justify-content-around align-items-center"
   }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("div", {
     staticClass: "nav-menu d-flex justify-content-around align-items-center"
@@ -6512,7 +6532,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n  max-width: 90%;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .searchbar[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .nav-menu[data-v-153bfd55] {\n  width: 50px;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 50%;\n}", ""]);
+exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n  max-width: 90%;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  border: none;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .search-container[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .searchbar[data-v-153bfd55] {\n  border: none;\n}\nheader .nav-menu[data-v-153bfd55] {\n  width: 50px;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 50%;\n}", ""]);
 
 // exports
 

@@ -12,6 +12,7 @@ use App\Apartment;
 use App\Image;
 use App\Service;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -87,12 +88,14 @@ class ApartmentController extends Controller
 
         $newApartment->save();
 
-        foreach($data['image'] as $img){
-            $newImage = new Image();
-            $path_image = Storage::put("uploads", $img);
-            $newImage->image = $path_image;
-            $newImage->apartment_id = $newApartment->id;
-            $newImage->save();
+        if(isset($data['image'])){
+            foreach($data['image'] as $img){
+                $newImage = new Image();
+                $path_image = Storage::put("uploads", $img);
+                $newImage->image = $path_image;
+                $newImage->apartment_id = $newApartment->id;
+                $newImage->save();
+            }
         }
         
         if(isset($data['services'])){

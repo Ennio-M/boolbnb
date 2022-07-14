@@ -17,3 +17,49 @@ $fa-font-path: "../fonts/font-awesome" !default;
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+
+
+// Admin layouts
+body{
+    overflow: auto;
+    background-color: #fff;
+}
+.logo{
+    min-width: 100px;
+    max-width: 170px;
+}
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgb(230 28 84 / 8%) !important;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: $BoolPrimaryColor;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(230 28 84 / 25%)!important;
+}
+.btn{
+    background-color: $BoolPrimaryColor!important;
+    color: white !important;
+    border-color: $BoolPrimaryColor!important;
+}
+.btn:focus {
+    color: #fff;
+    background-color: #227dc7;
+    border-color: $BoolPrimaryColor !important;
+    background-color: $BoolPrimaryColor  !important;
+    box-shadow: 0 0 0 0.2rem rgb(230 38 84 / 50%)!important;
+}
+
+.card{
+    border-color:$BoolPrimaryColor!important;
+    border-width: 2px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}

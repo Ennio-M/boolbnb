@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <p>I campi contrassegnati con * sono obbligatori</p>
+                        <p class="py-2">I campi contrassegnati con * sono obbligatori</p>
                     </form>
                 </div>
             </div>

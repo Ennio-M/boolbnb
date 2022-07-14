@@ -15,7 +15,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
-{
+{   
+    protected $myTomTomApiKey = 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl';
     protected $validationRules = [
         "title" => "required|string|max:150",
         "description" => "string|max:16777215|nullable",
@@ -26,7 +27,9 @@ class ApartmentController extends Controller
         "visible" => "sometimes|accepted",
         "price" => "required|numeric",
         "nation" => "required|string|max:60",
-        "address" => "required|string|max:255"
+        "address" => "required|string|max:255",
+        "image" => "required",
+        "image.*" => "image|max:1024"
     ];
     /**
      * Display a listing of the resource.
@@ -35,7 +38,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        // dd(Auth::user()->id);
+        $apartments = Apartment::all()->where("user_id", Auth::user()->id);
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -76,7 +80,7 @@ class ApartmentController extends Controller
         $newApartment->nation = $data['nation'];
         $newApartment->address = $data['address'];
         $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
-            'key' => 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl',
+            'key' => $this->myTomTomApiKey,
             'countryCode' => $data['nation'],
             'streetName' => $data['address']
         ]);
@@ -139,9 +143,55 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $request->validate($this->validationRules);
+        $data = $request->all();
+
+        if($apartment->title != $data['title']){
+            $apartment->title = $data['title'];
+            if(Str::of($apartment->title)->slug('-') != $apartment->slug){
+                $apartment->slug = $this->getSlug($apartment->title);
+            }
+        }
+        $apartment->description = $data['description'];
+        $apartment->rooms = $data['rooms'];
+        $apartment->beds = $data['beds'];
+        $apartment->bathrooms = $data['bathrooms'];
+        $apartment->square_meters = $data['square_meters'];
+        $apartment->visible = isset($data['visible']);
+        $apartment->price = $data['price'];
+        $apartment->sponsored = $apartment->sponsored;
+        $apartment->nation = $data['nation'];
+        $apartment->address = $data['address'];
+        $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
+            'key' => $this->myTomTomApiKey,
+            'countryCode' => $data['nation'],
+            'streetName' => $data['address']
+        ]);
+        $decoded = json_decode($response->body());
+        $apartment->longitude = $decoded->results[0]->position->lon;
+        $apartment->latitude = $decoded->results[0]->position->lat;
+
+        $apartment->update();
+
+        if(isset($data['image'])){
+            foreach($data['image'] as $img){
+                $newImage = new Image();
+                $path_image = Storage::put("uploads", $img);
+                $newImage->image = $path_image;
+                $newImage->apartment_id = $apartment->id;
+                $newImage->save();
+            }
+        }
+
+        if(isset($data['services'])){
+            $apartment->services()->sync($data['services']);
+        } else {
+            $apartment->services()->sync([]);
+        }
+
+        return redirect()->route('admin.apartments.show', $apartment->id);
     }
 
     /**
@@ -150,9 +200,12 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->services()->sync([]);
+        $apartment->images()->delete();
+        $apartment->delete();
+        return redirect()->route('admin.apartments.index');
     }
 
     /**

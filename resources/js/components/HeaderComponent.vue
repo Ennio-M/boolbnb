@@ -78,6 +78,7 @@ header {
         text-align: center;
         align-items: center;
         justify-content: center;
+        margin-left: 5px;
     }
 
     #logo,

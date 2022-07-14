@@ -29,9 +29,11 @@
             <nav
                 class="d-flex text-center justify-content-center align-items-center"
             >
-                <a href="http://127.0.0.1:8000/login"><h5>Login</h5></a>
+                <h5>Diventa un Host</h5>
 
-                <i class="fa-solid fa-circle-user"></i>
+                <a class="text-muted" href="/admin"
+                    ><i class="fa-solid fa-circle-user"></i
+                ></a>
             </nav>
         </div>
 
@@ -55,14 +57,10 @@ header {
     height: 200px;
     max-width: 90%;
 
-    h5 {
-        font-weight: bold;
-        font-size: 16px;
-        text-decoration: none;
-    }
-
     .fw-bold {
         font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
     }
 
     .upper-header {

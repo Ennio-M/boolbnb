@@ -1,15 +1,7 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Title</div>
-
-                    <div class="card-body">Card</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <main>
+        <span>main</span>
+    </main>
 </template>
 
 <script>
@@ -29,9 +21,11 @@ export default {
     position: relative;
 }
 
-.container {
-    background-color: red;
+main {
+    background-color: rgb(16, 6, 44);
     width: 100%;
-    height: 300px;
+    height: 500px;
+
+    color: white;
 }
 </style>

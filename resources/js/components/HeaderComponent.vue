@@ -26,14 +26,12 @@
                 </div>
             </div>
 
-            <nav class="d-flex justify-content-around align-items-center">
+            <nav
+                class="d-flex text-center justify-content-center align-items-center"
+            >
                 <h5>Diventa un Host</h5>
 
-                <div
-                    class="nav-menu d-flex justify-content-around align-items-center"
-                >
-                    <i class="fa-solid fa-user"></i>
-                </div>
+                <i class="fa-solid fa-circle-user"></i>
             </nav>
         </div>
 
@@ -57,6 +55,11 @@ header {
     height: 200px;
     max-width: 90%;
 
+    h5 {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
     .fw-bold {
         font-weight: bold;
     }
@@ -65,6 +68,16 @@ header {
         height: 50%;
         border-color: brown;
         background-color: white;
+    }
+
+    .fa-circle-user {
+        font-size: 35px;
+        color: gray;
+        margin-left: 10px;
+    }
+
+    nav {
+        height: 40px;
     }
 
     .lens {
@@ -100,13 +113,6 @@ header {
 
     .searchbar {
         border: none;
-    }
-
-    .nav-menu {
-        width: 50px;
-        height: 50px;
-        border: 1px solid gray;
-        border-radius: 50%;
     }
 }
 </style>

@@ -79,7 +79,7 @@
 
         <div class="form-group">
           <label for="address">Indirizzo</label>
-          <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" name="address" value={{$apartment->address}}>
+          <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" name="address" value={{$apartment->address}}>
           @error('address')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror

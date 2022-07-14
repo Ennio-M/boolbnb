@@ -38,7 +38,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        // dd(Auth::user()->id);
+        $apartments = Apartment::all()->where("user_id", Auth::user()->id);
         return view('admin.apartments.index', compact('apartments'));
     }
 

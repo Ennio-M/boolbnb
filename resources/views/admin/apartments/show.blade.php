@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                <h5 class="card-title font-weight-bold">{{$apartment->title}}</h5>
-               <p class="card-text">{{$apartment->description}}</p>
+               <p class="card-text">{!!$apartment->description!!}</p>
                <p class="card-text">Stanze: {{$apartment->rooms}}</p>
                <p class="card-text">Letti: {{$apartment->beds}}</p>
                <p class="card-text">Bagni: {{$apartment->bathrooms}}</p>
@@ -30,6 +30,11 @@
                <div class="py-3">
                   <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica appartamento</a>
                </div>
+               <form action="{{route('admin.apartments.destroy',$apartment->id)}}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn">Cancella</button>
+              </form>
             </div>
          </div>
       </div>

@@ -124,7 +124,8 @@ class ApartmentController extends Controller
     {   
         $services = Service::all();
         $countries = CountryListFacade::getList('it');
-        return view('admin.apartments.edit', compact('apartment', 'services', 'countries'));
+        $country = CountryListFacade::getOne($apartment->nation,'it');
+        return view('admin.apartments.edit', compact('apartment', 'services', 'countries', 'country'));
     }
 
     /**

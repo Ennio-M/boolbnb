@@ -63,7 +63,7 @@
           <label for="nation" class="form-label">Country</label>
           <select name="nation" id="nation" class="form-control @error('nation') is-invalid @enderror">
             {{-- <option value="">Select Country</option> --}}
-          <option value="{{old($apartment->nation)}}">{{$apartment->nation}}</option>
+          <option value="{{$apartment->nation}}">{{$country}}</option>
             @foreach($countries as $key => $country)
             <option value="{{$key}}">{{$country}}</option>
             @endforeach

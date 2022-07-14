@@ -2056,7 +2056,12 @@ var staticRenderFns = [function () {
     staticClass: "fa fa-search"
   })])])]), _vm._v(" "), _c("nav", {
     staticClass: "d-flex text-center justify-content-center align-items-center"
-  }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("a", {
+  }, [_c("a", {
+    staticClass: "text-muted",
+    attrs: {
+      href: "/register"
+    }
+  }, [_c("h5", [_vm._v("Diventa un Host")])]), _vm._v(" "), _c("a", {
     staticClass: "text-muted",
     attrs: {
       href: "/admin"

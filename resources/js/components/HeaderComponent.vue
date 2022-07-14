@@ -29,7 +29,9 @@
             <nav
                 class="d-flex text-center justify-content-center align-items-center"
             >
-                <h5>Diventa un Host</h5>
+                <a class="text-muted" href="/register"
+                    ><h5>Diventa un Host</h5></a
+                >
 
                 <a class="text-muted" href="/admin"
                     ><i class="fa-solid fa-circle-user"></i

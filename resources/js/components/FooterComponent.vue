@@ -1,5 +1,5 @@
 <template>
-    <footer>footer</footer>
+    <footer class="container">footer</footer>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default { name: "FooterComponent" };
 // @import "/sass/_variables.scss";
 footer {
     background-color: green;
-    width: 100%;
+    max-width: 90%;
     height: 300px;
 }
 </style>

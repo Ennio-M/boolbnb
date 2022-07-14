@@ -1986,7 +1986,9 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("footer", [_vm._v("footer")]);
+  return _c("footer", {
+    staticClass: "container"
+  }, [_vm._v("footer")]);
 };
 
 var staticRenderFns = [];
@@ -2089,7 +2091,9 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_c("span", [_vm._v("main")])]);
+  return _c("main", {
+    staticClass: "container"
+  }, [_c("span", [_vm._v("main")])]);
 }];
 render._withStripped = true;
 
@@ -6499,7 +6503,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "footer[data-v-abfbddf2] {\n  background-color: green;\n  width: 100%;\n  height: 300px;\n}", ""]);
+exports.push([module.i, "footer[data-v-abfbddf2] {\n  background-color: green;\n  max-width: 90%;\n  height: 300px;\n}", ""]);
 
 // exports
 
@@ -6537,7 +6541,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  position: relative;\n}\nmain {\n  background-color: rgb(16, 6, 44);\n  width: 100%;\n  height: 500px;\n  color: white;\n}", ""]);
+exports.push([module.i, "#app {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  position: relative;\n}\nmain {\n  background-color: rgb(16, 6, 44);\n  height: 500px;\n  max-width: 90%;\n  color: white;\n}", ""]);
 
 // exports
 

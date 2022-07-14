@@ -2031,16 +2031,8 @@ var staticRenderFns = [function () {
       alt: "boolbnblogo"
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "searchbar d-flex justify-content-center align-items-center"
-  }, [_c("div", {
-    staticClass: "row justify-content-center align-items-center"
-  }, [_c("div", {
-    staticClass: "col d-flex justify-content-right align-items-center"
-  }, [_vm._v("\n                    Ricerca\n                    "), _c("div", {
-    staticClass: "lens"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-magnifying-glass"
-  })])])])]), _vm._v(" "), _c("nav", {
+    staticClass: "searchbar input-group d-flex justify-content-center align-items-center"
+  }), _vm._v(" "), _c("nav", {
     staticClass: "d-flex justify-content-around align-items-center"
   }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("div", {
     staticClass: "nav-menu d-flex justify-content-around align-items-center"

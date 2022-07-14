@@ -9,19 +9,8 @@
             </div>
 
             <div
-                class="searchbar d-flex justify-content-center align-items-center"
-            >
-                <div class="row justify-content-center align-items-center">
-                    <div
-                        class="col d-flex justify-content-right align-items-center"
-                    >
-                        Ricerca
-                        <div class="lens">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                class="searchbar input-group d-flex justify-content-center align-items-center"
+            ></div>
 
             <nav class="d-flex justify-content-around align-items-center">
                 <h5>Diventa un Host</h5>

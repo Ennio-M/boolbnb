@@ -20,10 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "../sass/_variables.scss";
-// @import "@/js/sass/admin.scss";
-// @import "../sass/admin.scss";
-// @import "/sass/front.scss";
+@import "/resources/sass/_variables.scss";
 
 #app {
     margin: 0;

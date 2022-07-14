@@ -75,6 +75,10 @@ header {
         font-size: 35px;
         color: gray;
         margin-left: 10px;
+
+        &:hover {
+            color: rgb(63, 62, 62);
+        }
     }
 
     nav {

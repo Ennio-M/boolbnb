@@ -9,7 +9,7 @@
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66d9b;
+  --pink: #e83e8c;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -497,7 +497,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66d9b;
+  color: #e83e8c;
   word-wrap: break-word;
 }
 a > code {
@@ -9271,7 +9271,7 @@ h3 {
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66d9b;
+  --pink: #e83e8c;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -9759,7 +9759,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66d9b;
+  color: #e83e8c;
   word-wrap: break-word;
 }
 a > code {

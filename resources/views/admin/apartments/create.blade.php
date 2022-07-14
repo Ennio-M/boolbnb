@@ -1,56 +1,57 @@
 @extends('layouts.admin')
 
 @section('content')
+<a class="btn btn-link m-2" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="{{route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data" autocomplete="off">
         @csrf
         <div class="form-group">
-          <label for="Title">Title</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" placeholder="Enter title" name="title" value="{{old('title')}}">
+          <label for="Title">Titolo</label>
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" placeholder="Inserisci titolo" name="title" value="{{old('title')}}">
           @error('title')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
-          <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="15" placeholder="Enter your description">{{old('description')}}</textarea>
+          <label for="description">Descrizione</label>
+          <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="15">{{old('description')}}</textarea>
           @error('description')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="rooms">Rooms</label>
-          <input type="number" class="form-control @error('rooms') is-invalid @enderror" id="rooms" aria-describedby="rooms" placeholder="How many rooms?" name="rooms" value="{{old('rooms')}}" min=0 max=50>
+          <label for="rooms">Numero di stanze</label>
+          <input type="number" class="form-control @error('rooms') is-invalid @enderror" id="rooms" aria-describedby="rooms" placeholder="Numero di Stanze" name="rooms" value="{{old('rooms')}}" min=0 max=50>
           @error('rooms')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="beds">Beds</label>
-          <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds" aria-describedby="beds" placeholder="How many beds?" name="beds" value="{{old('beds')}}" min=0 max=50>
+          <label for="beds">Posti letto</label>
+          <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds" aria-describedby="beds" placeholder="Posti letto" name="beds" value="{{old('beds')}}" min=0 max=50>
           @error('beds')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="bathrooms">Bathrooms</label>
-          <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms" aria-describedby="bathrooms" placeholder="How many bathrooms?" name="bathrooms" value="{{old('bathrooms')}}" min=0 max=50>
+          <label for="bathrooms">Bagni in casa</label>
+          <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms" aria-describedby="bathrooms" placeholder="Bagni" name="bathrooms" value="{{old('bathrooms')}}" min=0 max=50>
           @error('bathrooms')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="square_meters">Square Meters</label>
-          <input type="text" class="form-control @error('square_meters') is-invalid @enderror" id="square_meters" aria-describedby="square_meters" placeholder="Square meters" name="square_meters" value="{{old('square_meters')}}">
+          <label for="square_meters">Metri quadrati</label>
+          <input type="text" class="form-control @error('square_meters') is-invalid @enderror" id="square_meters" aria-describedby="square_meters" placeholder="Metri quadrati" name="square_meters" value="{{old('square_meters')}}">
           @error('square_meters')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="price">Price</label>
-          <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" aria-describedby="price" placeholder="Price per night" step=".01" name="price" value="{{old('price')}}">
+          <label for="price">Prezzo per notte</label>
+          <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" aria-describedby="price" placeholder="Prezzo per notte" step=".01" name="price" value="{{old('price')}}">
           @error('price')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
@@ -59,9 +60,9 @@
         {{-- select --}}
 
         <div class="form-group">
-          <label for="nation" class="form-label">Country</label>
+          <label for="nation" class="form-label">Nazione</label>
           <select name="nation" id="nation" class="form-control @error('nation') is-invalid @enderror">
-            <option value="">Select Country</option>
+            <option value="">Seleziona la nazione</option>
             @foreach($countries as $key => $country)
             <option value="{{$key}}">{{$country}}</option>
             @endforeach
@@ -74,21 +75,22 @@
         {{-- /select --}}
 
         <div class="form-group">
-          <label for="address">Address</label>
-          <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" placeholder="Address" name="address" value="{{old('address')}}">
+          <label for="address">Indirizzo</label>
+          <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" placeholder="Inserisci indirizzo, municipio" name="address" value="{{old('address')}}">
           @error('address')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="image">Image Url</label>
+          <label for="image">Seleziona le immagini(la dimensione massima per ogni immagine è di 1MB), </label>
+          <label for="image">accetta formati: jpeg, png, bmp, gif, svg, or webp </label>
           <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" aria-describedby="image" placeholder="Enter image url" name="image[]" multiple value="{{old('image[]')}}">
           @error('image')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-        <h5>Services</h5>
+        <h5>Servizi</h5>
         @foreach($services as $service)
           <div class="form-check-inline">
               <div class="form-check">
@@ -100,12 +102,14 @@
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="visible" name="visible" {{old('visible') ? 'checked': ''}}>
-          <label class="form-check-label" for="visible">Published</label>
+          <label class="form-check-label" for="visible">Pubblica</label>
         </div>
         <button type="submit" class="btn btn-primary">Salva</button>
       </form>
     </div>
   </div>
 </div>
+<script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 @endsection

@@ -29,7 +29,7 @@
             <nav
                 class="d-flex text-center justify-content-center align-items-center"
             >
-                <h5>Diventa un Host</h5>
+                <a href="http://127.0.0.1:8000/login"><h5>Login</h5></a>
 
                 <i class="fa-solid fa-circle-user"></i>
             </nav>
@@ -58,6 +58,7 @@ header {
     h5 {
         font-weight: bold;
         font-size: 16px;
+        text-decoration: none;
     }
 
     .fw-bold {

@@ -2056,7 +2056,11 @@ var staticRenderFns = [function () {
     staticClass: "fa fa-search"
   })])])]), _vm._v(" "), _c("nav", {
     staticClass: "d-flex text-center justify-content-center align-items-center"
-  }, [_c("h5", [_vm._v("Diventa un Host")]), _vm._v(" "), _c("i", {
+  }, [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/login"
+    }
+  }, [_c("h5", [_vm._v("Login")])]), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-circle-user"
   })])]), _vm._v(" "), _c("div", {
     staticClass: "lower-header"
@@ -6522,7 +6526,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n  max-width: 90%;\n}\nheader h5[data-v-153bfd55] {\n  font-weight: bold;\n  font-size: 16px;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .fa-circle-user[data-v-153bfd55] {\n  font-size: 35px;\n  color: gray;\n  margin-left: 10px;\n}\nheader nav[data-v-153bfd55] {\n  height: 40px;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  border: none;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n  margin-left: 5px;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .search-container[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .searchbar[data-v-153bfd55] {\n  border: none;\n}", ""]);
+exports.push([module.i, "header[data-v-153bfd55] {\n  background-color: #ffffff;\n  height: 200px;\n  max-width: 90%;\n}\nheader h5[data-v-153bfd55] {\n  font-weight: bold;\n  font-size: 16px;\n  text-decoration: none;\n}\nheader .fw-bold[data-v-153bfd55] {\n  font-weight: bold;\n}\nheader .upper-header[data-v-153bfd55] {\n  height: 50%;\n  border-color: brown;\n  background-color: white;\n}\nheader .fa-circle-user[data-v-153bfd55] {\n  font-size: 35px;\n  color: gray;\n  margin-left: 10px;\n}\nheader nav[data-v-153bfd55] {\n  height: 40px;\n}\nheader .lens[data-v-153bfd55] {\n  background-color: #ff385c;\n  border: none;\n  height: 30px;\n  width: 30px;\n  border-radius: 50%;\n  color: white;\n  display: flex;\n  text-align: center;\n  align-items: center;\n  justify-content: center;\n  margin-left: 5px;\n}\nheader #logo[data-v-153bfd55],\nheader img[data-v-153bfd55] {\n  height: 50px;\n}\nheader .lower-header[data-v-153bfd55] {\n  height: 50%;\n  background-color: grey;\n}\nheader .search-container[data-v-153bfd55] {\n  width: 25%;\n  height: 50px;\n  border: 1px solid gray;\n  border-radius: 30px;\n}\nheader .searchbar[data-v-153bfd55] {\n  border: none;\n}", ""]);
 
 // exports
 

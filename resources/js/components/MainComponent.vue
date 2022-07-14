@@ -1,15 +1,7 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Title</div>
-
-                    <div class="card-body">Card</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <main class="container">
+        <span>main</span>
+    </main>
 </template>
 
 <script>
@@ -20,10 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "../sass/_variables.scss";
-// @import "@/js/sass/admin.scss";
-// @import "../sass/admin.scss";
-// @import "/sass/front.scss";
+// @import "/resources/sass/_variables.scss";
 
 #app {
     margin: 0;
@@ -32,9 +21,10 @@ export default {
     position: relative;
 }
 
-.container {
-    background-color: red;
-    width: 100%;
-    height: 300px;
+main {
+    background-color: rgb(16, 6, 44);
+    height: 500px;
+    max-width: 90%;
+    color: white;
 }
 </style>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
-    <title>Laravel Boolpress</title>
+    <title>Case vacanze e appartamenti in affitto - Boolbnb</title>
 </head>
 <body>
     <div id="root"></div>

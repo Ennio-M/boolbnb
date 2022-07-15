@@ -20,10 +20,10 @@ class ApartmentController extends Controller
     protected $validationRulesStore = [
         "title" => "required|string|max:150",
         "description" => "string|max:16777215|nullable",
-        "rooms" => "required|integer|max:255",
-        "beds" => "required|integer|max:255",
-        "bathrooms" => "required|integer|max:255",
-        "square_meters" => "integer|max:65535|nullable",
+        "rooms" => "required|integer|min:0|max:255",
+        "beds" => "required|integer|min:0|max:255",
+        "bathrooms" => "required|integer|min:0|max:255",
+        "square_meters" => "integer|min:0|max:65535|nullable",
         "visible" => "sometimes|accepted",
         "price" => "required|numeric",
         "nation" => "required|string|max:60",
@@ -34,10 +34,10 @@ class ApartmentController extends Controller
     protected $validationRulesUpdate = [
         "title" => "required|string|max:150",
         "description" => "string|max:16777215|nullable",
-        "rooms" => "required|integer|max:255",
-        "beds" => "required|integer|max:255",
-        "bathrooms" => "required|integer|max:255",
-        "square_meters" => "integer|max:65535|nullable",
+        "rooms" => "required|integer|min:0|max:255",
+        "beds" => "required|integer|min:0|max:255",
+        "bathrooms" => "required|integer|min:0|max:255",
+        "square_meters" => "integer|min:0|max:65535|nullable",
         "visible" => "sometimes|accepted",
         "price" => "required|numeric",
         "nation" => "required|string|max:60",
@@ -79,47 +79,50 @@ class ApartmentController extends Controller
 
         $request->validate($this->validationRulesStore);
         $data = $request->all();
-
-        $newApartment = new Apartment();
-        $newApartment->title = $data['title'];
-        $newApartment->description = $data['description'];
-        $newApartment->rooms = $data['rooms'];
-        $newApartment->beds = $data['beds'];
-        $newApartment->bathrooms = $data['bathrooms'];
-        $newApartment->square_meters = $data['square_meters'];
-        $newApartment->visible = isset($data['visible']);
-        $newApartment->price = $data['price'];
-        $newApartment->sponsored = false;
-        $newApartment->nation = $data['nation'];
-        $newApartment->address = $data['address'];
         $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
             'key' => $this->myTomTomApiKey,
             'countryCode' => $data['nation'],
             'streetName' => $data['address']
         ]);
         $decoded = json_decode($response->body());
-        $newApartment->longitude = $decoded->results[0]->position->lon;
-        $newApartment->latitude = $decoded->results[0]->position->lat;
-        $newApartment->slug = $this->getSlug($newApartment->title);
-        $newApartment->user_id = Auth::user()->id;
+        if($decoded->results == []){
+            return redirect()->route('admin.apartments.create')->with('message', 'Non riusciamo a trovare l\'indirizzo inserito, riprova.');
+        } else {
+            $newApartment = new Apartment();
+            $newApartment->title = $data['title'];
+            $newApartment->description = $data['description'];
+            $newApartment->rooms = $data['rooms'];
+            $newApartment->beds = $data['beds'];
+            $newApartment->bathrooms = $data['bathrooms'];
+            $newApartment->square_meters = $data['square_meters'];
+            $newApartment->visible = isset($data['visible']);
+            $newApartment->price = $data['price'];
+            $newApartment->sponsored = false;
+            $newApartment->nation = $data['nation'];
+            $newApartment->address = $data['address'];
+            $newApartment->longitude = $decoded->results[0]->position->lon;
+            $newApartment->latitude = $decoded->results[0]->position->lat;
+            $newApartment->slug = $this->getSlug($newApartment->title);
+            $newApartment->user_id = Auth::user()->id;
 
-        $newApartment->save();
+            $newApartment->save();
 
-        if(isset($data['image'])){
-            foreach($data['image'] as $img){
-                $newImage = new Image();
-                $path_image = Storage::put("uploads", $img);
-                $newImage->image = $path_image;
-                $newImage->apartment_id = $newApartment->id;
-                $newImage->save();
+            if(isset($data['image'])){
+                foreach($data['image'] as $img){
+                    $newImage = new Image();
+                    $path_image = Storage::put("uploads", $img);
+                    $newImage->image = $path_image;
+                    $newImage->apartment_id = $newApartment->id;
+                    $newImage->save();
+                }
             }
-        }
-        
-        if(isset($data['services'])){
-            $newApartment->services()->sync($data['services']);
-        }
+            
+            if(isset($data['services'])){
+                $newApartment->services()->sync($data['services']);
+            }
 
-        return redirect()->route('admin.apartments.show', $newApartment->id);
+            return redirect()->route('admin.apartments.show', $newApartment->id);
+        }
     }
 
     /**
@@ -160,51 +163,55 @@ class ApartmentController extends Controller
     {
         $request->validate($this->validationRulesUpdate);
         $data = $request->all();
-
-        if($apartment->title != $data['title']){
-            $apartment->title = $data['title'];
-            if(Str::of($apartment->title)->slug('-') != $apartment->slug){
-                $apartment->slug = $this->getSlug($apartment->title);
-            }
-        }
-        $apartment->description = $data['description'];
-        $apartment->rooms = $data['rooms'];
-        $apartment->beds = $data['beds'];
-        $apartment->bathrooms = $data['bathrooms'];
-        $apartment->square_meters = $data['square_meters'];
-        $apartment->visible = isset($data['visible']);
-        $apartment->price = $data['price'];
-        $apartment->sponsored = $apartment->sponsored;
-        $apartment->nation = $data['nation'];
-        $apartment->address = $data['address'];
         $response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
             'key' => $this->myTomTomApiKey,
             'countryCode' => $data['nation'],
             'streetName' => $data['address']
         ]);
         $decoded = json_decode($response->body());
-        $apartment->longitude = $decoded->results[0]->position->lon;
-        $apartment->latitude = $decoded->results[0]->position->lat;
-
-        $apartment->update();
-
-        if(isset($data['image'])){
-            foreach($data['image'] as $img){
-                $newImage = new Image();
-                $path_image = Storage::put("uploads", $img);
-                $newImage->image = $path_image;
-                $newImage->apartment_id = $apartment->id;
-                $newImage->save();
-            }
-        }
-
-        if(isset($data['services'])){
-            $apartment->services()->sync($data['services']);
+        if($decoded->results = []){
+            return redirect()->route('admin.apartments.create')->with('message', 'Non riusciamo a trovare l\'indirizzo inserito, riprova.');
         } else {
-            $apartment->services()->sync([]);
-        }
 
-        return redirect()->route('admin.apartments.show', $apartment->id);
+            if($apartment->title != $data['title']){
+                $apartment->title = $data['title'];
+                if(Str::of($apartment->title)->slug('-') != $apartment->slug){
+                    $apartment->slug = $this->getSlug($apartment->title);
+                }
+            }
+            $apartment->description = $data['description'];
+            $apartment->rooms = $data['rooms'];
+            $apartment->beds = $data['beds'];
+            $apartment->bathrooms = $data['bathrooms'];
+            $apartment->square_meters = $data['square_meters'];
+            $apartment->visible = isset($data['visible']);
+            $apartment->price = $data['price'];
+            $apartment->sponsored = $apartment->sponsored;
+            $apartment->nation = $data['nation'];
+            $apartment->address = $data['address'];
+            $apartment->longitude = $decoded->results[0]->position->lon;
+            $apartment->latitude = $decoded->results[0]->position->lat;
+
+            $apartment->update();
+
+            if(isset($data['image'])){
+                foreach($data['image'] as $img){
+                    $newImage = new Image();
+                    $path_image = Storage::put("uploads", $img);
+                    $newImage->image = $path_image;
+                    $newImage->apartment_id = $apartment->id;
+                    $newImage->save();
+                }
+            }
+
+            if(isset($data['services'])){
+                $apartment->services()->sync($data['services']);
+            } else {
+                $apartment->services()->sync([]);
+            }
+
+            return redirect()->route('admin.apartments.show', $apartment->id);
+        }
     }
 
     /**

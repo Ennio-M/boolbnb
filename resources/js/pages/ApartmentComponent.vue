@@ -1,9 +1,9 @@
 <template>
 <section>
-   <!-- <div class="p-2">
+   <div class="p-2">
     <h1>{{apartment.title}}</h1>
         <p v-html="apartment.description"></p>
-    </div> -->
+    </div>
     
 </section>
 </template>

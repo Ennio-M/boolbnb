@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class ApartmentController extends Controller
 {   
     protected $myTomTomApiKey = 'YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl';
-    protected $validationRules = [
+    protected $validationRulesStore = [
         "title" => "required|string|max:150",
         "description" => "string|max:16777215|nullable",
         "rooms" => "required|integer|max:255",
@@ -30,6 +30,19 @@ class ApartmentController extends Controller
         "address" => "required|string|max:255",
         "image" => "required",
         "image.*" => "image|max:1024"
+    ];
+    protected $validationRulesUpdate = [
+        "title" => "required|string|max:150",
+        "description" => "string|max:16777215|nullable",
+        "rooms" => "required|integer|max:255",
+        "beds" => "required|integer|max:255",
+        "bathrooms" => "required|integer|max:255",
+        "square_meters" => "integer|max:65535|nullable",
+        "visible" => "sometimes|accepted",
+        "price" => "required|numeric",
+        "nation" => "required|string|max:60",
+        "address" => "required|string|max:255",
+        "image.*" => "sometimes|image|max:1024"
     ];
     /**
      * Display a listing of the resource.
@@ -64,7 +77,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {   
 
-        $request->validate($this->validationRules);
+        $request->validate($this->validationRulesStore);
         $data = $request->all();
 
         $newApartment = new Apartment();
@@ -145,7 +158,7 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $request->validate($this->validationRules);
+        $request->validate($this->validationRulesUpdate);
         $data = $request->all();
 
         if($apartment->title != $data['title']){

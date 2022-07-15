@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="{{route('admin.apartments.update',$apartment->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off">
+      <form action="{{route('admin.apartments.update',$apartment->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off" id="update">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -79,18 +79,30 @@
 
         <div class="form-group">
           <label for="address">Indirizzo</label>
-          <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" name="address" value={{$apartment->address}}>
+          <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" name="address" value='{{$apartment->address}}'>
           @error('address')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="image">Seleziona le immagini(la dimensione massima per ogni immagine è di 1MB), </label>
+          <label for="image">Aggiungi delle immagini: (la dimensione massima per ogni immagine è di 1MB), </label>
           <label for="image">accetta formati: jpeg, png, bmp, gif, svg, or webp </label>
           <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" aria-describedby="image" placeholder="Enter image url" name="image[]" multiple value="{{old('image[]')}}">
           @error('image')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
+          <div class="row row-cols-5 pt-4">
+            @foreach($apartment->images as $image)
+              <div class="col">
+                <img src="{{asset('storage/' . $image->image)}}" alt="Immagine appartamento" class="w-100">
+                <form action="{{route('admin.images.destroy',$image->id)}}" method="POST" id="destroy_image">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn" form="destroy_image">Cancella</button>
+                </form>
+              </div>
+            @endforeach
+          </div>
         </div>
         <div class="form-group">
           <h5>Servizi</h5>
@@ -108,7 +120,7 @@
           <input type="checkbox" class="form-check-input" id="visible" name="visible" {{old('visible') ? 'checked': ''}}>
           <label class="form-check-label" for="visible">Pubblica</label>
         </div>
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <button type="submit" class="btn btn-primary" form="update">Salva</button>
       </form>
     </div>
   </div>

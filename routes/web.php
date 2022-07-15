@@ -24,6 +24,7 @@ Route::middleware('auth')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('/apartments', 'ApartmentController');
+        Route::resource('/images', 'ImageController');
     });
 
 Route::get("{any?}", function(){

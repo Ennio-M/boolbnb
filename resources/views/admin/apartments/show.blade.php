@@ -23,10 +23,15 @@
                <p class="card-text">Stanze: {{$apartment->rooms}}</p>
                <p class="card-text">Letti: {{$apartment->beds}}</p>
                <p class="card-text">Bagni: {{$apartment->bathrooms}}</p>
-               <p class="card-text">Mq: {{$apartment->square_meters}}</p>
+               <p class="card-text">Metri quadrati: {{$apartment->square_meters}}</p>
                <p class="card-text">Prezzo: €{{$apartment->price}}/notte</p>
+               <p>Servizi:</p>
+               <ul>
+                  @foreach($apartment->services as $service)
+                     <li>{{$service->name}}</li>
+                  @endforeach
+               </ul>
                <span class="card-text">Indirizzo: {{$apartment->address}}</span>
-               <span class="card-text">, {{$country}}</span>
                <div class="py-3">
                   <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica appartamento</a>
                </div>

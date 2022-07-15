@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@include('partials/popupdelete')
 @section('content')
 <div class="container">
     <a class="btn btn-link my-2" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>

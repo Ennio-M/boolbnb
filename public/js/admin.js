@@ -49262,6 +49262,20 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var app = new Vue({
   el: "#app"
 });
+window.boolbnb = {
+  currentForm: null,
+  apartment_id: null,
+  openModal: function openModal(e, id) {
+    e.preventDefault();
+    this.apartment_id = id;
+    this.currentForm = e.currentTarget.parentNode;
+    $('#deleteModal-body').html('Sicuro di voler cancellare l\'appartamento');
+    $('#deleteModal').modal('show');
+  },
+  submitForm: function submitForm() {
+    this.currentForm.submit();
+  }
+};
 
 /***/ }),
 
@@ -49339,9 +49353,9 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/esercizi_php/boolbnb/resources/js/admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! /Applications/MAMP/htdocs/esercizi_php/boolbnb/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/esercizi_php/boolbnb/resources/sass/front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\eserciziphp\boolbnb\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! C:\MAMP\htdocs\eserciziphp\boolbnb\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\eserciziphp\boolbnb\resources\sass\front.scss */"./resources/sass/front.scss");
 
 
 /***/ })

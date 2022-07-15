@@ -34,12 +34,11 @@ window.Vue = require("vue");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// const app = new Vue({
-//     el: '#app',
-// });
-
 import App from "./views/App";
+import router from './router.js';
+
 const app = new Vue({
     el: "#root",
-    render: (h) => h(App), //renderizziamo App all avvio di Vue
+    render: (h) => h(App),
+    router
 });

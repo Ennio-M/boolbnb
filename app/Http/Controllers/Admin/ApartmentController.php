@@ -169,7 +169,7 @@ class ApartmentController extends Controller
             'streetName' => $data['address']
         ]);
         $decoded = json_decode($response->body());
-        if($decoded->results = []){
+        if($decoded->results == []){
             return redirect()->route('admin.apartments.create')->with('message', 'Non riusciamo a trovare l\'indirizzo inserito, riprova.');
         } else {
 

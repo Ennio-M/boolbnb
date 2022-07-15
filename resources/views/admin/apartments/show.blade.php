@@ -1,7 +1,6 @@
-
-
 @extends('layouts.admin') 
 
+@include('partials/popupdelete')
 
 @section('content')
 <div class="container">
@@ -38,7 +37,8 @@
                <form action="{{route('admin.apartments.destroy',$apartment->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn">Cancella</button>
+                  <button type="submit" class="btn"
+                  onclick="boolbnb.openModal(event, {{$apartment->id}})">Cancella</button>
               </form>
             </div>
          </div>

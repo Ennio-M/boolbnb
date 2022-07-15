@@ -20,7 +20,8 @@
                     <form action="{{route('admin.apartments.destroy',$apartment->id)}}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn">Cancella</button>
+                        <button type="submit" class="btn"
+                        onclick="boolbnb.openModal(event, {{$apartment->id}})">Cancella</button>
                     </form>
                 </div>
                 

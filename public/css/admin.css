@@ -28839,6 +28839,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
 .apartment_card:hover > * {
   transform: translate(0, -4%);
 }

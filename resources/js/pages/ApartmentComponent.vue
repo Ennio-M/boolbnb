@@ -13,6 +13,9 @@ import MapComponent from "../components/MapComponent.vue";
 
 export default {
     name: "ApartmentComponent",
+    components: {
+        MapComponent
+    },
     data() {
         return {
             apartment: null,

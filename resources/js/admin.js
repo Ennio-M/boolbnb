@@ -33,3 +33,18 @@ window.Vue = require("vue");
 const app = new Vue({
     el: "#app",
 });
+
+window.boolbnb = {
+    currentForm: null,
+    apartment_id: null,
+    openModal(e, id){
+        e.preventDefault();
+        this.apartment_id = id;
+        this.currentForm = e.currentTarget.parentNode;
+        $('#deleteModal-body').html('Sicuro di voler cancellare l\'appartamento');
+        $('#deleteModal').modal('show');
+    },
+    submitForm(){
+        this.currentForm.submit();
+    }
+}

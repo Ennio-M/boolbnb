@@ -1955,7 +1955,20 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ApartmentComponent'
+  name: 'ApartmentComponent',
+  data: function data() {
+    return {
+      apartment: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var slug = this.$route.params.slug;
+    axios.get("/api/apartments/".concat(slug)).then(function (res) {
+      _this.apartment = res.data;
+    });
+  }
 });
 
 /***/ }),
@@ -1970,7 +1983,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HomeComponent'
+  name: 'HomeComponent',
+  data: function data() {
+    return {
+      apartments: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/apartments').then(function (res) {
+      _this.apartments = res.data;
+    });
+  }
 });
 
 /***/ }),
@@ -2165,15 +2190,10 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("section");
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("section", [_c("h1", [_vm._v("Singolo Appartamento")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -2194,15 +2214,23 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("section", _vm._l(_vm.apartments, function (apartment, index) {
+    return _c("ul", {
+      key: index
+    }, [_c("li", [_c("router-link", {
+      attrs: {
+        to: {
+          name: "apartment",
+          params: {
+            slug: apartment.slug
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(apartment.title))])], 1)]);
+  }), 0);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("section", [_c("h1", [_vm._v("Home")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 

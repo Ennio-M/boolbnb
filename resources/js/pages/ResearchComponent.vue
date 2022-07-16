@@ -24,9 +24,13 @@ export default {
         }
     },
     mounted(){
+        // salvo l'input dell'utente
         const userInput = this.$route.params.userInput;
+        // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
         axios.get(`/api/apartments/${userInput}`).then((response) => {
             this.apartments = response.data;
+        }).catch((error) => {
+            console.log(error);
         })
     }
 }

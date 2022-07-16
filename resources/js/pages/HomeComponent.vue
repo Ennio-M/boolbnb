@@ -5,6 +5,7 @@
             <router-link :to="{ name:'apartment', params:{slug: apartment.slug} }">{{apartment.title}}</router-link>
         </li>
     </ul> -->
+
 </section>
 </template>
 

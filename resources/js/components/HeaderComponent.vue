@@ -31,7 +31,25 @@
         <!--  -->
 
         <div class="lower-header">
-            <div class="navbar"></div>
+            <div class="navbar">
+                <h3>Filtra la tua ricerca</h3>
+                <form action="#">
+                    <label for="min_rooms">Numero minimo di stanze</label>
+                    <input type="number" id="min_rooms" name="min_rooms">
+                    
+                    <label for="min_beds">Numero minimo di posti letto</label>
+                    <input type="number" id="min_beds" name="min_beds">
+
+                    <label for="radius">Raggio di ricerca</label>
+                    <input type="range" min="1" max="100" value="20" id="radius" name="radius" v-model="userRange"> <span>{{userRange}} km</span>
+
+                    <p class="m-0">Servizi</p>
+                    <div v-for="(service, index) in services" :key="index" class="form-check-inline">
+                        <input type="checkbox" :id="service.id" name="services[]">
+                        <label :for="service.id">{{service.name}}</label>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <!--  -->
@@ -43,8 +61,18 @@ export default {
     name: "HeaderComponent",
     data(){
         return {
-            inputText: ''
+            inputText: '',
+            services: null,
+            userRange: 20
         }
+    },
+    mounted(){
+        axios.get('/api/services').then((response) => {
+            this.services = response.data;
+            console.log(this.services)
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 };
 </script>

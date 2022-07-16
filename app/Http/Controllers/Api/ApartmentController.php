@@ -16,12 +16,20 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index($userInput)
+    {   
+        $user_response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
+            'key' => $this->myTomTomApiKey,
+            'countryCode' => 'it',
+            'streetName' => $userInput
+        ]);
+        $user_decoded = json_decode($user_response->body());
+        $user_lat = $user_decoded->results[0]->position->lat;
+        $user_lon = $user_decoded->results[0]->position->lon;
         $data = [];
         $geometryList_array = [[
             "type" => "CIRCLE",
-            "position" => "45.46188, 9.18675",
+            "position" => "$user_lat, $user_lon",
             "radius" => 10000
         ]];
         $geometryList = json_encode($geometryList_array);

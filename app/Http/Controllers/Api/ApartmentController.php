@@ -18,49 +18,39 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        $data = [];
+        $geometryList_array = [
+            "type" => "CIRCLE",
+            "position" => "45.46188, 9.18675",
+            "radius" => 20000
+        ];
+        $geometryList = json_encode($geometryList_array);
         $apartments = Apartment::all();
         $apts = response()->json($apartments);
 
-        // $response = Http::get('https://api.tomtom.com/search/2/search/' . $apt_json, [
-        //     'key' => $this->myTomTomApiKey,
-        //     'lat' => 45.46188,
-        //     'lon' => 9.18675,
-        //     'radius' => 20000
-        // ]);
-
-        // $decoded = json_decode($response->body());
-        // dd($decoded);
-
-        // $apt_json = [];
-
-        // foreach($apts->original as $apt){
-            
-        // }
-        $data1 = array(
-            "apartment" => [
-                "id" => 24
-            ],
-            "position" => [
-                "lat" => 45.46188,
-                "lon" => 9.18675
-            ]
-        );
-
-        $data2 = array(
-            "apartment" => [
-                "id" => 23
-            ],
-            "position" => [
-                "lat" => 32.46188,
-                "lon" => 14.18675
-            ]
-        );
-
-        $data = $data1 + $data2;
-        dd($data);
+        foreach($apts->original as $apt){
+            $apartment = [
+                "apartment" => [
+                    "id" => $apt->id
+                ],
+                "position" => [
+                    "lat" => $apt->latitude,
+                    "lon" => $apt->longitude
+                ]
+            ];
+            array_push($data, $apartment);
+        }
         $data_encoded = json_encode($data);
-        dd($data_encoded);
+        //dd($data_encoded);
 
+        $response = Http::get('https://api.tomtom.com/search/2/geometryFilter.json', [
+            'key' => $this->myTomTomApiKey,
+            'geometryList' => $geometryList,
+            'poiList' => $data_encoded,
+        ]);
+        $decoded = json_decode($response->body());
+
+        //dd($decoded);
     }
 
     /**

@@ -222,6 +222,9 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        foreach($apartment->images as $img){
+            Storage::delete($img->image);
+        }
         $apartment->services()->sync([]);
         $apartment->images()->delete();
         $apartment->delete();

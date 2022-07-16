@@ -19,12 +19,13 @@ class ApartmentController extends Controller
     public function index()
     {
         $data = [];
-        $geometryList_array = [
+        $geometryList_array = [[
             "type" => "CIRCLE",
             "position" => "45.46188, 9.18675",
-            "radius" => 20000
-        ];
+            "radius" => 10000
+        ]];
         $geometryList = json_encode($geometryList_array);
+        //dd($geometryList);
         $apartments = Apartment::all();
         $apts = response()->json($apartments);
 
@@ -50,7 +51,7 @@ class ApartmentController extends Controller
         ]);
         $decoded = json_decode($response->body());
 
-        //dd($decoded);
+        dd($decoded);
     }
 
     /**

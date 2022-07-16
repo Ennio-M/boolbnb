@@ -2,40 +2,29 @@
     <header class="container">
         <!--  -->
         <div
-            class="upper-header d-flex justify-content-around align-items-center"
-        >
+            class="upper-header d-flex justify-content-around align-items-center">
             <div id="logo d-flex">
                 <img src="/storage/uploads/LogoBoolbnb.png" alt="boolbnblogo" />
             </div>
 
             <div
-                class="search-container d-flex justify-content-center align-items-center"
-            >
+                class="search-container d-flex justify-content-center align-items-center">
                 <div class="row justify-content-center align-items-center">
                     <form action="/action_page.php">
-                        <input
-                            class="searchbar"
-                            type="text"
-                            placeholder="Ricerca Appartamenti"
-                            name="search"
-                        />
+                        <input class="searchbar" type="text" v-model="inputText" placeholder="Ricerca Appartamenti" name="search"/>
                     </form>
-                    <button class="lens" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
+                    <router-link :to="{ name:'research', params:{userInput: inputText} }">
+                        <button class="lens" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </router-link>
                 </div>
             </div>
 
-            <nav
-                class="d-flex text-center justify-content-center align-items-center"
-            >
-                <a class="text-muted" href="/register"
-                    ><h5>Diventa un Host</h5></a
-                >
+            <nav class="d-flex text-center justify-content-center align-items-center">
+                <a class="text-muted" href="/register"><h5>Diventa un Host</h5></a>
 
-                <a class="text-muted" href="/admin"
-                    ><i class="fa-solid fa-circle-user"></i
-                ></a>
+                <a class="text-muted" href="/admin"><i class="fa-solid fa-circle-user"></i></a>
             </nav>
         </div>
 
@@ -50,7 +39,14 @@
 </template>
 
 <script>
-export default { name: "HeaderComponent" };
+export default { 
+    name: "HeaderComponent",
+    data(){
+        return {
+            inputText: ''
+        }
+    }
+};
 </script>
 
 <style scoped lang="scss">

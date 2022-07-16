@@ -24,9 +24,6 @@ export default {
 }
 
 main {
-    background-color: rgb(16, 6, 44);
-    height: 500px;
-    max-width: 90%;
-    color: white;
+    height: 600px;
 }
 </style>

@@ -16,7 +16,7 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($userInput)
+    public function index($userInput, $userRange)
     {   
         //chiamo l'api di tomtom passandole l'indirizzo inserito dall'utente
         $user_response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
@@ -34,7 +34,7 @@ class ApartmentController extends Controller
         $geometryList_array = [[
             "type" => "CIRCLE",
             "position" => "$user_lat, $user_lon",
-            "radius" => 10000
+            "radius" => $userRange * 1000
         ]];
         $geometryList = json_encode($geometryList_array);
         //salvo tutti gli appartamenti del db

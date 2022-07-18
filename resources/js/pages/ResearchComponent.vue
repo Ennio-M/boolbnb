@@ -2,7 +2,7 @@
   <section class="row">
     <!-- navbar -->
 
-    <div class="navbar d-flex justify-content-left">
+    <div class="navbar col d-flex justify-content-center align-items-center">
       <!-- Search Container -->
 
       <div
@@ -85,7 +85,7 @@
       <button type="button" @click="filter">Filtra</button>
     </div>
 
-    <div class="apartments row row-cols-4 justify-content-center">
+    <div class="apartments col row-cols-4 justify-content-center">
       <h1>Appartamenti ricercati</h1>
       <div
         class="col my-3 mx-3"
@@ -193,13 +193,14 @@ section {
 }
 
 .navbar {
-  width: 30%;
+  max-width: 30%;
   height: 900px;
 }
 
 .apartments {
   background-color: orange;
-  width: 70%;
-  overflow-y: scroll;
+  max-width: 70%;
+  max-height: 90%;
+  overflow-y: auto;
 }
 </style>

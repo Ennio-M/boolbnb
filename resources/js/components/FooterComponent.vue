@@ -12,6 +12,5 @@ export default { name: "FooterComponent" };
 footer {
     background-color: green;
     max-width: 90%;
-    height: 300px;
 }
 </style>

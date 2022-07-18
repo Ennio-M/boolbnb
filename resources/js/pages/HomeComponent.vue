@@ -1,10 +1,11 @@
 <template>
 <section>
-   <ul v-for="(apartment,index) in apartments" :key="index">
+   <!-- <ul v-for="(apartment,index) in apartments" :key="index">
         <li>
             <router-link :to="{ name:'apartment', params:{slug: apartment.slug} }">{{apartment.title}}</router-link>
         </li>
-    </ul>
+    </ul> -->
+
 </section>
 </template>
 
@@ -13,13 +14,13 @@ export default {
     name:'HomeComponent',
     data(){
         return{
-            apartments:[]
+            // apartments:[]
         }
     },
     created(){
-        axios.get('/api/apartments').then((res) =>{
-            this.apartments = res.data;
-        })
+        // axios.get('/api/apartments').then((res) =>{
+        //     this.apartments = res.data;
+        // })
     }
 }
 </script>

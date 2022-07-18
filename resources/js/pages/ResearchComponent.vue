@@ -33,6 +33,7 @@
         <div class="col my-3" v-for="(apartment, index) in filtered" :key="index">
             <div class="card" style="width: 18rem;">
                 <img :src="`../storage/${apartment.images[0].image}`" class="card-img-top" :alt="apartment.title">
+                <router-link :to="{ name:'apartment', params:{slug: apartment.slug} }" >Visualizza appartamento</router-link>
                 <div class="card-body">
                     <h5 class="card-title">{{apartment.title}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

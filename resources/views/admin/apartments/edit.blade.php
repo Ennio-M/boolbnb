@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="{{route('admin.apartments.update',$apartment->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off" id="update" id="create_form">
+      <form action="{{route('admin.apartments.update',$apartment->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off" id="create_form">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -109,7 +109,7 @@
           @foreach($services as $service)
           <div class="form-check-inline">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="{{$service->slug}}" name="services[]" value="{{$service->id}}" {{in_array($service->id,old("services",[]))}} 
+              <input type="checkbox" class="form-check-input serv_check" id="{{$service->slug}}" name="services[]" value="{{$service->id}}" {{in_array($service->id,old("services",[]))}} 
               {{$apartment->services->contains($service->id) ? 'checked' : ''}}>
               <label class="form-check-label" for="{{$service->slug}}">{{$service->slug}}</label>
             </div>
@@ -117,10 +117,10 @@
           @endforeach
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="visible" name="visible" {{old('visible') ? 'checked': ''}}>
+          <input type="checkbox" class="form-check-input" id="visible" name="visible" {{$apartment->visible ? 'checked': ''}}>
           <label class="form-check-label" for="visible">Pubblica</label>
         </div>
-        <button type="submit" class="btn btn-primary" form="update">Salva</button>
+        <button type="submit" class="btn btn-primary">Salva</button>
       </form>
     </div>
   </div>

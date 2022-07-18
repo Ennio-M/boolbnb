@@ -1,7 +1,8 @@
 <script>
     (function() {
     const form = document.querySelector('#create_form');
-    const checkboxes = form.querySelectorAll('input[type=checkbox]');
+    const checkboxes = form.querySelectorAll('.serv_check');
+    console.log(form, checkboxes)
     const checkboxLength = checkboxes.length;
     const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
 

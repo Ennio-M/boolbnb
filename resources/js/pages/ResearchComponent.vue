@@ -186,15 +186,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 section {
   width: 100%;
-  height: 900px;
+  height: 100%;
 }
 
 .navbar {
   max-width: 30%;
-  height: 900px;
+  height: 100%;
 }
 
 .apartments {

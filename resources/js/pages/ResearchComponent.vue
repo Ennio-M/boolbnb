@@ -85,14 +85,16 @@
       <button type="button" @click="filter">Filtra</button>
     </div>
 
-    <div class="apartments col row-cols-4 justify-content-center">
+    <!-- Appartamenti ricercati -->
+    <div class="apartments row justify-content-center">
       <h1>Appartamenti ricercati</h1>
       <div
-        class="col my-3 mx-3"
+        class="row my-3 mx-3"
         v-for="(apartment, index) in filtered"
         :key="index"
       >
-        <div class="card" style="width: 18rem">
+        <!-- Card -->
+        <div class="apartment-card">
           <img
             :src="`../storage/${apartment.images[0].image}`"
             class="card-img-top"
@@ -114,6 +116,7 @@
           </div>
         </div>
       </div>
+      <!-- /Card -->
     </div>
   </section>
 </template>
@@ -202,5 +205,10 @@ section {
   max-width: 70%;
   max-height: 90%;
   overflow-y: auto;
+}
+
+.apartment-card {
+  width: 500px;
+  border: solid 1px rgb(0, 0, 0);
 }
 </style>

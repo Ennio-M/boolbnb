@@ -2656,16 +2656,13 @@ var render = function render() {
       click: _vm.filter
     }
   }, [_vm._v("Filtra")])]), _vm._v(" "), _c("div", {
-    staticClass: "apartments col row-cols-4 justify-content-center"
+    staticClass: "apartments row justify-content-center"
   }, [_c("h1", [_vm._v("Appartamenti ricercati")]), _vm._v(" "), _vm._l(_vm.filtered, function (apartment, index) {
     return _c("div", {
       key: index,
-      staticClass: "col my-3 mx-3"
+      staticClass: "row my-3 mx-3"
     }, [_c("div", {
-      staticClass: "card",
-      staticStyle: {
-        width: "18rem"
-      }
+      staticClass: "apartment-card"
     }, [_c("img", {
       staticClass: "card-img-top",
       attrs: {
@@ -7157,7 +7154,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-36a93269] {\n  width: 100%;\n  height: 100%;\n}\n.navbar[data-v-36a93269] {\n  max-width: 30%;\n  height: 100%;\n}\n.apartments[data-v-36a93269] {\n  background-color: orange;\n  max-width: 70%;\n  max-height: 90%;\n  overflow-y: auto;\n}", ""]);
+exports.push([module.i, "section[data-v-36a93269] {\n  width: 100%;\n  height: 100%;\n}\n.navbar[data-v-36a93269] {\n  max-width: 30%;\n  height: 100%;\n}\n.apartments[data-v-36a93269] {\n  background-color: orange;\n  max-width: 70%;\n  max-height: 90%;\n  overflow-y: auto;\n}\n.apartment-card[data-v-36a93269] {\n  width: 500px;\n  border: solid 1px rgb(0, 0, 0);\n}", ""]);
 
 // exports
 

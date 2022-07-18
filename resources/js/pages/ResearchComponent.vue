@@ -30,11 +30,11 @@
 
       <!-- / Search Container -->
 
-      <h3>Filtra la tua ricerca</h3>
+      <h3 class="py-3">Filtra la tua ricerca</h3>
 
       <!-- search boxes -->
 
-      <div class="search-box">
+      <div class="search-box col py-3">
         <label for="min_rooms">Numero minimo di stanze</label>
         <input
           type="number"
@@ -44,12 +44,12 @@
         />
       </div>
 
-      <div class="search-box">
+      <div class="search-box col py-3">
         <label for="min_beds">Numero minimo di posti letto</label>
         <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
       </div>
 
-      <div class="search-box">
+      <div class="search-box col py-3 text-center">
         <label for="radius">Raggio di ricerca</label>
         <input
           type="range"
@@ -63,12 +63,12 @@
         <span>{{ userRange }} km</span>
       </div>
 
-      <div class="services-box">
-        <p class="m-0">Servizi</p>
+      <div class="services-box py-3">
+        <h5 class="m-0">Servizi</h5>
         <div
           v-for="(service, index) in services"
           :key="index"
-          class="form-check-inline"
+          class="form-check-inline d-flex align-items-left"
         >
           <input
             type="checkbox"
@@ -78,11 +78,11 @@
           />
           <label :for="service.id">{{ service.name }}</label>
         </div>
+
+        <!-- Filter button -->
+
+        <button type="button" @click="filter">Filtra</button>
       </div>
-
-      <!-- Filter button -->
-
-      <button type="button" @click="filter">Filtra</button>
     </div>
 
     <!-- Appartamenti ricercati -->

@@ -2517,8 +2517,10 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa fa-search"
-  })])])]), _vm._v(" "), _c("h3", [_vm._v("Filtra la tua ricerca")]), _vm._v(" "), _c("div", {
-    staticClass: "search-box"
+  })])])]), _vm._v(" "), _c("h3", {
+    staticClass: "py-3"
+  }, [_vm._v("Filtra la tua ricerca")]), _vm._v(" "), _c("div", {
+    staticClass: "search-box col py-3"
   }, [_c("label", {
     attrs: {
       "for": "min_rooms"
@@ -2545,7 +2547,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "search-box"
+    staticClass: "search-box col py-3"
   }, [_c("label", {
     attrs: {
       "for": "min_beds"
@@ -2572,7 +2574,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "search-box"
+    staticClass: "search-box col py-3 text-center"
   }, [_c("label", {
     attrs: {
       "for": "radius"
@@ -2601,13 +2603,13 @@ var render = function render() {
       }
     }
   }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.userRange) + " km")])]), _vm._v(" "), _c("div", {
-    staticClass: "services-box"
-  }, [_c("p", {
+    staticClass: "services-box py-3"
+  }, [_c("h5", {
     staticClass: "m-0"
   }, [_vm._v("Servizi")]), _vm._v(" "), _vm._l(_vm.services, function (service, index) {
     return _c("div", {
       key: index,
-      staticClass: "form-check-inline"
+      staticClass: "form-check-inline d-flex align-items-left"
     }, [_c("input", {
       directives: [{
         name: "model",
@@ -2648,14 +2650,14 @@ var render = function render() {
         "for": service.id
       }
     }, [_vm._v(_vm._s(service.name))])]);
-  })], 2), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _c("button", {
     attrs: {
       type: "button"
     },
     on: {
       click: _vm.filter
     }
-  }, [_vm._v("Filtra")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Filtra")])], 2)]), _vm._v(" "), _c("div", {
     staticClass: "apartments row justify-content-center"
   }, [_c("h1", [_vm._v("Appartamenti ricercati")]), _vm._v(" "), _vm._l(_vm.filtered, function (apartment, index) {
     return _c("div", {

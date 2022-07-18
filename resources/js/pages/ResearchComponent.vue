@@ -2,10 +2,8 @@
 <section>
     <div class="search-container d-flex justify-content-center align-items-center">
         <div class="row justify-content-center align-items-center">
-            <form action="/action_page.php">
-                <input class="searchbar" type="text" v-model="inputText" placeholder="Ricerca Appartamenti" name="search"/>
-            </form>
-            <button class="lens" type="submit" @click="search">
+            <input class="searchbar" type="text" v-model="inputText" placeholder="Ricerca Appartamenti" name="search" @keyup.enter="search"/>
+            <button class="lens" type="button" @click="search">
                 <i class="fa fa-search"></i>
             </button>
         </div>
@@ -13,23 +11,21 @@
     <div class="lower-header">
         <div class="navbar">
             <h3>Filtra la tua ricerca</h3>
-            <form action="#">
-                <label for="min_rooms">Numero minimo di stanze</label>
-                <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms">
-                
-                <label for="min_beds">Numero minimo di posti letto</label>
-                <input type="number" id="min_beds" name="min_beds" v-model="userBeds">
+            <label for="min_rooms">Numero minimo di stanze</label>
+            <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms">
+            
+            <label for="min_beds">Numero minimo di posti letto</label>
+            <input type="number" id="min_beds" name="min_beds" v-model="userBeds">
 
-                <label for="radius">Raggio di ricerca</label>
-                <input type="range" min="1" max="100" value="20" id="radius" name="radius" v-model="userRange"> <span>{{userRange}} km</span>
+            <label for="radius">Raggio di ricerca</label>
+            <input type="range" min="1" max="100" value="20" id="radius" name="radius" v-model="userRange"> <span>{{userRange}} km</span>
 
-                <p class="m-0">Servizi</p>
-                <div v-for="(service, index) in services" :key="index" class="form-check-inline">
-                    <input type="checkbox" :id="service.id" :value="service.id" v-model="userServices">
-                    <label :for="service.id">{{service.name}}</label>
-                </div>
-                <button type="button" @click="filter">Filtra</button>
-            </form>
+            <p class="m-0">Servizi</p>
+            <div v-for="(service, index) in services" :key="index" class="form-check-inline">
+                <input type="checkbox" :id="service.id" :value="service.id" v-model="userServices">
+                <label :for="service.id">{{service.name}}</label>
+            </div>
+            <button type="button" @click="filter">Filtra</button>
         </div>
     </div>
     <h1>Appartamenti ricercati</h1>
@@ -65,7 +61,7 @@ export default {
     },
     methods: {
         search(){
-        // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
+            // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
             axios.get(`/api/apartments/${this.inputText}/${this.userRange}`).then((response) => {
                 this.apartments = response.data;
                 // salvo gli appartamenti in una lista da filtrare successivamente

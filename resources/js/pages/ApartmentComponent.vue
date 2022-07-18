@@ -5,6 +5,7 @@
             <p v-html="apartment.description"></p>
             <map-component :apartment="apartment" />
         </div>
+        <!-- coommento -->
     </section>
 </template>
 

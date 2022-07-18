@@ -10,7 +10,7 @@
         @method('PUT')
         <div class="form-group">
           <label for="Title">Titolo</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" name="title" value="{{$apartment->title}}" required minlength="5>
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" name="title" value="{{$apartment->title}}" required minlength="5">
           @error('title')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror

@@ -1,12 +1,12 @@
 <template>
 <section>
     <div class="search-container d-flex justify-content-center align-items-center">
-        <!-- <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center">
             <input class="searchbar" type="text" v-model="inputText" placeholder="Ricerca Appartamenti" name="search" @keyup.enter="search"/>
             <button class="lens" type="button" @click="search">
                 <i class="fa fa-search"></i>
             </button>
-        </div> -->
+        </div>
     </div>
     <div class="lower-header">
         <div class="navbar">

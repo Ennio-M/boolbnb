@@ -93,30 +93,36 @@
         v-for="(apartment, index) in filtered"
         :key="index"
       >
-        <!-- Card -->
-        <div class="apartment-card">
-          <img
-            :src="`../storage/${apartment.images[0].image}`"
-            class="card-img-top"
-            :alt="apartment.title"
-          />
-          <router-link
-            :to="{
-              name: 'apartment',
-              params: { slug: apartment.slug },
-            }"
-            >Visualizza appartamento</router-link
-          >
-          <div class="card-body">
-            <h5 class="card-title">{{ apartment.title }}</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+        <!-- inizio Card -->
+        <div class="card" style="width: 500px">
+          <div class="row no-gutters">
+            <div class="col-sm-5">
+              <img
+                :src="`../storage/${apartment.images[0].image}`"
+                class="img-fluid"
+                :alt="apartment.title"
+              />
+            </div>
+            <div class="col-sm-7">
+              <div class="card-body">
+                <h5 class="card-title">{{ apartment.title }}</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <router-link
+                  :to="{
+                    name: 'apartment',
+                    params: { slug: apartment.slug },
+                  }"
+                  >Visualizza appartamento</router-link
+                >
+              </div>
+            </div>
           </div>
         </div>
+        <!-- /fine Card -->
       </div>
-      <!-- /Card -->
     </div>
   </section>
 </template>
@@ -207,8 +213,12 @@ section {
   overflow-y: auto;
 }
 
-.apartment-card {
-  width: 500px;
-  border: solid 1px rgb(0, 0, 0);
-}
+// .apartment-card {
+//   width: 500px;
+//   border: solid 1px rgb(0, 0, 0);
+
+//   .img-fluid {
+//     float: left;
+//   }
+// }
 </style>

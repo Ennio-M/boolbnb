@@ -2664,14 +2664,29 @@ var render = function render() {
       key: index,
       staticClass: "row my-3 mx-3"
     }, [_c("div", {
-      staticClass: "apartment-card"
+      staticClass: "card",
+      staticStyle: {
+        width: "500px"
+      }
+    }, [_c("div", {
+      staticClass: "row no-gutters"
+    }, [_c("div", {
+      staticClass: "col-sm-5"
     }, [_c("img", {
-      staticClass: "card-img-top",
+      staticClass: "img-fluid",
       attrs: {
         src: "../storage/".concat(apartment.images[0].image),
         alt: apartment.title
       }
-    }), _vm._v(" "), _c("router-link", {
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "col-sm-7"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_vm._v(_vm._s(apartment.title))]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }, [_vm._v("\n                Some quick example text to build on the card title and make up\n                the bulk of the card's content.\n              ")]), _vm._v(" "), _c("router-link", {
       attrs: {
         to: {
           name: "apartment",
@@ -2680,13 +2695,7 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("Visualizza appartamento")]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_vm._v(_vm._s(apartment.title))]), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }, [_vm._v("\n            Some quick example text to build on the card title and make up the\n            bulk of the card's content.\n          ")])])], 1)]);
+    }, [_vm._v("Visualizza appartamento")])], 1)])])])]);
   })], 2)]);
 };
 
@@ -7156,7 +7165,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-36a93269] {\n  width: 100%;\n  height: 100%;\n}\n.navbar[data-v-36a93269] {\n  max-width: 30%;\n  height: 100%;\n}\n.apartments[data-v-36a93269] {\n  background-color: orange;\n  max-width: 70%;\n  max-height: 90%;\n  overflow-y: auto;\n}\n.apartment-card[data-v-36a93269] {\n  width: 500px;\n  border: solid 1px rgb(0, 0, 0);\n}", ""]);
+exports.push([module.i, "section[data-v-36a93269] {\n  width: 100%;\n  height: 100%;\n}\n.navbar[data-v-36a93269] {\n  max-width: 30%;\n  height: 100%;\n}\n.apartments[data-v-36a93269] {\n  background-color: orange;\n  max-width: 70%;\n  max-height: 90%;\n  overflow-y: auto;\n}", ""]);
 
 // exports
 

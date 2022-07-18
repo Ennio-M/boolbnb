@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form id="registration_form" method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -67,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div name="myForm" class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                             <div class="col-md-6">
@@ -91,7 +91,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="register_btn" type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -104,4 +104,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+  @include('scripts.password_validation')
 @endsection

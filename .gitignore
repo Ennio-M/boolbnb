@@ -14,3 +14,7 @@ package-lock.json
 .DS_Store
 public/storage
 public/storage/.gitignore
+public/css
+public/css/*
+public/js
+public/js/*

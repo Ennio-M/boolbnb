@@ -48,3 +48,27 @@ window.boolbnb = {
         this.currentForm.submit();
     }
 }
+
+// associo al click del bottone la funzione di validazione
+document.getElementById('register_btn').addEventListener('click', validate);
+// salvo il form
+const form = document.getElementById('registration_form');
+// imposto il messaggio d'errore
+const errorMessage = 'Le password non coincidono';
+
+function validate(event){
+    // fermo l'invio del form
+    event.preventDefault();
+    // salvo i due campi password
+    const password = document.getElementById('password');
+    const password_confirm = document.getElementById('password-confirm');
+    // confronto i loro valori
+    if(password.value != password_confirm.value){
+        // se non combaciano invio il messaggio d'errore
+        password_confirm.setCustomValidity(errorMessage);
+        password_confirm.reportValidity();
+    } else {
+        // se combaciano invio il form
+        form.submit();
+    }
+}

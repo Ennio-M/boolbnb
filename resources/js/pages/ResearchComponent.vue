@@ -3,30 +3,6 @@
     <!-- navbar -->
 
     <div class="navbar col d-flex justify-content-center align-items-center">
-      <!-- Search Container -->
-
-      <div
-        class="
-          search-container
-          d-flex
-          justify-content-center
-          align-items-center
-        "
-      >
-        <div class="row justify-content-center align-items-center">
-          <input
-            class="searchbar"
-            type="text"
-            v-model="inputText"
-            placeholder="Ricerca Appartamenti"
-            name="search"
-            @keyup.enter="search"
-          />
-          <button class="lens" type="button" @click="search">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
 
       <!-- / Search Container -->
 
@@ -135,7 +111,6 @@ export default {
       apartments: null,
       filtered: null,
       aptServices: null,
-      inputText: "",
       services: null,
       userRooms: null,
       userBeds: null,
@@ -145,17 +120,8 @@ export default {
   },
   methods: {
     search() {
-      // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
-      axios
-        .get(`/api/apartments/${this.inputText}/${this.userRange}`)
-        .then((response) => {
-          this.apartments = response.data;
-          // salvo gli appartamenti in una lista da filtrare successivamente
-          this.filtered = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      
+      
     },
 
     filter() {
@@ -182,6 +148,23 @@ export default {
     },
   },
   mounted() {
+    
+    // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
+    const inputText = this.$route.params.userInput;
+    console.log('dio')
+    axios
+      .get(`/api/apartments/${inputText}/${this.userRange}`)
+      .then((response) => {
+        console.log('cane')
+        this.apartments = response.data;
+        // salvo gli appartamenti in una lista da filtrare successivamente
+        this.filtered = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+
     // salvo tutti i servizi nel db tramite api
     axios
       .get("/api/services")

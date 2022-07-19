@@ -16,7 +16,7 @@ const router = new VueRouter({
             component: HomeComponent
         },
         {
-            path: '/research',
+            path: '/research/:userInput',
             name: 'research',
             component: ResearchComponent
         },

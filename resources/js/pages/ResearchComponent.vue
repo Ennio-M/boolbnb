@@ -92,8 +92,8 @@
     </div>
 
     <!-- Appartamenti ricercati -->
-    <div class="apartments row justify-content-center">
-      <h1>Appartamenti ricercati:</h1>
+    <div class="apartments-box row justify-content-center">
+      <!-- <h1>Appartamenti ricercati:</h1> -->
       <div
         class="row my-3 mx-3"
         v-for="(apartment, index) in filtered"
@@ -253,7 +253,7 @@ section {
   text-transform: uppercase;
 }
 
-.apartments {
+.apartments-box {
   background-color: white;
   max-width: 70%;
   max-height: 90%;

@@ -244,6 +244,17 @@ section {
 
   .filter-button {
     margin-top: 7%;
+    background-color: #003580;
+    color: white;
+    // border-color: #003580;
+    border: none;
+
+    width: 150px;
+    height: 50px;
+
+    &:hover {
+      background-color: #0975b4e0;
+    }
   }
 }
 

@@ -72,6 +72,7 @@
         >
           <input
             type="checkbox"
+            class="mr-3"
             :id="service.id"
             :value="service.id"
             v-model="userServices"
@@ -219,6 +220,10 @@ section {
 
   h5 {
     font-weight: bold;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.5);
   }
 }
 

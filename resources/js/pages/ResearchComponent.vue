@@ -35,7 +35,7 @@
       <!-- search boxes -->
 
       <div class="search-box col py-3">
-        <label for="min_rooms">Numero minimo di stanze</label>
+        <label for="min_rooms">Numero minimo di stanze:</label>
         <input
           type="number"
           id="min_rooms"
@@ -45,12 +45,12 @@
       </div>
 
       <div class="search-box col py-3">
-        <label for="min_beds">Numero minimo di posti letto</label>
+        <label for="min_beds">Numero minimo di posti letto:</label>
         <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
       </div>
 
       <div class="search-box col py-3 text-center">
-        <label for="radius">Raggio di ricerca</label>
+        <label for="radius">Raggio di ricerca:</label>
         <input
           type="range"
           min="1"
@@ -68,7 +68,8 @@
         <div
           v-for="(service, index) in services"
           :key="index"
-          class="form-check-inline d-flex align-items-left"
+          class="form-check-inline d-flex"
+          style="text-align: center"
         >
           <input
             type="checkbox"
@@ -77,18 +78,22 @@
             :value="service.id"
             v-model="userServices"
           />
-          <label :for="service.id">{{ service.name }}</label>
+          <label class="service-label" :for="service.id">{{
+            service.name
+          }}</label>
         </div>
 
         <!-- Filter button -->
 
-        <button type="button" @click="filter">Filtra</button>
+        <button class="filter-button" type="button" @click="filter">
+          Filtra
+        </button>
       </div>
     </div>
 
     <!-- Appartamenti ricercati -->
     <div class="apartments row justify-content-center">
-      <h1>Appartamenti ricercati</h1>
+      <h1>Appartamenti ricercati:</h1>
       <div
         class="row my-3 mx-3"
         v-for="(apartment, index) in filtered"
@@ -209,6 +214,16 @@ section {
 .navbar {
   max-width: 30%;
   height: 100%;
+  // background-color: #febb02;
+  background-color: white;
+}
+
+.search-box {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   background-color: #febb02;
 }
 
@@ -217,6 +232,7 @@ section {
   border-radius: 5px;
   width: 100%;
   padding: 10%;
+  background-color: #febb02;
 
   h5 {
     font-weight: bold;
@@ -224,6 +240,10 @@ section {
 
   input[type="checkbox"] {
     transform: scale(1.5);
+  }
+
+  .filter-button {
+    margin-top: 7%;
   }
 }
 

@@ -99,7 +99,7 @@
         @foreach($services as $service)
           <div class="form-check-inline">
               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="{{$service->slug}}" name="services[]" value="{{$service->id}}" {{in_array($service->id,old("services",[]))}} >
+                  <input type="checkbox" class="form-check-input serv_check" id="{{$service->slug}}" name="services[]" value="{{$service->id}}" {{in_array($service->id,old("services",[]))}} >
                   <label class="form-check-label" for="{{$service->slug}}">{{$service->name}}</label>
               </div>
           </div>
@@ -117,6 +117,7 @@
 <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 @endsection
+
 @section('script')
   @include('scripts.checkbox_script')
 @endsection

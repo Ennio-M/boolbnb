@@ -1,23 +1,23 @@
 <template>
-    <header class="container">
-        <!--  -->
-        <div class="upper-header d-flex justify-content-around align-items-center">
-            <div id="logo d-flex">
-                <img src="/storage/uploads/LogoBoolbnb.png" alt="boolbnblogo" />
+    <nav class="container-fluid shadow-sm">
+        <div class="row py-2 align-items-center justify-content-between text-center">
+            <div class="col-12 py-1 col-md-3">
+                <img class="logo" src="/storage/uploads/LogoBoolbnb.png" alt="boolbnblogo"/>
             </div>
-
-            <nav class="d-flex text-center justify-content-center align-items-center">
-                <a class="text-muted" href="/register"><h5>Diventa un Host</h5></a>
-
-                <a class="text-muted" href="/admin"><i class="fa-solid fa-circle-user"></i></a>
-            </nav>
+            <div class="col-12 col-md-5 col-lg-4 py-1 input-box d-flex align-items-center justify-content-between py-2 shadow-sm">
+                <input type="text" class="search-input text-center" placeholder="Ricerca appartamenti" name="search" v-model="inputText" @keyup.enter="search" autocomplete="off">
+                <div class="magnifying-box d-flex align-items-center justify-content-center" @click="search">
+                    <i class="text-white fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 py-1 d-flex align-items-center justify-content-center px-3">
+                <a class="text-muted font-weight-bold" href="/register">Diventa un Host</a>
+                <a href="/admin" class="user-box  text-muted d-flex align-items-center border justify-content-center mx-3 p-3 shadow-sm">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
         </div>
-
-        <!--  -->
-
-
-        <!--  -->
-    </header>
+    </nav>
 </template>
 
 <script>
@@ -35,70 +35,40 @@ export default {
 </script>
 
 <style lang="scss">
-    header {
-        background-color: #ffffff;
-        height: 200px;
-        max-width: 90%;
-
-        .fw-bold {
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 16px;
+    .logo{
+    max-width: 180px;
+    }
+    .input-box{
+        border: 1px solid grey;
+        border-radius: 30px;
+        .search-input{
+        border-color:transparent;
+        background-color: transparent;
+        outline: none;
+        width: 80%;
+        border-right: 1px solid grey;
+        font-weight: bold;
         }
-
-        .upper-header {
-            height: 50%;
-            border-color: brown;
-            background-color: white;
-        }
-
-        .fa-circle-user {
-            font-size: 35px;
-            color: gray;
-            margin-left: 10px;
-
-            &:hover {
-                color: rgb(63, 62, 62);
+        .magnifying-box{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #E61C54;
+            &:hover{
+                cursor: pointer;
+                transform:scale(1.1)
             }
         }
-
-        nav {
-            height: 40px;
-        }
-
-        .lens {
-            background-color: #ff385c;
-            border: none;
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            color: white;
-            display: flex;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            margin-left: 5px;
-        }
-
-        #logo,
-        img {
-            height: 50px;
-        }
-
-        .lower-header {
-            height: 50%;
-            background-color: grey;
-        }
-
-        .search-container {
-            width: 25%;
-            height: 50px;
-            border: 1px solid gray;
-            border-radius: 30px;
-        }
-
-        .searchbar {
-            border: none;
+    }
+    .user-box{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: lightgrey;
+        &:hover{
+            cursor: pointer;
+            transform:scale(1.1);
+            background-color: rgb(179, 179, 179);
         }
     }
 </style>

@@ -64,7 +64,7 @@
       </div>
 
       <div class="services-box py-3">
-        <h5 class="m-0">Servizi</h5>
+        <h5 class="mb-4 mt-2">Servizi:</h5>
         <div
           v-for="(service, index) in services"
           :key="index"
@@ -94,9 +94,11 @@
         :key="index"
       >
         <!-- inizio Card -->
-        <div class="card" style="width: 500px">
+        <div class="card" style="width: 500px, height: 500px">
           <div class="row no-gutters">
-            <div class="col-sm-5">
+            <div
+              class="col-sm-5 d-flex justify-content-center align-items-center"
+            >
               <img
                 :src="`../storage/${apartment.images[0].image}`"
                 class="img-fluid"
@@ -107,8 +109,10 @@
               <div class="card-body">
                 <h5 class="card-title">{{ apartment.title }}</h5>
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda veniam earum doloribus deleniti reprehenderit
+                  officia porro vero, incidunt beatae obcaecati eos tempore
+                  dicta illo nesciunt esse magni error. Velit, ad!
                 </p>
                 <router-link
                   :to="{
@@ -204,10 +208,28 @@ section {
 .navbar {
   max-width: 30%;
   height: 100%;
+  background-color: #febb02;
+}
+
+.services-box {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10%;
+
+  h5 {
+    font-weight: bold;
+  }
+}
+
+.card-title {
+  color: #003580;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .apartments {
-  background-color: orange;
+  background-color: white;
   max-width: 70%;
   max-height: 90%;
   overflow-y: auto;

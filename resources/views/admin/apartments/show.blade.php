@@ -31,6 +31,17 @@
                   @endforeach
                </ul>
                <span class="card-text">Indirizzo: {{$apartment->address}}</span>
+               <div class="message-box my-3">
+                  <h3 class="text-center">I Tuoi Messaggi</h3>
+                   @foreach ($apartment->messages as $message)
+                  <div class="card my-2 p-2 message-card shadow-sm">
+                     <h4>Inviato da: {{$message->name}}</h4>
+                     <span> Del : {{$message->created_at}}</span>
+                     <span>Email : {{$message->email}} </span>
+                     <p class="my-2"> - {{$message->content}}</p>
+                  </div>
+               @endforeach
+               </div>
                <div class="py-3">
                   <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn btn-primary">Modifica appartamento</a>
                </div>
@@ -38,7 +49,7 @@
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn"
-                  onclick="boolbnb.openModal(event, {{$apartment->id}})">Cancella</button>
+                  onclick="boolbnb.openModal(event, {{$apartment->id}})">Elimina appartamento</button>
               </form>
             </div>
          </div>

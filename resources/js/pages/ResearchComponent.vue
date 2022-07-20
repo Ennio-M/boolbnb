@@ -3,7 +3,6 @@
     <!-- navbar -->
 
     <div class="navbar col d-flex justify-content-center align-items-center">
-
       <!-- / Search Container -->
 
       <h3 class="py-3">Filtra la tua ricerca</h3>
@@ -146,6 +145,7 @@ export default {
     }
   },
 
+
 mounted() {
   // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
   this.search();
@@ -159,6 +159,7 @@ mounted() {
     .catch((error) => {
       console.log(error);
     });
+
   },
 };
 </script>

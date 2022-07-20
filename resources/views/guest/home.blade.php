@@ -6,10 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <title>Case vacanze e appartamenti in affitto - Boolbnb</title>
+
+
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
+
+
 </head>
 <body>
     <div id="root"></div>
 
+    
+
    <script src="{{asset("js/front.js")}}"></script>
+
+
+
 </body>
 </html>

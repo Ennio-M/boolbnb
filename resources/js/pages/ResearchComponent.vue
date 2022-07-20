@@ -61,7 +61,7 @@
 
         <!-- Filter button -->
 
-        <button class="filter-button" type="button" @click="filter">
+        <button class="filter-button" type="button" @click="search()">
           Filtra
         </button>
       </div>
@@ -72,8 +72,9 @@
       <!-- <h1>Appartamenti ricercati:</h1> -->
       <div
         class="row my-3 mx-3"
-        v-for="(apartment, index) in filtered"
+        v-for="(apartment, index) in apartments"
         :key="index"
+        v-show="apartments"
       >
         <!-- inizio Card -->
         <div class="card" style="width: 500px, height: 500px">
@@ -81,11 +82,11 @@
             <div
               class="col-sm-5 d-flex justify-content-center align-items-center"
             >
-              <!-- <img
+              <img
                 :src="`../storage/${apartment.images[0].image}`"
                 class="img-fluid"
                 :alt="apartment.title"
-              /> -->
+              />
             </div>
             <div class="col-sm-7">
               <div class="card-body">
@@ -119,71 +120,45 @@ export default {
   data() {
     return {
       apartments: null,
-      filtered: null,
       aptServices: null,
       services: null,
       userRooms: null,
       userBeds: null,
       userRange: 20,
-      userServices: [1, 2, 3],
+      userServices: [],
     };
   },
   methods: {
-    search() {
-      
-      
-    },
-
-    filter() {
-      // filtro ogni appartamento
-      this.filtered = this.apartments.filter((apt) => {
-        // salvo gli id dei servizi dell'appartamento
-        this.aptServices = [];
-        apt.services.forEach((element) => {
-          this.aptServices.push(element.id);
+    // definisco la funzione di ricerca
+    search(){
+      // trasformo in stringa l'array di servizi scelti dall'utente
+      const inputServices = JSON.stringify(this.userServices);
+      // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
+      const inputText = this.$route.params.userInput;
+      axios.get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
+        .then((response) => {
+          this.apartments = response.data;
+          console.log(this.apartments)
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        // controllo il numero minimo di stanze e posi letto
-        if (
-          apt.rooms >= this.userRooms &&
-          apt.beds >= this.userBeds &&
-          this.userServices.every((serv) => {
-            // con la funzione every() controllo che ogni id dei servizi scelti dall'utente sia nell'array degli id dei servizi dell'appartamento
-            return this.aptServices.includes(serv);
-          })
-        ) {
-          // ritorno true se le 3 condizioni sono soddisfatte, quindi l'appartamento verrà inserito nella lista filtrata
-          return true;
-        }
-      });
-    },
+    }
   },
 
 mounted() {
-    const inputServices = JSON.stringify(this.userServices);
-    // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
-    const inputText = this.$route.params.userInput;
-    axios
-      .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
-      .then((response) => {
-        this.apartments = response.data;
-        console.log(this.apartments)
-        // salvo gli appartamenti in una lista da filtrare successivamente
-        this.filtered = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
+  this.search();
 
-
-    // salvo tutti i servizi nel db tramite api
-    axios
-      .get("/api/services")
-      .then((response) => {
-        this.services = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  // salvo tutti i servizi nel db tramite api
+  axios
+    .get("/api/services")
+    .then((response) => {
+      this.services = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   },
 };
 </script>

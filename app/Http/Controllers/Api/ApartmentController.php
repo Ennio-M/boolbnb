@@ -16,10 +16,11 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($userInput, $userRange)
+    public function index($userInput, $userRange, $userRooms, $userBeds, $userServices)
     {   
+        $userServices = explode(',', trim($userServices, "[\]"));
         // salvo tutti gli appartamenti
-        $apartments = Apartment::all();
+        $apartments = Apartment::select('*')->where('rooms', '>=', $userRooms)->where('beds', '>=', $userBeds)->with(["images", "services"])->where("services", $userServices)->get();
         //chiamo l'api di tomtom passandole l'indirizzo inserito dall'utente
         $user_response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
             'key' => $this->myTomTomApiKey,

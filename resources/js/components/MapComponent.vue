@@ -1,42 +1,39 @@
 <template>
-    <div>
-        <h1>Vue 3 TomTom Maps Demo</h1>
-        <div id="map" ref="mapRef"></div>
-    </div>
+  <div>
+    <h1>Vue 3 TomTom Maps Demo</h1>
+    <div id="map"></div>
+  </div>
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
 export default {
-    name: "Map",
+  name: "Map",
 
-    setup() {
-        const mapRef = ref(null);
-        onMounted(() => {
-            const tt = window.tt;
-            var map = tt.map({
-                key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
-                container: mapRef.value,
-                style: "tomtom://vector/1/basic-main",
-            });
-            map.addControl(new tt.FullscreenControl());
-            map.addControl(new tt.NavigationControl());
-        });
+  mounted() {
+    const apartmentcoordinates = [
+      this.apartment.longitude,
+      this.apartment.latitude,
+    ];
+    const map = tt.map({
+      container: "map",
+      key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
+      center: apartmentcoordinates,
+      zoom: 15,
+    });
+    const apartmentmarker = new tt.Marker()
+      .setLngLat(apartmentcoordinates)
+      .addTo(map);
+  },
 
-        return {
-            mapRef,
-        };
-    },
-
-    props: {
-        apartment: Object,
-    },
+  props: {
+    apartment: Object,
+  },
 };
 </script>
 
 <style>
 #map {
-    height: 50vh;
-    width: 50vw;
+  height: 50vh;
+  width: 50vw;
 }
 </style>

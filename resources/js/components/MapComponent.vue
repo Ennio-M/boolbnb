@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
-
 export default {
   name: "Map",
 
@@ -22,21 +20,9 @@ export default {
       center: apartmentcoordinates,
       zoom: 15,
     });
-    const apartmentmarker = new tt.marker()
-      .setlnglat(apartmentcoordinates)
-      .addto(map);
-
-    function addMarker(map) {
-      const tt = window.tt;
-      var location = [-121.91595, 37.36729];
-      var popupOffset = 25;
-
-      var marker = new tt.Marker().setLngLat(location).addTo(map);
-      var popup = new tt.Popup({ offset: popupOffset }).setHTML(
-        "Your address!"
-      );
-      marker.setPopup(popup).togglePopup();
-    }
+    const apartmentmarker = new tt.Marker()
+      .setLngLat(apartmentcoordinates)
+      .addTo(map);
   },
 
   props: {

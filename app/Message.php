@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    public function apartment(){
+    protected $guarded = [];
+    
+    public function apartment()
+    {
         return $this->belongsTo('App\Apartment');
     }
 }

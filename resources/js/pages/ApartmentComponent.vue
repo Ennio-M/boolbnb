@@ -5,7 +5,7 @@
                 <div class="col-12 font-weigth-bold text-center">
                     <h1>{{ apartment.title }}</h1>
                 </div>
-                <div class="col-12 h-75">
+                <div class="col-12">
                     <div class="slider-wrapper rounded" tabindex="0"
                     @keydown.left="slidePrev"
                     @keydown.right="slideNext"
@@ -38,6 +38,28 @@
                     </div>
                 </div>
             </div>
+            <div class="chat-image">
+                <i class="first fa-solid fa-comments left" @click="display = true"></i>
+                <div class="chat p-3 shadow-sm" v-if="display == true">
+                    <span class="chat-title">Invia un Messaggio all'host</span>
+                     <span class="chat-closer" @click="display = false">X</span> 
+                    <form @submit.prevent="addMessage()">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Inserisci Name" v-model="formData.name" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Email</label>
+                            <input type="text" class="form-control" id="email" aria-describedby="email" placeholder="Inserisci email" v-model="formData.email" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Messaggio</label>
+                            <textarea class="form-control" id="content" aria-describedby="content"  cols="30" rows="7" laceholder="Inserisci messaggio" v-model="formData.content" required autocomplete="off"></textarea>
+                        </div>
+                        <button type="submit">Invia Messaggio</button>
+                    </form>
+                </div>
+            </div>
            <!-- <map-component :apartment="apartment" /> -->
         </section>
     </main>
@@ -54,8 +76,15 @@ export default {
     data() {
         return {
             apartment: null,
-             indexActive:0,
-            intervallo:null
+            indexActive:0,
+            intervallo:null,
+            display: false,
+            formData:{
+                name:'',
+                email:'',
+                content:'',
+                apartment_id:'',
+            },
         };
     },
     methods:{
@@ -73,11 +102,24 @@ export default {
                 this.indexActive += 1
             }
         },
+         addMessage(){
+            axios.post('/api/messages',this.formData)
+            .then((response) => {
+                console.log(this.apartment)
+                console.log(this.apartment.messages)
+                this.apartment.messages.push(response.data)
+                this.formData = ''
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
+        }
     },
     mounted() {
         const slug = this.$route.params.slug;
         axios.get(`/api/apartments/${slug}`).then((res) => {
             this.apartment = res.data;
+            this.formData.apartment_id= this.apartment.id;
         });
     },
 };
@@ -101,7 +143,7 @@ export default {
             background: white;
             position: absolute;
             cursor: pointer;
-            z-index: 999;
+            z-index: 990;
             line-height: 25px;
             text-transform: uppercase;
             padding: 10px;
@@ -140,5 +182,64 @@ export default {
         border-bottom: 3px solid grey;
     }
  }
+ .chat-image{
+    border-radius: 50%;
+    background-color: #E61C54;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    z-index: 991;
+    cursor: pointer;
+    .first{
+        color: white;
+        font-size: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 992;
+
+    }
+    .chat{
+        width: 400px;
+        height: 500px;
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+        z-index: 996;
+        background-color: white;
+        font-size: 14px;
+        border-radius: 10px;
+        .chat-closer{
+            font-size: 2em;
+            color: #E61C54;
+            font-weight: bolder;
+            position: absolute;
+            top: 0px;
+            right: 10px;
+        }
+        .chat-title{
+            font-size:1.5em;
+            color: #E61C54;
+        }
+        button{
+            padding: 8px 28px;
+            background-color: #E61C54;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            &:hover{
+                background: #bc1746;
+            }
+        }
+    }
+
+}
+
+
+ 
    
  </style>

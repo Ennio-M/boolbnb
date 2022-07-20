@@ -105,11 +105,11 @@
             <div
               class="col-sm-5 d-flex justify-content-center align-items-center"
             >
-              <img
+              <!-- <img
                 :src="`../storage/${apartment.images[0].image}`"
                 class="img-fluid"
                 :alt="apartment.title"
-              />
+              /> -->
             </div>
             <div class="col-sm-7">
               <div class="card-body">
@@ -150,7 +150,7 @@ export default {
       userRooms: null,
       userBeds: null,
       userRange: 20,
-      userServices: [],
+      userServices: [1, 2, 3],
     };
   },
   methods: {
@@ -191,7 +191,25 @@ export default {
       });
     },
   },
+
   mounted() {
+    const inputServices = JSON.stringify(this.userServices);
+    // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
+    const inputText = this.$route.params.userInput;
+    axios
+      .get(
+        `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
+      )
+      .then((response) => {
+        this.apartments = response.data;
+        console.log(this.apartments);
+        // salvo gli appartamenti in una lista da filtrare successivamente
+        this.filtered = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     // salvo tutti i servizi nel db tramite api
     axios
       .get("/api/services")

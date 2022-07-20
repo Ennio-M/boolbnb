@@ -3,7 +3,6 @@
     <!-- navbar -->
 
     <div class="navbar col d-flex justify-content-center align-items-center">
-
       <!-- / Search Container -->
 
       <h3 class="py-3">Filtra la tua ricerca</h3>
@@ -125,14 +124,11 @@ export default {
       userRooms: null,
       userBeds: null,
       userRange: 20,
-      userServices: [1, 2, 3],
+      userServices: null,
     };
   },
   methods: {
-    search() {
-      
-      
-    },
+    search() {},
 
     filter() {
       // filtro ogni appartamento
@@ -158,22 +154,23 @@ export default {
     },
   },
 
-mounted() {
+  mounted() {
     const inputServices = JSON.stringify(this.userServices);
     // chiamo l'api impostata nel controller passandole l'input dell'utente e salvo la lista di appartamenti restituita
     const inputText = this.$route.params.userInput;
     axios
-      .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
+      .get(
+        `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
+      )
       .then((response) => {
         this.apartments = response.data;
-        console.log(this.apartments)
+        console.log(this.apartments);
         // salvo gli appartamenti in una lista da filtrare successivamente
         this.filtered = response.data;
       })
       .catch((error) => {
         console.log(error);
       });
-
 
     // salvo tutti i servizi nel db tramite api
     axios

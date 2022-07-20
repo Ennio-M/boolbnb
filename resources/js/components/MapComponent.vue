@@ -1,42 +1,53 @@
 <template>
-    <div>
-        <h1>Vue 3 TomTom Maps Demo</h1>
-        <div id="map" ref="mapRef"></div>
-    </div>
+  <div>
+    <h1>Vue 3 TomTom Maps Demo</h1>
+    <div id="map"></div>
+  </div>
 </template>
 
 <script>
 import { onMounted, ref } from "vue";
+
 export default {
-    name: "Map",
+  name: "Map",
 
-    setup() {
-        const mapRef = ref(null);
-        onMounted(() => {
-            const tt = window.tt;
-            var map = tt.map({
-                key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
-                container: mapRef.value,
-                style: "tomtom://vector/1/basic-main",
-            });
-            map.addControl(new tt.FullscreenControl());
-            map.addControl(new tt.NavigationControl());
-        });
+  mounted() {
+    const apartmentcoordinates = [
+      this.apartment.longitude,
+      this.apartment.latitude,
+    ];
+    const map = tt.map({
+      container: "map",
+      key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
+      center: apartmentcoordinates,
+      zoom: 15,
+    });
+    const apartmentmarker = new tt.marker()
+      .setlnglat(apartmentcoordinates)
+      .addto(map);
 
-        return {
-            mapRef,
-        };
-    },
+    function addMarker(map) {
+      const tt = window.tt;
+      var location = [-121.91595, 37.36729];
+      var popupOffset = 25;
 
-    props: {
-        apartment: Object,
-    },
+      var marker = new tt.Marker().setLngLat(location).addTo(map);
+      var popup = new tt.Popup({ offset: popupOffset }).setHTML(
+        "Your address!"
+      );
+      marker.setPopup(popup).togglePopup();
+    }
+  },
+
+  props: {
+    apartment: Object,
+  },
 };
 </script>
 
 <style>
 #map {
-    height: 50vh;
-    width: 50vw;
+  height: 50vh;
+  width: 50vw;
 }
 </style>

@@ -21,3 +21,4 @@ Route::get('/apartments/{userInput}/{userRange}', 'Api\ApartmentController@index
 Route::get('/apartments/{slug}','Api\ApartmentController@show');
 
 Route::get('/services','Api\ServiceController@index');
+Route::post('/messages', 'Api\MessageController@store');

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('/apartments/{userInput}/{userRange}', 'Api\ApartmentController@index');
+Route::get('/apartments/{userInput}/{userRange}/{userRooms}/{userBeds}/{userServices}', 'Api\ApartmentController@index');
 Route::get('/apartments/{slug}','Api\ApartmentController@show');
 
 Route::get('/services','Api\ServiceController@index');

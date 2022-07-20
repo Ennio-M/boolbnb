@@ -5,10 +5,12 @@
                 <img class="logo" src="/storage/uploads/LogoBoolbnb.png" alt="boolbnblogo"/>
             </div>
             <div class="col-12 col-md-5 col-lg-4 py-1 input-box d-flex align-items-center justify-content-between py-2 shadow-sm">
-                <input type="text" class="search-input text-center" placeholder="Ricerca appartamenti" name="search" v-model="inputText" @keyup.enter="search" autocomplete="off">
-                <div class="magnifying-box d-flex align-items-center justify-content-center" @click="search">
-                    <i class="text-white fa-solid fa-magnifying-glass"></i>
-                </div>
+                <input type="text" class="search-input text-center" placeholder="Ricerca appartamenti" name="search" v-model="inputText" autocomplete="off">
+                <router-link :to="{ name: 'research', params: { userInput: inputText } }">
+                    <div class="magnifying-box d-flex align-items-center justify-content-center">
+                        <i class="text-white fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </router-link>
             </div>
             <div class="col-12 col-md-3 py-1 d-flex align-items-center justify-content-center px-3">
                 <a class="text-muted font-weight-bold" href="/register">Diventa un Host</a>
@@ -25,7 +27,7 @@ export default {
     name: "HeaderComponent",
     data(){
         return {
-
+            inputText: null
         }
     },
     mounted(){

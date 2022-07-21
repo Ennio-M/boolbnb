@@ -158,10 +158,11 @@ mounted() {
     .catch((error) => {
       console.log(error);
     });
-
   },
-  beforeUpdate(){
-    this.search();
+  watch: {
+    $route(to, from) {
+      this.search();
+    }
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="home">
         <!-- <main v-if="apartments"></main>
         <section v-else>
             <div
@@ -12,7 +12,7 @@
             </div>
         </section> -->
 
-        <ul v-for="(apartment, index) in apartments" :key="index">
+        <!-- <ul v-for="(apartment, index) in apartments" :key="index">
             <li>
                 <router-link
                     :to="{
@@ -22,7 +22,7 @@
                     >{{ apartment.title }}</router-link
                 >
             </li>
-        </ul>
+        </ul> -->
     </section>
 </template>
 
@@ -42,4 +42,4 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style scoped lang="scss"></style>

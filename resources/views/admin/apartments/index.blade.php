@@ -2,11 +2,15 @@
 @include('partials/popupdelete')
 @section('content')
 <div class="container">
+    @foreach ($sponsors  as $sponsor)
+    <span>{{$sponsor->name}}</span>
+        
+    @endforeach
     <a class="btn btn-link my-2 text-decoration-none" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
     <div class="row ">
         @foreach ($apartments as $apartment)
             <div class="col col-md-4 p-3 align-items-stretch">
-                <a href="{{route('admin.apartments.show',$apartment->id)}}" class="apartment_card text-decoration-none">
+                
                     <div class="card text-center ">
                         <img class="img-fluid rounded-top" src="{{asset('storage/' . $apartment->images->first()->image)}}" alt="">
                         <h2>{{$apartment->title}}</h2>

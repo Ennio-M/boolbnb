@@ -2,10 +2,6 @@
 @include('partials/popupdelete')
 @section('content')
 <div class="container">
-    @foreach ($sponsors  as $sponsor)
-    <span>{{$sponsor->name}}</span>
-        
-    @endforeach
     <a class="btn btn-link my-2 text-decoration-none" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
     <div class="row ">
         @foreach ($apartments as $apartment)

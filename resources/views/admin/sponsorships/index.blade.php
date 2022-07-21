@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<a class="btn btn-link m-2 text-decoration-none" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
 <h2 class="text-center">Promuovi il tuo appartamento!</h2>
 <div class="p-3">
 <table class="table">

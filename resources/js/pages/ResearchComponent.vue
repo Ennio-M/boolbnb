@@ -137,7 +137,6 @@ export default {
       axios.get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
         .then((response) => {
           this.apartments = response.data;
-          console.log(this.apartments)
         })
         .catch((error) => {
           console.log(error);
@@ -161,6 +160,9 @@ mounted() {
     });
 
   },
+  beforeUpdate(){
+    this.search();
+  }
 };
 </script>
 

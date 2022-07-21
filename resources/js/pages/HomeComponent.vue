@@ -12,11 +12,17 @@
             </div>
         </section> -->
 
-        <!-- <ul v-for="(apartment,index) in apartments" :key="index">
-        <li>
-            <router-link :to="{ name:'apartment', params:{slug: apartment.slug} }">{{apartment.title}}</router-link>
-        </li>
-    </ul> -->
+        <ul v-for="(apartment, index) in apartments" :key="index">
+            <li>
+                <router-link
+                    :to="{
+                        name: 'apartment',
+                        params: { slug: apartment.slug },
+                    }"
+                    >{{ apartment.title }}</router-link
+                >
+            </li>
+        </ul>
     </section>
 </template>
 
@@ -31,7 +37,6 @@ export default {
     created() {
         axios.get("/api/apartments/milano/20/0/0/[]").then((res) => {
             this.apartments = res.data;
-            console.log(this.apartments);
         });
     },
 };

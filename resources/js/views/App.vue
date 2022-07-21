@@ -2,7 +2,7 @@
     <div>
         <HeaderComponent class="header-component-container" />
         <MainComponent class="main-component-container" />
-        <FooterComponent />
+        <FooterComponent class="footer-component-container" />
     </div>
 </template>
 
@@ -36,8 +36,17 @@ export default {
     background-color: white;
 }
 
+.footer-component-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    background-color: white;
+}
+
 .main-component-container {
-    margin-top: 80px;
+    margin-top: 70px;
+    margin-bottom: 30px;
     position: relative;
 }
 

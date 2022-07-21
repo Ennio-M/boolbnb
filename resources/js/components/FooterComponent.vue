@@ -31,7 +31,6 @@ export default { name: "FooterComponent" };
 footer {
     background-color: white;
     border-top: 1px solid rgba(128, 128, 128, 0.5);
-
     .footer-left {
         width: 50%;
         height: 100%;

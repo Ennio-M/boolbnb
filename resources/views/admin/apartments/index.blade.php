@@ -2,13 +2,13 @@
 @include('partials/popupdelete')
 @section('content')
 <div class="container">
-    <a class="btn btn-link my-2" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
-    <div class="row">
+    <a class="btn btn-link my-2 text-decoration-none" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
+    <div class="row ">
         @foreach ($apartments as $apartment)
-            <div class="col col-md-4 py-1 align-items-center">
-                <a href="{{route('admin.apartments.show',$apartment->id)}}" class="apartment_card">
-                    <div class="card text-center">
-                        <img class="img-fluid" src="{{asset('storage/' . $apartment->images->first()->image)}}" alt="">
+            <div class="col col-md-4 p-3 align-items-stretch">
+                <a href="{{route('admin.apartments.show',$apartment->id)}}" class="apartment_card text-decoration-none">
+                    <div class="card text-center ">
+                        <img class="img-fluid rounded-top" src="{{asset('storage/' . $apartment->images->first()->image)}}" alt="">
                         <h2>{{$apartment->title}}</h2>
                         <div class="d-flex justify-content-center">
                             <span class="m-1"><i class="fa-solid fa-location-dot"></i> {{$apartment->address}}</span>
@@ -17,7 +17,7 @@
                     </div>
                 </a>
                 <div class="text-center">
-                    <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn my-2">Modifica</a>
+                    <a href="{{route('admin.apartments.edit',$apartment->id)}}" class="btn my-2 text-decoration-none">Modifica</a>
                     <form action="{{route('admin.apartments.destroy',$apartment->id)}}" method="POST" class="d-inline-block">
                         @csrf
                         @method('DELETE')

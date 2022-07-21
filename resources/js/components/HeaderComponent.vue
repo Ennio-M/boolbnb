@@ -4,11 +4,12 @@
             class="row py-2 align-items-center justify-content-between text-center"
         >
             <div class="col-12 py-1 col-md-3">
-                <img
-                    class="logo"
-                    src="/storage/uploads/LogoBoolbnb.png"
-                    alt="boolbnblogo"
-                />
+                <a href="/home"
+                    ><img
+                        class="logo"
+                        src="/storage/uploads/LogoBoolbnb.png"
+                        alt="boolbnblogo"
+                /></a>
             </div>
             <div
                 class="col-12 col-md-5 col-lg-4 py-1 input-box d-flex align-items-center justify-content-between py-2 shadow-sm"

@@ -1,39 +1,38 @@
 <template>
-  <div>
-    <h1>Vue 3 TomTom Maps Demo</h1>
-    <div id="map"></div>
-  </div>
+    <div>
+        <div id="map"></div>
+    </div>
 </template>
 
 <script>
 export default {
-  name: "Map",
+    name: "Map",
 
-  mounted() {
-    const apartmentcoordinates = [
-      this.apartment.longitude,
-      this.apartment.latitude,
-    ];
-    const map = tt.map({
-      container: "map",
-      key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
-      center: apartmentcoordinates,
-      zoom: 15,
-    });
-    const apartmentmarker = new tt.Marker()
-      .setLngLat(apartmentcoordinates)
-      .addTo(map);
-  },
+    mounted() {
+        const apartmentcoordinates = [
+            this.apartment.longitude,
+            this.apartment.latitude,
+        ];
+        const map = tt.map({
+            container: "map",
+            key: "YeAUs1VSBC9gVGieDMDGZZVGtnxy9myl",
+            center: apartmentcoordinates,
+            zoom: 15,
+        });
+        const apartmentmarker = new tt.Marker()
+            .setLngLat(apartmentcoordinates)
+            .addTo(map);
+    },
 
-  props: {
-    apartment: Object,
-  },
+    props: {
+        apartment: Object,
+    },
 };
 </script>
 
 <style>
 #map {
-  height: 50vh;
-  width: 50vw;
+    height: 50vh;
+    width: 50vw;
 }
 </style>

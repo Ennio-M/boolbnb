@@ -159,6 +159,7 @@ mounted() {
       console.log(error);
     });
   },
+  // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
   watch: {
     $route(to, from) {
       this.search();

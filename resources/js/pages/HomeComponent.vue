@@ -1,30 +1,40 @@
 <template>
-<section>
-   <!-- <ul v-for="(apartment,index) in apartments" :key="index">
+    <section>
+        <!-- <main v-if="apartments"></main>
+        <section v-else>
+            <div
+                class="container welcome-page d-flex justify-content-center py-4"
+            >
+                <h1>
+                    Benvenuto su Boolbnb! Inizia la tua ricerca tra migliaia di
+                    appartamenti!
+                </h1>
+            </div>
+        </section> -->
+
+        <!-- <ul v-for="(apartment,index) in apartments" :key="index">
         <li>
             <router-link :to="{ name:'apartment', params:{slug: apartment.slug} }">{{apartment.title}}</router-link>
         </li>
     </ul> -->
-
-</section>
+    </section>
 </template>
 
 <script>
 export default {
-    name:'HomeComponent',
-    data(){
-        return{
-            // apartments:[]
-        }
+    name: "HomeComponent",
+    data() {
+        return {
+            apartments: [],
+        };
     },
-    created(){
-        // axios.get('/api/apartments').then((res) =>{
-        //     this.apartments = res.data;
-        // })
-    }
-}
+    created() {
+        axios.get("/api/apartments/milano/20/0/0/[]").then((res) => {
+            this.apartments = res.data;
+            console.log(this.apartments);
+        });
+    },
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

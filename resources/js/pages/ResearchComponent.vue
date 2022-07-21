@@ -24,9 +24,11 @@
         <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
       </div>
 
-      <div class="search-box col py-3 text-center">
+      <!-- Km range -->
+      <div class="search-box col py-3 text-center align-text-center">
         <label for="radius">Raggio di ricerca:</label>
         <input
+          class="user-range"
           type="range"
           min="1"
           max="100"
@@ -37,6 +39,8 @@
         />
         <span>{{ userRange }} km</span>
       </div>
+
+      <!-- Servizi -->
 
       <div class="services-box py-3">
         <h5 class="mb-4 mt-2">Servizi:</h5>
@@ -129,42 +133,44 @@ export default {
   },
   methods: {
     // definisco la funzione di ricerca
-    search(){
+    search() {
       // trasformo in stringa l'array di servizi scelti dall'utente
       const inputServices = JSON.stringify(this.userServices);
       // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
       const inputText = this.$route.params.userInput;
-      axios.get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
+      axios
+        .get(
+          `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
+        )
         .then((response) => {
           this.apartments = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
 
+  mounted() {
+    // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
+    this.search();
 
-mounted() {
-  // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
-  this.search();
-
-  // salvo tutti i servizi nel db tramite api
-  axios
-    .get("/api/services")
-    .then((response) => {
-      this.services = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    // salvo tutti i servizi nel db tramite api
+    axios
+      .get("/api/services")
+      .then((response) => {
+        this.services = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
   watch: {
     $route(to, from) {
       this.search();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -182,20 +188,20 @@ section {
 }
 
 .search-box {
-  border: 1px solid grey;
+  border: 1px solid #e61954;
   border-radius: 5px;
   width: 100%;
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: #febb02;
+  // background-color: #febb02;
 }
 
 .services-box {
-  border: 1px solid grey;
+  border: 1px solid #e61954;
   border-radius: 5px;
   width: 100%;
   padding: 10%;
-  background-color: #febb02;
+  // background-color: #febb02;
 
   h5 {
     font-weight: bold;
@@ -207,7 +213,7 @@ section {
 
   .filter-button {
     margin-top: 7%;
-    background-color: #003580;
+    background-color: #e61954;
     color: white;
     // border-color: #003580;
     border: none;
@@ -216,7 +222,7 @@ section {
     height: 50px;
 
     &:hover {
-      background-color: #0975b4e0;
+      background-color: #e6195363;
     }
   }
 }
@@ -242,4 +248,10 @@ section {
 //     float: left;
 //   }
 // }
+
+.img-fluid {
+  border-radius: 5px;
+  max-width: 90%;
+  max-height: 90%;
+}
 </style>

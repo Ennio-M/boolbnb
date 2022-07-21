@@ -12,6 +12,7 @@ use App\Apartment;
 use App\Image;
 use App\Service;
 use App\User;
+use App\Sponsorship;
 use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller

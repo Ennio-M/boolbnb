@@ -1,5 +1,5 @@
 <template>
-    <footer class="container-fluid row d-flex justify-content-between">
+    <footer class="container-fluid row m-0 d-flex justify-content-between">
         <div class="footer-left col-6 text-center pt-2">
             <ul>
                 <li>© 2022 Boolbnb</li>

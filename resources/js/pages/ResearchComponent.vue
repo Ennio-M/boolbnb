@@ -4,7 +4,7 @@
             <!-- leftbar -->
 
             <div
-                class="bg-white ml-2 col-12 col-md-10 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
+                class=" bg-white ml-2 col-12 col-md-10 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
                 <!-- / Search Container -->
 
                 <h3 class="py-3">Filtra la tua ricerca</h3>
@@ -160,6 +160,7 @@ section {
 .leftbar {
 
     height: 100%;
+
 
 }
 

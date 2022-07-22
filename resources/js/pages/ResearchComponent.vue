@@ -4,19 +4,19 @@
             <!-- leftbar -->
 
             <div
-                class="bg-white col-12 col-md-3 navbar row d-flex justify-content-center align-items-center rounded shadow-sm">
+                class="bg-white col-12 col-md-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
                 <!-- / Search Container -->
 
                 <h3 class="py-3">Filtra la tua ricerca</h3>
 
                 <!-- search boxes -->
 
-                <div class="search-box col-12 py-3 m-3">
+                <div class="search-box col-12  py-3 m-3">
                     <label for="min_rooms">Numero minimo di stanze:</label>
                     <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms" />
                 </div>
 
-                <div class="search-box col-12 py-3 m-3">
+                <div class="search-box col-12  py-3 m-3">
                     <label for="min_beds">Numero minimo di posti letto:</label>
                     <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
                 </div>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Appartamenti ricercati -->
-            <div class="col-8 offset-1">
+            <div class="col-12 col-md-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
@@ -157,10 +157,10 @@ section {
     height: 100%;
 }
 
-.navbar {
-    max-width: 30%;
+.leftbar {
+
     height: 100%;
-    background-color: white;
+
 }
 
 .search-box {
@@ -188,7 +188,6 @@ section {
         margin-top: 7%;
         background-color: #e61954;
         color: white;
-        // border-color: #003580;
         border: none;
 
         width: 150px;

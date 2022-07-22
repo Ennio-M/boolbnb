@@ -1,121 +1,119 @@
 <template>
-    <main>
-        <section class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-12 font-weigth-bold text-center">
-                    <h1>{{ apartment.title }}</h1>
-                </div>
-                <div class="col-12">
-                    <div
-                        class="slider-wrapper rounded"
-                        tabindex="0"
-                        @keydown.left="slidePrev"
-                        @keydown.right="slideNext"
-                    >
-                        <div class="item position-relative">
-                            <div @click="slidePrev" class="prev">prev</div>
-                            <div @click="slideNext" class="next">next</div>
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 font-weigth-bold text-center">
+                <h1>{{ apartment.title }}</h1>
+            </div>
+            <div class="col-12">
+                <div
+                    class="slider-wrapper rounded"
+                    tabindex="0"
+                    @keydown.left="slidePrev"
+                    @keydown.right="slideNext"
+                >
+                    <div class="item position-relative">
+                        <div @click="slidePrev" class="prev">prev</div>
+                        <div @click="slideNext" class="next">next</div>
+                        <img
+                            class="img-fluid rounded"
+                            :src="`/storage/${apartment.images[indexActive].image}`"
+                            :alt="apartment.title"
+                        />
+                    </div>
+
+                    <div class="thumbs d-flex rounded my-3">
+                        <div
+                            @click="select(index)"
+                            class="thumb"
+                            :class="{ active: index === indexActive }"
+                            v-for="(images, index) in apartment.images"
+                            :key="index"
+                        >
                             <img
-                                class="img-fluid rounded"
-                                :src="`/storage/${apartment.images[indexActive].image}`"
+                                class="rounded-bottom"
+                                :src="`/storage/${images.image}`"
                                 :alt="apartment.title"
                             />
                         </div>
-
-                        <div class="thumbs d-flex rounded my-3">
-                            <div
-                                @click="select(index)"
-                                class="thumb"
-                                :class="{ active: index === indexActive }"
-                                v-for="(images, index) in apartment.images"
-                                :key="index"
-                            >
-                                <img
-                                    class="rounded-bottom"
-                                    :src="`/storage/${images.image}`"
-                                    :alt="apartment.title"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 py-2">
-                    <h5>Intero Alloggio - Host : {{ apartment.user_id }}</h5>
-                    <span
-                        >{{ apartment.beds * 2 }} Ospiti -
-                        {{ apartment.rooms }} camere da letto -
-                        {{ apartment.beds }} letti -
-                        {{ apartment.bathrooms }} bagni</span
-                    >
-                    <p v-html="apartment.description"></p>
-                </div>
-                <div class="col-12">
-                    <h3>Cosa Troverai</h3>
-                    <div
-                        v-for="(service, index) in apartment.services"
-                        :key="index"
-                    >
-                        <p>{{ service.name }}</p>
                     </div>
                 </div>
             </div>
-            <div class="chat-image">
-                <i
-                    class="first fa-solid fa-comments left"
-                    @click="display = true"
-                ></i>
-                <div class="chat p-3 shadow-sm" v-if="display == true">
-                    <span class="chat-title">Invia un Messaggio all'host</span>
-                    <span class="chat-closer" @click="display = false">X</span>
-                    <form @submit.prevent="addMessage()">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                aria-describedby="name"
-                                placeholder="Inserisci Name"
-                                v-model="formData.name"
-                                required
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Email</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="email"
-                                aria-describedby="email"
-                                placeholder="Inserisci email"
-                                v-model="formData.email"
-                                required
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="content">Messaggio</label>
-                            <textarea
-                                class="form-control"
-                                id="content"
-                                aria-describedby="content"
-                                cols="30"
-                                rows="7"
-                                laceholder="Inserisci messaggio"
-                                v-model="formData.content"
-                                required
-                                autocomplete="off"
-                            ></textarea>
-                        </div>
-                        <button type="submit">Invia Messaggio</button>
-                    </form>
+
+            <div class="col-12 py-2">
+                <h5>Intero Alloggio - Host : {{ apartment.user_id }}</h5>
+                <span
+                    >{{ apartment.beds * 2 }} Ospiti -
+                    {{ apartment.rooms }} camere da letto -
+                    {{ apartment.beds }} letti -
+                    {{ apartment.bathrooms }} bagni</span
+                >
+                <p v-html="apartment.description"></p>
+            </div>
+            <div class="col-12">
+                <h3>Cosa Troverai</h3>
+                <div
+                    v-for="(service, index) in apartment.services"
+                    :key="index"
+                >
+                    <p>{{ service.name }}</p>
                 </div>
             </div>
-            <map-component :apartment="apartment" />
-        </section>
-    </main>
+        </div>
+        <div class="chat-image">
+            <i
+                class="first fa-solid fa-comments left"
+                @click="display = true"
+            ></i>
+            <div class="chat p-3 shadow-sm" v-if="display == true">
+                <span class="chat-title">Invia un Messaggio all'host</span>
+                <span class="chat-closer" @click="display = false">X</span>
+                <form @submit.prevent="addMessage()">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            aria-describedby="name"
+                            placeholder="Inserisci Name"
+                            v-model="formData.name"
+                            required
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Email</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            aria-describedby="email"
+                            placeholder="Inserisci email"
+                            v-model="formData.email"
+                            required
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Messaggio</label>
+                        <textarea
+                            class="form-control"
+                            id="content"
+                            aria-describedby="content"
+                            cols="30"
+                            rows="7"
+                            laceholder="Inserisci messaggio"
+                            v-model="formData.content"
+                            required
+                            autocomplete="off"
+                        ></textarea>
+                    </div>
+                    <button type="submit">Invia Messaggio</button>
+                </form>
+            </div>
+        </div>
+        <map-component :apartment="apartment" />
+    </section>
 </template>
 
 <script>

@@ -4,8 +4,7 @@
             <!-- leftbar -->
 
             <div
-                class="bg-white col-12 col-md-3 navbar row d-flex justify-content-center align-items-center rounded shadow-sm"
-            >
+                class="bg-white col-12 col-md-3 navbar row d-flex justify-content-center align-items-center rounded shadow-sm">
                 <!-- / Search Container -->
 
                 <h3 class="py-3">Filtra la tua ricerca</h3>
@@ -14,39 +13,19 @@
 
                 <div class="search-box col-12 py-3 m-3">
                     <label for="min_rooms">Numero minimo di stanze:</label>
-                    <input
-                        type="number"
-                        id="min_rooms"
-                        name="min_rooms"
-                        v-model="userRooms"
-                    />
+                    <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms" />
                 </div>
 
                 <div class="search-box col-12 py-3 m-3">
                     <label for="min_beds">Numero minimo di posti letto:</label>
-                    <input
-                        type="number"
-                        id="min_beds"
-                        name="min_beds"
-                        v-model="userBeds"
-                    />
+                    <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
                 </div>
 
                 <!-- Km range -->
-                <div
-                    class="search-box m-3 col-12 py-3 text-center align-text-center"
-                >
+                <div class="search-box m-3 col-12 py-3 text-center align-text-center">
                     <label for="radius">Raggio di ricerca:</label>
-                    <input
-                        class="user-range"
-                        type="range"
-                        min="1"
-                        max="100"
-                        value="20"
-                        id="radius"
-                        name="radius"
-                        v-model="userRange"
-                    />
+                    <input class="user-range" type="range" min="1" max="100" value="20" id="radius" name="radius"
+                        v-model="userRange" />
                     <span>{{ userRange }} km</span>
                 </div>
 
@@ -54,31 +33,17 @@
 
                 <div class="services-box col-12 py-3 m-3">
                     <h5 class="mb-4 mt-2">Servizi:</h5>
-                    <div
-                        v-for="(service, index) in services"
-                        :key="index"
-                        class="form-check-inline d-flex"
-                        style="text-align: center"
-                    >
-                        <input
-                            type="checkbox"
-                            class="mr-3"
-                            :id="service.id"
-                            :value="service.id"
-                            v-model="userServices"
-                        />
+                    <div v-for="(service, index) in services" :key="index" class="form-check-inline d-flex">
+                        <input type="checkbox" class="mr-3" :id="service.id" :value="service.id"
+                            v-model="userServices" />
                         <label class="service-label" :for="service.id">{{
-                            service.name
+                                service.name
                         }}</label>
                     </div>
 
                     <!-- Filter button -->
 
-                    <button
-                        class="filter-button rounded w-100"
-                        type="button"
-                        @click="search()"
-                    >
+                    <button class="filter-button rounded w-100" type="button" @click="search()">
                         Filtra
                     </button>
                 </div>
@@ -88,26 +53,14 @@
             <div class="col-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
-                    <div
-                        class="row my-3 mx-3"
-                        v-for="(apartment, index) in apartments"
-                        :key="index"
-                        v-show="apartments"
-                    >
+                    <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
+                        v-show="apartments">
                         <!-- inizio Card -->
-                        <div
-                            class="card shadow"
-                            style="width: 500px, height: 500px"
-                        >
+                        <div class="card shadow" style="width: 500px, height: 500px">
                             <div class="row no-gutters">
-                                <div
-                                    class="col-sm-5 d-flex justify-content-center align-items-center"
-                                >
-                                    <img
-                                        :src="`../storage/${apartment.images[0].image}`"
-                                        class="img-fluid rounded"
-                                        :alt="apartment.title"
-                                    />
+                                <div class="col-sm-5 d-flex justify-content-center align-items-center">
+                                    <img :src="`../storage/${apartment.images[0].image}`" class="img-fluid rounded"
+                                        :alt="apartment.title" />
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="card-body">
@@ -115,21 +68,15 @@
                                             {{ apartment.title }}
                                         </h5>
 
-                                        <p
-                                            v-html="apartment.description"
-                                            class="card-text abstract"
-                                        ></p>
+                                        <p v-html="apartment.description" class="card-text abstract"></p>
 
-                                        <router-link
-                                            :to="{
-                                                name: 'apartment',
-                                                params: {
-                                                    slug: apartment.slug,
-                                                },
-                                            }"
-                                            >Visualizza
-                                            appartamento</router-link
-                                        >
+                                        <router-link :to="{
+                                            name: 'apartment',
+                                            params: {
+                                                slug: apartment.slug,
+                                            },
+                                        }">Visualizza
+                                            appartamento</router-link>
                                     </div>
                                 </div>
                             </div>

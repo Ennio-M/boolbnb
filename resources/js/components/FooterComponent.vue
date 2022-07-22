@@ -36,33 +36,30 @@ footer {
     bottom: 0;
 
     .footer-left {
-        width: 50%;
-        height: 100%;
 
         ul {
             list-style: none;
 
             li {
                 display: inline-block;
-                margin-left: 3px;
-                margin-right: 3px;
+
             }
         }
     }
 
     .footer-right {
-        width: 50%;
-        height: 100%;
-    }
 
-    ul {
-        list-style: none;
 
-        li {
-            display: inline-block;
-            margin-left: 3px;
-            margin-right: 3px;
+
+        ul {
+            list-style: none;
+
+            li {
+                display: inline-block;
+
+            }
         }
+
     }
 }
 </style>

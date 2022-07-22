@@ -1,17 +1,17 @@
 <template>
     <div class="container">
-        <section class="row mb-5">
+        <section class="row d-flex justify-content-center mb-5">
             <!-- leftbar -->
 
             <div
-                class="bg-white col-12 col-md-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
+                class="bg-white ml-2 col-12 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
                 <!-- / Search Container -->
 
                 <h3 class="py-3">Filtra la tua ricerca</h3>
 
                 <!-- search boxes -->
 
-                <div class="search-box col-12  py-3 m-3">
+                <div class="search-box col-12   py-3 m-3">
                     <label for="min_rooms">Numero minimo di stanze:</label>
                     <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms" />
                 </div>

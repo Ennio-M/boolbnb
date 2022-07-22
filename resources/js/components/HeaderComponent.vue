@@ -4,7 +4,7 @@
             class="row py-2 align-items-center justify-content-between text-center"
         >
             <div class="col-12 py-1 col-md-3">
-                <a href="/home"
+                <a href="/"
                     ><img
                         class="logo"
                         src="/storage/uploads/LogoBoolbnb.png"

@@ -40,9 +40,15 @@ class SponsorshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $apartment_id)
     {
-        //
+        $data = $request->all();
+        $apartment = Apartment::findOrFail($apartment_id);
+        $today = date_create(date("Y-m-d"));
+        $duration = $data['duration'] . ' hours';
+        $expiry = date_add($today, date_interval_create_from_date_string($duration));
+        $apartment->sponsorships()->attach($data['sponsorship_id'], ['expiry' => $expiry]);
+        return redirect()->route('admin.sponsorships.index')->with("message","Hai sponsorizzato l'appartamento {$apartment->title}");
     }
 
     /**

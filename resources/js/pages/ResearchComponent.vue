@@ -1,243 +1,250 @@
 <template>
-  <section class="row">
-    <!-- navbar -->
+    <section class="row">
+        <!-- navbar -->
 
-    <div class="navbar col d-flex justify-content-center align-items-center">
-      <!-- / Search Container -->
-
-      <h3 class="py-3">Filtra la tua ricerca</h3>
-
-      <!-- search boxes -->
-
-      <div class="search-box col py-3">
-        <label for="min_rooms">Numero minimo di stanze:</label>
-        <input
-          type="number"
-          id="min_rooms"
-          name="min_rooms"
-          v-model="userRooms"
-        />
-      </div>
-
-      <div class="search-box col py-3">
-        <label for="min_beds">Numero minimo di posti letto:</label>
-        <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
-      </div>
-
-      <!-- Km range -->
-      <div class="search-box col py-3 text-center align-text-center">
-        <label for="radius">Raggio di ricerca:</label>
-        <input
-          class="user-range"
-          type="range"
-          min="1"
-          max="100"
-          value="20"
-          id="radius"
-          name="radius"
-          v-model="userRange"
-        />
-        <span>{{ userRange }} km</span>
-      </div>
-
-      <!-- Servizi -->
-
-      <div class="services-box py-3">
-        <h5 class="mb-4 mt-2">Servizi:</h5>
         <div
-          v-for="(service, index) in services"
-          :key="index"
-          class="form-check-inline d-flex"
-          style="text-align: center"
+            class="navbar col d-flex justify-content-center align-items-center"
         >
-          <input
-            type="checkbox"
-            class="mr-3"
-            :id="service.id"
-            :value="service.id"
-            v-model="userServices"
-          />
-          <label class="service-label" :for="service.id">{{
-            service.name
-          }}</label>
-        </div>
+            <!-- / Search Container -->
 
-        <!-- Filter button -->
+            <h3 class="py-3">Filtra la tua ricerca</h3>
 
-        <button class="filter-button" type="button" @click="search()">
-          Filtra
-        </button>
-      </div>
-    </div>
+            <!-- search boxes -->
 
-    <!-- Appartamenti ricercati -->
-    <div class="apartments-box row justify-content-center">
-      <!-- <h1>Appartamenti ricercati:</h1> -->
-      <div
-        class="row my-3 mx-3"
-        v-for="(apartment, index) in apartments"
-        :key="index"
-        v-show="apartments"
-      >
-        <!-- inizio Card -->
-        <div class="card" style="width: 500px, height: 500px">
-          <div class="row no-gutters">
-            <div
-              class="col-sm-5 d-flex justify-content-center align-items-center"
-            >
-              <img
-                :src="`../storage/${apartment.images[0].image}`"
-                class="img-fluid"
-                :alt="apartment.title"
-              />
+            <div class="search-box col py-3">
+                <label for="min_rooms">Numero minimo di stanze:</label>
+                <input
+                    type="number"
+                    id="min_rooms"
+                    name="min_rooms"
+                    v-model="userRooms"
+                />
             </div>
-            <div class="col-sm-7">
-              <div class="card-body">
-                <h5 class="card-title">{{ apartment.title }}</h5>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Assumenda veniam earum doloribus deleniti reprehenderit
-                  officia porro vero, incidunt beatae obcaecati eos tempore
-                  dicta illo nesciunt esse magni error. Velit, ad!
-                </p>
-                <router-link
-                  :to="{
-                    name: 'apartment',
-                    params: { slug: apartment.slug },
-                  }"
-                  >Visualizza appartamento</router-link
+
+            <div class="search-box col py-3">
+                <label for="min_beds">Numero minimo di posti letto:</label>
+                <input
+                    type="number"
+                    id="min_beds"
+                    name="min_beds"
+                    v-model="userBeds"
+                />
+            </div>
+
+            <!-- Km range -->
+            <div class="search-box col py-3 text-center align-text-center">
+                <label for="radius">Raggio di ricerca:</label>
+                <input
+                    class="user-range"
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="20"
+                    id="radius"
+                    name="radius"
+                    v-model="userRange"
+                />
+                <span>{{ userRange }} km</span>
+            </div>
+
+            <!-- Servizi -->
+
+            <div class="services-box py-3">
+                <h5 class="mb-4 mt-2">Servizi:</h5>
+                <div
+                    v-for="(service, index) in services"
+                    :key="index"
+                    class="form-check-inline d-flex"
+                    style="text-align: center"
                 >
-              </div>
+                    <input
+                        type="checkbox"
+                        class="mr-3"
+                        :id="service.id"
+                        :value="service.id"
+                        v-model="userServices"
+                    />
+                    <label class="service-label" :for="service.id">{{
+                        service.name
+                    }}</label>
+                </div>
+
+                <!-- Filter button -->
+
+                <button class="filter-button" type="button" @click="search()">
+                    Filtra
+                </button>
             </div>
-          </div>
         </div>
-        <!-- /fine Card -->
-      </div>
-    </div>
-  </section>
+
+        <!-- Appartamenti ricercati -->
+        <div class="apartments-box row justify-content-center">
+            <!-- <h1>Appartamenti ricercati:</h1> -->
+            <div
+                class="row my-3 mx-3"
+                v-for="(apartment, index) in apartments"
+                :key="index"
+                v-show="apartments"
+            >
+                <!-- inizio Card -->
+                <div class="card" style="width: 500px, height: 500px">
+                    <div class="row no-gutters">
+                        <div
+                            class="col-sm-5 d-flex justify-content-center align-items-center"
+                        >
+                            <img
+                                :src="`../storage/${apartment.images[0].image}`"
+                                class="img-fluid"
+                                :alt="apartment.title"
+                            />
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ apartment.title }}
+                                </h5>
+                                <p
+                                    v-html="apartment.description"
+                                    class="card-text"
+                                ></p>
+                                <router-link
+                                    :to="{
+                                        name: 'apartment',
+                                        params: { slug: apartment.slug },
+                                    }"
+                                    >Visualizza appartamento</router-link
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /fine Card -->
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
 export default {
-  name: "ResearchComponent",
-  data() {
-    return {
-      apartments: null,
-      aptServices: null,
-      services: null,
-      userRooms: null,
-      userBeds: null,
-      userRange: 20,
-      userServices: [],
-    };
-  },
-  methods: {
-    // definisco la funzione di ricerca
-    search() {
-      // trasformo in stringa l'array di servizi scelti dall'utente
-      const inputServices = JSON.stringify(this.userServices);
-      // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
-      const inputText = this.$route.params.userInput;
-      axios
-        .get(
-          `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
-        )
-        .then((response) => {
-          this.apartments = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    name: "ResearchComponent",
+    data() {
+        return {
+            apartments: null,
+            aptServices: null,
+            services: null,
+            userRooms: null,
+            userBeds: null,
+            userRange: 20,
+            userServices: [],
+        };
     },
-  },
-
-  mounted() {
-    // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
-    this.search();
-
-    // salvo tutti i servizi nel db tramite api
-    axios
-      .get("/api/services")
-      .then((response) => {
-        this.services = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-  // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
-  watch: {
-    $route(to, from) {
-      this.search();
+    methods: {
+        // definisco la funzione di ricerca
+        search() {
+            // trasformo in stringa l'array di servizi scelti dall'utente
+            const inputServices = JSON.stringify(this.userServices);
+            // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
+            const inputText = this.$route.params.userInput;
+            axios
+                .get(
+                    `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
+                )
+                .then((response) => {
+                    this.apartments = response.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     },
-  },
+
+    mounted() {
+        // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
+        this.search();
+
+        // salvo tutti i servizi nel db tramite api
+        axios
+            .get("/api/services")
+            .then((response) => {
+                this.services = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    },
+    // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
+    watch: {
+        $route(to, from) {
+            this.search();
+        },
+    },
 };
 </script>
 
 <style scoped lang="scss">
 section {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .navbar {
-  max-width: 30%;
-  height: 100%;
-  // background-color: #febb02;
-  background-color: white;
+    max-width: 30%;
+    height: 100%;
+    // background-color: #febb02;
+    background-color: white;
 }
 
 .search-box {
-  border: 1px solid #e61954;
-  border-radius: 5px;
-  width: 100%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  // background-color: #febb02;
+    border: 1px solid #e61954;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    // background-color: #febb02;
 }
 
 .services-box {
-  border: 1px solid #e61954;
-  border-radius: 5px;
-  width: 100%;
-  padding: 10%;
-  // background-color: #febb02;
+    border: 1px solid #e61954;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10%;
+    // background-color: #febb02;
 
-  h5 {
-    font-weight: bold;
-  }
-
-  input[type="checkbox"] {
-    transform: scale(1.5);
-  }
-
-  .filter-button {
-    margin-top: 7%;
-    background-color: #e61954;
-    color: white;
-    // border-color: #003580;
-    border: none;
-
-    width: 150px;
-    height: 50px;
-
-    &:hover {
-      background-color: #e6195363;
+    h5 {
+        font-weight: bold;
     }
-  }
+
+    input[type="checkbox"] {
+        transform: scale(1.5);
+    }
+
+    .filter-button {
+        margin-top: 7%;
+        background-color: #e61954;
+        color: white;
+        // border-color: #003580;
+        border: none;
+
+        width: 150px;
+        height: 50px;
+
+        &:hover {
+            background-color: #e6195363;
+        }
+    }
 }
 
 .card-title {
-  color: #003580;
-  font-weight: bold;
-  text-transform: uppercase;
+    color: #003580;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .apartments-box {
-  background-color: white;
-  max-width: 70%;
-  max-height: 90%;
-  overflow-y: auto;
+    background-color: white;
+    max-width: 70%;
+    max-height: 90%;
+    overflow-y: auto;
 }
 
 // .apartment-card {
@@ -250,8 +257,8 @@ section {
 // }
 
 .img-fluid {
-  border-radius: 5px;
-  max-width: 90%;
-  max-height: 90%;
+    border-radius: 5px;
+    max-width: 90%;
+    max-height: 90%;
 }
 </style>

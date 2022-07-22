@@ -10,10 +10,13 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <a class="btn btn-link"href="{{route('admin.apartments.create')}}">Crea appartamento</a>
-                <a class="btn btn-link"href="{{route('admin.apartments.index')}}">Visualizza i tuoi appartamenti</a>
+                <a class="btn btn-link my-1 text-decoration-none"href="{{route('admin.apartments.create')}}">Crea appartamento</a>
+                <a class="btn btn-link text-decoration-none"href="{{route('admin.apartments.index')}}">Visualizza i tuoi appartamenti</a>
+                <a class="btn btn-link text-decoration-none"href="{{route('admin.sponsorships.index')}}">Sponsorizza un appartamento</a>
             </div>
         </div>
     </div>
 </div>
+
+
 @endsection

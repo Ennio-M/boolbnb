@@ -160,10 +160,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-        this.formData.name = "";
-        this.formData.email = "";
-        this.formData.content = "";
-        this.display= false;
+
+      this.display = false;
+      this.formData.name = "";
+      this.formData.email = "";
+      this.formData.content = "";
+
     },
   },
   mounted() {

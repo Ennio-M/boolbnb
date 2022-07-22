@@ -4,25 +4,25 @@
             <!-- leftbar -->
 
             <div
-                class="bg-white ml-2 col-12 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
+                class="bg-white ml-2 col-12 col-md-10 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
                 <!-- / Search Container -->
 
                 <h3 class="py-3">Filtra la tua ricerca</h3>
 
                 <!-- search boxes -->
 
-                <div class="search-box col-12   py-3 m-3">
+                <div class="search-box col-sm-12  col-md-10 col-lg-12 py-3 m-3">
                     <label for="min_rooms">Numero minimo di stanze:</label>
                     <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms" />
                 </div>
 
-                <div class="search-box col-12  py-3 m-3">
+                <div class="search-box col-sm-12 col-lg-12 col-md-10 py-3 m-3">
                     <label for="min_beds">Numero minimo di posti letto:</label>
                     <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
                 </div>
 
                 <!-- Km range -->
-                <div class="search-box m-3 col-12 py-3 text-center align-text-center">
+                <div class="search-box m-3 col-sm-12 col-lg-12 col-md-10 py-3 text-center align-text-center">
                     <label for="radius">Raggio di ricerca:</label>
                     <input class="user-range" type="range" min="1" max="100" value="20" id="radius" name="radius"
                         v-model="userRange" />
@@ -31,7 +31,7 @@
 
                 <!-- Servizi -->
 
-                <div class="services-box col-12 py-3 m-3">
+                <div class="services-box col-sm-12 col-lg-12 col-md-10 py-3 m-3">
                     <h5 class="mb-4 mt-2">Servizi:</h5>
                     <div v-for="(service, index) in services" :key="index" class="form-check-inline d-flex">
                         <input type="checkbox" class="mr-3" :id="service.id" :value="service.id"
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Appartamenti ricercati -->
-            <div class="col-12 col-md-8 offset-1">
+            <div class="col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"

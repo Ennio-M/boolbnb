@@ -155,11 +155,15 @@ export default {
           console.log(this.apartment);
           console.log(this.apartment.messages);
           this.apartment.messages.push(response.data);
-          this.formData = "";
+          
         })
         .catch((error) => {
           console.log(error);
         });
+        this.formData.name = "";
+        this.formData.email = "";
+        this.formData.content = "";
+        this.display= false;
     },
   },
   mounted() {

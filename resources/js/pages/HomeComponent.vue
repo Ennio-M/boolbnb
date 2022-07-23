@@ -37,7 +37,6 @@ export default {
     created() {
         axios.get("/api/sponsorships").then((res) => {
             this.apartments = res.data;
-            console.log(this.apartments)
         });
     },
 };

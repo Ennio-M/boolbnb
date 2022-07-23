@@ -1,127 +1,92 @@
 <template>
-    <section class="row">
-        <!-- navbar -->
+    <div class="container">
+        <section class="row d-flex justify-content-center mb-5">
+            <!-- leftbar -->
 
-        <div
-            class="navbar col d-flex justify-content-center align-items-center"
-        >
-            <!-- / Search Container -->
+            <div
+                class=" bg-white ml-2 col-12 col-md-10 col-lg-3 leftbar row d-flex justify-content-center align-items-center rounded shadow-sm">
+                <!-- / Search Container -->
 
-            <h3 class="py-3">Filtra la tua ricerca</h3>
+                <h3 class="py-3">Filtra la tua ricerca</h3>
 
-            <!-- search boxes -->
+                <!-- search boxes -->
 
-            <div class="search-box col py-3">
-                <label for="min_rooms">Numero minimo di stanze:</label>
-                <input
-                    type="number"
-                    id="min_rooms"
-                    name="min_rooms"
-                    v-model="userRooms"
-                />
-            </div>
-
-            <div class="search-box col py-3">
-                <label for="min_beds">Numero minimo di posti letto:</label>
-                <input
-                    type="number"
-                    id="min_beds"
-                    name="min_beds"
-                    v-model="userBeds"
-                />
-            </div>
-
-            <!-- Km range -->
-            <div class="search-box col py-3 text-center align-text-center">
-                <label for="radius">Raggio di ricerca:</label>
-                <input
-                    class="user-range"
-                    type="range"
-                    min="1"
-                    max="100"
-                    value="20"
-                    id="radius"
-                    name="radius"
-                    v-model="userRange"
-                />
-                <span>{{ userRange }} km</span>
-            </div>
-
-            <!-- Servizi -->
-
-            <div class="services-box py-3">
-                <h5 class="mb-4 mt-2">Servizi:</h5>
-                <div
-                    v-for="(service, index) in services"
-                    :key="index"
-                    class="form-check-inline d-flex"
-                    style="text-align: center"
-                >
-                    <input
-                        type="checkbox"
-                        class="mr-3"
-                        :id="service.id"
-                        :value="service.id"
-                        v-model="userServices"
-                    />
-                    <label class="service-label" :for="service.id">{{
-                        service.name
-                    }}</label>
+                <div class="search-box col-sm-12  col-md-10 col-lg-12 py-3 m-3">
+                    <label for="min_rooms">Numero minimo di stanze:</label>
+                    <input type="number" id="min_rooms" name="min_rooms" v-model="userRooms" />
                 </div>
 
-                <!-- Filter button -->
+                <div class="search-box col-sm-12 col-lg-12 col-md-10 py-3 m-3">
+                    <label for="min_beds">Numero minimo di posti letto:</label>
+                    <input type="number" id="min_beds" name="min_beds" v-model="userBeds" />
+                </div>
 
-                <button class="filter-button" type="button" @click="search()">
-                    Filtra
-                </button>
+                <!-- Km range -->
+                <div class="search-box m-3 col-sm-12 col-lg-12 col-md-10 py-3 text-center align-text-center">
+                    <label for="radius">Raggio di ricerca:</label>
+                    <input class="user-range" type="range" min="1" max="100" value="20" id="radius" name="radius"
+                        v-model="userRange" />
+                    <span>{{ userRange }} km</span>
+                </div>
+
+                <!-- Servizi -->
+
+                <div class="services-box col-sm-12 col-lg-12 col-md-10 py-3 m-3">
+                    <h5 class="mb-4 mt-2">Servizi:</h5>
+                    <div v-for="(service, index) in services" :key="index" class="form-check-inline d-flex">
+                        <input type="checkbox" class="mr-3" :id="service.id" :value="service.id"
+                            v-model="userServices" />
+                        <label class="service-label" :for="service.id">{{
+                                service.name
+                        }}</label>
+                    </div>
+
+                    <!-- Filter button -->
+
+                    <button class="filter-button rounded w-100" type="button" @click="search()">
+                        Filtra
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Appartamenti ricercati -->
-        <div class="apartments-box row justify-content-center">
-            <!-- <h1>Appartamenti ricercati:</h1> -->
-            <div
-                class="row my-3 mx-3"
-                v-for="(apartment, index) in apartments"
-                :key="index"
-                v-show="apartments"
-            >
-                <!-- inizio Card -->
-                <div class="card" style="width: 500px, height: 500px">
-                    <div class="row no-gutters">
-                        <div
-                            class="col-sm-5 d-flex justify-content-center align-items-center"
-                        >
-                            <img
-                                :src="`../storage/${apartment.images[0].image}`"
-                                class="img-fluid"
-                                :alt="apartment.title"
-                            />
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ apartment.title }}
-                                </h5>
-                                <p
-                                    v-html="apartment.description"
-                                    class="card-text"
-                                ></p>
-                                <router-link
-                                    :to="{
-                                        name: 'apartment',
-                                        params: { slug: apartment.slug },
-                                    }"
-                                    >Visualizza appartamento</router-link
-                                >
+            <!-- Appartamenti ricercati -->
+            <div class="col-12 col-lg-8 offset-1">
+                <div class="apartments-box row justify-content-center">
+                    <!-- <h1>Appartamenti ricercati:</h1> -->
+                    <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
+                        v-show="apartments">
+                        <!-- inizio Card -->
+                        <div class="card shadow" style="width: 500px, height: 500px">
+                            <div class="row no-gutters">
+                                <div class="col-sm-5 d-flex justify-content-center align-items-center">
+                                    <img :src="`../storage/${apartment.images[0].image}`" class="img-fluid rounded"
+                                        :alt="apartment.title" />
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ apartment.title }}
+                                        </h5>
+
+                                        <p v-html="apartment.description" class="card-text abstract"></p>
+
+                                        <router-link :to="{
+                                            name: 'apartment',
+                                            params: {
+                                                slug: apartment.slug,
+                                            },
+                                        }">Visualizza
+                                            appartamento</router-link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!-- /fine Card -->
                     </div>
                 </div>
-                <!-- /fine Card -->
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -182,25 +147,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
+p.abstract {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 section {
     width: 100%;
     height: 100%;
 }
 
-.navbar {
-    max-width: 30%;
+.leftbar {
+
     height: 100%;
-    // background-color: #febb02;
-    background-color: white;
+
+
 }
 
 .search-box {
     border: 1px solid #e61954;
     border-radius: 5px;
     width: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    // background-color: #febb02;
 }
 
 .services-box {
@@ -222,7 +189,6 @@ section {
         margin-top: 7%;
         background-color: #e61954;
         color: white;
-        // border-color: #003580;
         border: none;
 
         width: 150px;
@@ -240,24 +206,23 @@ section {
     text-transform: uppercase;
 }
 
-.apartments-box {
+/*.apartments-box {
     background-color: white;
     max-width: 70%;
     max-height: 90%;
     overflow-y: auto;
-}
+}*/
 
 // .apartment-card {
 //   width: 500px;
 //   border: solid 1px rgb(0, 0, 0);
 
-//   .img-fluid {
-//     float: left;
-//   }
+//
 // }
 
 .img-fluid {
-    border-radius: 5px;
+    object-fit: cover;
+    height: 100%;
     max-width: 90%;
     max-height: 90%;
 }

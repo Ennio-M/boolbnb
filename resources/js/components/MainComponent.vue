@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main>
     <router-view></router-view>
   </main>
 </template>
@@ -14,4 +14,10 @@ export default {
 </script>
 
 <style  lang="scss">
+main{
+  height:100vh;
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
 </style>

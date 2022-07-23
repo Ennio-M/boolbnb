@@ -27,17 +27,17 @@
 
 <script>
 export default {
-  name: "HomeComponent",
-  data() {
-    return {
-      apartments: [],
-    };
-  },
-  created() {
-    axios.get("/api/apartments/milano/20/0/0/[]").then((res) => {
-      this.apartments = res.data;
-    });
-  },
+    name: "HomeComponent",
+    data() {
+        return {
+            apartments: [],
+        };
+    },
+    created() {
+        axios.get("/api/sponsorships").then((res) => {
+            this.apartments = res.data;
+        });
+    },
 };
 </script>
 

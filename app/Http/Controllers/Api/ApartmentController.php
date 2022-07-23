@@ -35,14 +35,14 @@ class ApartmentController extends Controller
             $apartments = Apartment::select('*')->where('rooms', '>=', $userRooms)->where('beds', '>=', $userBeds)->with(["images", "services"])->get();
         }
         
-        //chiamo l'api di tomtom passandole l'indirizzo inserito dall'utente
+        // chiamo l'api di tomtom passandole l'indirizzo inserito dall'utente
         $user_response = Http::get('https://api.tomtom.com/search/2/structuredGeocode.json', [
             'key' => $this->myTomTomApiKey,
             'countryCode' => 'it',
             'streetName' => $userInput
         ]);
         $user_decoded = json_decode($user_response->body());
-        //salvo le coordinate che l'api mi ha restituito
+        // salvo le coordinate che l'api mi ha restituito
         $user_lat = $user_decoded->results[0]->position->lat;
         $user_lon = $user_decoded->results[0]->position->lon;
 
@@ -88,6 +88,25 @@ class ApartmentController extends Controller
             foreach($apartments as $apartment){
                 if($apartment->id == $dist_apts[$i]['apt']){
                     array_push($inRangeApts, $apartment);
+                }
+            }
+        }
+
+        // salvo la data di oggi
+        $today = date_create(date("Y-m-d"));
+        // ciclo sull'array degli appartamenti ordinati
+        for($i = 0; $i < count($inRangeApts); $i++){
+            // salvo il numero di sponsorizzazioni dell'appartamento
+            $amount = count($inRangeApts[$i]->sponsorships);
+            // se l'appartamento ha più di una sponsorizzazione, confronto la data di scadenza dell'ultima sponsorizzazione con la data di oggi
+            if($amount != 0){
+                if(date_create($inRangeApts[$i]->sponsorships[$amount - 1]->pivot->expiry) >= $today){ // se la data di scadenza non è ancora passata
+                    // salvo in un'altra variabile l'appartamento
+                    $move = $inRangeApts[$i];
+                    // lo tolgo dall'array
+                    unset($inRangeApts[$i]);
+                    // lo inserisco nuovamente nell'array in prima posizione
+                    array_unshift($inRangeApts, $move);
                 }
             }
         }

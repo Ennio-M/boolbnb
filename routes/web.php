@@ -25,6 +25,7 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('/apartments', 'ApartmentController');
         Route::resource('/sponsorships','SponsorshipController');
+        Route::post('/sponsorships/{apartment_id}', 'SponsorshipController@store')->name('sponsorships.store');
         Route::resource('/images', 'ImageController');
     });
 

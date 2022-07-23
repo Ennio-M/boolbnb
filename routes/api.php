@@ -22,3 +22,4 @@ Route::get('/apartments/{slug}','Api\ApartmentController@show');
 
 Route::get('/services','Api\ServiceController@index');
 Route::post('/messages', 'Api\MessageController@store');
+Route::get('/sponsorships','Api\SponsorshipController@index');

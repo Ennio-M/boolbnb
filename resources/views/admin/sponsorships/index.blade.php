@@ -4,10 +4,15 @@
 <a class="btn btn-link m-2 text-decoration-none" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
 <h2 class="text-center">Promuovi il tuo appartamento!</h2>
 <div class="p-3">
-  @if (session()->has('message'))
+  @if (session()->has('success_message'))
       <div class="alert alert-success mb-3 mt-3">
-          {{ session()->get('message') }}
+          {{ session()->get('success_message') }}
       </div>
+  @endif
+  @if (session()->has('error_message'))
+    <div class="alert alert-danger mb-3 mt-3">
+        {{ session()->get('error_message') }}
+    </div>
   @endif
   <table class="table">
     <thead>

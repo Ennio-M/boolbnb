@@ -87,8 +87,8 @@
                 </div>
             </div>
 
-            <div v-else class="failed-research col-12 col-lg-8 offset-1">
-                <div class="apartments-box row justify-content-center"></div>
+            <div v-else class="failed-research py-5 col-12 col-lg-8 offset-1">
+                <div class="row justify-content-center"></div>
                 <h1>
                     Siamo spiacenti, la tua ricerca non ha prodotto alcun risultato.
                 </h1>

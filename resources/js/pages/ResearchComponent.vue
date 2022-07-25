@@ -43,9 +43,9 @@
 
                     <!-- Filter button -->
 
-                    <button class="filter-button rounded w-100" type="button" @click="search()">
-                        Filtra
-                    </button>
+                    <a href="#"><button class="filter-button rounded w-100" type="button" @click="search()">
+                            Filtra
+                        </button></a>
                 </div>
             </div>
 

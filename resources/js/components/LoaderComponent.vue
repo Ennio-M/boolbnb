@@ -29,5 +29,6 @@ export default {
     top: 0;
     left: 0;
     background-color: black;
+    z-index: 9;
 }
 </style>

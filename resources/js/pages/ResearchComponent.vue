@@ -187,6 +187,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+html {
+    scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
     width: 4px;
 }

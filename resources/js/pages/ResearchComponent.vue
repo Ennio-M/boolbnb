@@ -51,7 +51,7 @@
 
             <!-- Appartamenti ricercati -->
 
-            <LoaderComponent v-if="loading == true" />
+            <LoaderComponent v-if="loading" />
             <div v-if="apartments !== null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
@@ -110,6 +110,10 @@ export default {
     components: {
         LoaderComponent
 
+
+    },
+    props: {
+        msg: String
     },
 
     data() {
@@ -133,37 +137,36 @@ export default {
             const inputServices = JSON.stringify(this.userServices);
             // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
             const inputText = this.$route.params.userInput;
+
             axios
                 .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
                 .then((response) => {
                     this.apartments = response.data;
+
                 })
                 .catch((error) => {
                     console.log(error);
+
                 });
         },
     },
     mounted() {
 
-        this.loading = true;
-        axios.get(this.apiPath + "characters").then((res) => {
-            // console.log(res);
-            this.characterList = res.data;
-            this.loading = false;
-        }).catch((error) => {
-            console.log(error);
-            this.loading = false;
-        });
+
+
         // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
         this.search();
+        this.loading = true;
         // salvo tutti i servizi nel db tramite api
         axios
             .get("/api/services")
             .then((response) => {
                 this.services = response.data;
+                this.loading = false;
             })
             .catch((error) => {
                 console.log(error);
+                this.loading = false;
             });
 
 

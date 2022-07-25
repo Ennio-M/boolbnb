@@ -1,6 +1,7 @@
 <template>
     <div>
         <HeaderComponent />
+        <!-- <LoaderComponent color="red" /> -->
         <MainComponent />
         <FooterComponent />
     </div>
@@ -10,14 +11,20 @@
 import MainComponent from "../components/MainComponent.vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
+import LoaderComponent from "../components/LoaderComponent.vue";
 export default {
     name: "App",
     components: {
         MainComponent,
         FooterComponent,
         HeaderComponent,
+        LoaderComponent,
     },
-};
+    props: {
+        msg: String
+    },
+}
+
 </script>
 
 <style lang="scss">

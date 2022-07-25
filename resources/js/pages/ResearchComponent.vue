@@ -50,8 +50,7 @@
             </div>
 
             <!-- Appartamenti ricercati -->
-            <div v-if="apartments.length != 0 && apartments.length != null"
-                class="found-apartments col-12 col-lg-8 offset-1">
+            <div v-if="apartments != null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
@@ -115,7 +114,7 @@ export default {
     methods: {
         // definisco la funzione di ricerca
         search() {
-            // this.apartments = null;
+            this.apartments = null;
             // trasformo in stringa l'array di servizi scelti dall'utente
             const inputServices = JSON.stringify(this.userServices);
             // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita

@@ -51,9 +51,8 @@
 
             <!-- Appartamenti ricercati -->
 
-            <LoaderComponent v-if="loading" />
-            <div v-else-if="apartments != null && apartments.length && !loading > 0"
-                class="found-apartments col-12 col-lg-8 offset-1">
+            <LoaderComponent v-if="loading == true" />
+            <div v-if="apartments !== null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
@@ -89,7 +88,7 @@
                 </div>
             </div>
 
-            <div v-else class="failed-research py-5 col-12 col-lg-8 offset-1">
+            <div v-else-if="apartments !== null" class="failed-research py-5 col-12 col-lg-8 offset-1">
                 <div class="row justify-content-center"></div>
                 <h1>
                     Siamo spiacenti, la tua ricerca non ha prodotto alcun risultato.
@@ -148,7 +147,7 @@ export default {
 
         this.loading = true;
         axios.get(this.apiPath + "characters").then((res) => {
-            console.log(res);
+            // console.log(res);
             this.characterList = res.data;
             this.loading = false;
         }).catch((error) => {
@@ -172,15 +171,13 @@ export default {
 
 
 
-
-
     // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
     watch: {
         $route(to, from) {
             this.search();
         },
     },
-    components: { LoaderComponent }
+
 
 
 };

@@ -147,6 +147,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+::-webkit-scrollbar {
+    width: 4px;
+}
+
 p.abstract {
     max-height: 200px;
     overflow-y: auto;

@@ -14,10 +14,9 @@ export default {
 </script>
 
 <style  lang="scss">
-main{
-  height:100vh;
+main {
+  // height: 100vh;
   margin-top: 70px;
   margin-bottom: 100px;
 }
-
 </style>

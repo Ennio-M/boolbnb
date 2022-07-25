@@ -50,6 +50,8 @@
             </div>
 
             <!-- Appartamenti ricercati -->
+
+            <LoaderComponent v-if="loading" />
             <div v-if="apartments != null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
@@ -98,8 +100,18 @@
 </template>
 
 <script>
+
+import LoaderComponent from '../components/LoaderComponent.vue';
+
+
 export default {
     name: "ResearchComponent",
+
+    components: {
+        LoaderComponent
+
+    },
+
     data() {
         return {
             apartments: null,
@@ -109,6 +121,8 @@ export default {
             userBeds: null,
             userRange: 20,
             userServices: [],
+            loading: false,
+            // noLoadApartment: false,
         };
     },
     methods: {
@@ -120,9 +134,7 @@ export default {
             // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
             const inputText = this.$route.params.userInput;
             axios
-                .get(
-                    `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
-                )
+                .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
                 .then((response) => {
                     this.apartments = response.data;
                 })
@@ -131,11 +143,19 @@ export default {
                 });
         },
     },
-
     mounted() {
+
+        this.loading = true;
+        axios.get(this.apiPath + "characters").then((res) => {
+            console.log(res);
+            this.characterList = res.data;
+            this.loading = false;
+        }).catch((error) => {
+            console.log(error);
+            this.loading = false;
+        });
         // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
         this.search();
-
         // salvo tutti i servizi nel db tramite api
         axios
             .get("/api/services")
@@ -145,13 +165,29 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
+
+
     },
+
+
+    // created() {
+
+
+    //     if (this.apartments == null) { this.noLoadApartment = true };
+
+    // },
+
+
+
     // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
     watch: {
         $route(to, from) {
             this.search();
         },
     },
+    components: { LoaderComponent }
+
+
 };
 </script>
 

@@ -1,29 +1,31 @@
 <template>
-    <div>
+
+    <body>
         <HeaderComponent />
-        <!-- <LoaderComponent color="red" /> -->
         <MainComponent />
         <FooterComponent />
-    </div>
+
+    </body>
 </template>
 
 <script>
+
+
 import MainComponent from "../components/MainComponent.vue";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
-import LoaderComponent from "../components/LoaderComponent.vue";
 export default {
     name: "App",
     components: {
         MainComponent,
         FooterComponent,
         HeaderComponent,
-        LoaderComponent,
+
     },
-    props: {
-        msg: String
-    },
+
 }
+
+
 
 </script>
 
@@ -55,6 +57,7 @@ export default {
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+
 
 
 }

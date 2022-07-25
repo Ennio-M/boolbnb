@@ -52,7 +52,8 @@
             <!-- Appartamenti ricercati -->
 
             <LoaderComponent v-if="loading" />
-            <div v-if="apartments != null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
+            <div v-else-if="apartments != null && apartments.length && !loading > 0"
+                class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
@@ -122,7 +123,7 @@ export default {
             userRange: 20,
             userServices: [],
             loading: false,
-            // noLoadApartment: false,
+
         };
     },
     methods: {
@@ -170,12 +171,6 @@ export default {
     },
 
 
-    // created() {
-
-
-    //     if (this.apartments == null) { this.noLoadApartment = true };
-
-    // },
 
 
 

@@ -40,19 +40,14 @@ export default {
 
 <style lang="scss">
 #loader {
+    width: 100%;
+    height: 100vh;
     border: 12px solid #f3f3f3;
-    border-radius: 50%;
     border-top: 12px solid #444444;
-    width: 70px;
-    height: 70px;
-    animation: spin 1s linear infinite;
+    background-color: #444444;
 }
 
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
+
 
 .center {
     position: absolute;

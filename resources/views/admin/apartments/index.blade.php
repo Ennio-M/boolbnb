@@ -7,7 +7,7 @@
         @foreach ($apartments as $apartment)
             <div class="col col-md-4 p-3 align-items-stretch my-3">
                 <a class="text-decoration-none text-muted" href="{{route('admin.apartments.show', $apartment->id)}}"></i>
-                    <div class="card text-center">
+                    <div class="apartment-card card text-center">
                         <img class="img-fluid rounded-top" src="{{asset('storage/' . $apartment->images->first()->image)}}" alt="">
                         <h2>{{$apartment->title}}</h2>
                         <div class="d-flex justify-content-center">

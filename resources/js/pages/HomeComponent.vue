@@ -6,8 +6,8 @@
       <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
     </div>
   </section>
-  <h1 class="display-6 text-center py-2 h2">Appartamenti in evidenza</h1>
   <div class="container">
+    <h1 class="display-6 text-center py-3 h2">Appartamenti in evidenza</h1>
       <div class="row justify-content-center">
         <div class="col-10 col-md-6 col-lg-4 col-xl-3 p-2" v-for="(apartment,index) in apartments" :key="index">
           <router-link :to="{ name: 'apartment', params: { slug: apartment.slug } }">
@@ -43,11 +43,6 @@ export default {
 
 <style scoped lang="scss">
 .jumbo{
-  background-image: url('/storage/uploads/pink-suitcase-with-hat-globe-it.jpg');
-  background-size: cover;
-  background-position: 10% 70%;
-  height: 350px;
-  position: relative;
   .text-jumbo{
     width: 40%;
     position:absolute;

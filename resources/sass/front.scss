@@ -16,3 +16,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+
+body{
+    height: calc(100vh - 119px);
+}

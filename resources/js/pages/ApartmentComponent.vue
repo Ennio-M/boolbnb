@@ -206,7 +206,6 @@ export default {
     width: 150px;
     height: 50px;
 
-
 }
 
 .return-button {
@@ -392,8 +391,8 @@ export default {
         }
 
         .chat {
-            width: 100px;
-            height: 200px;
+            width: 350px;
+            height: 500px;
         }
     }
 }

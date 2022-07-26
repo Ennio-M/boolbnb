@@ -20,13 +20,15 @@
             <div class="card-body">
                <h3 class="card-title font-weight-bold">{{$apartment->title}}</h3>
                <p class="card-text">{!!$apartment->description!!}</p>
-               <p class="card-text">Stanze: {{$apartment->rooms}}</p>
-               <p class="card-text">Letti: {{$apartment->beds}}</p>
-               <p class="card-text">Bagni: {{$apartment->bathrooms}}</p>
-               <p class="card-text">Metri quadrati: {{$apartment->square_meters}}</p>
-               <p class="card-text">Prezzo: €{{$apartment->price}}/notte</p>
-               <span class="card-text">Indirizzo: {{$apartment->address}}</span>
-               <p>Servizi:</p>
+               <p class="card-text">Stanze : {{$apartment->rooms}}</p>
+               <p class="card-text">Letti : {{$apartment->beds}}</p>
+               <p class="card-text">Bagni : {{$apartment->bathrooms}}</p>
+               <p class="card-text" @if ($apartment->square_meters == !null) @endif>
+                  Metri quadrati : - {{$apartment->square_meters}}
+               </p>
+               <p class="card-text">Prezzo : €{{$apartment->price}}/notte</p>
+               <span class="card-text">Indirizzo : {{$apartment->address}}</span>
+               <p>Servizi :</p>
                <ul>
                   @foreach($apartment->services as $service)
                      <li>{{$service->name}}</li>

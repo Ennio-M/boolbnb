@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-      <a class="btn btn-link m-2" href="{{route('admin.apartments.index')}}"><i class="fa-solid fa-rotate-left"></i> Torna agli appartamenti</a>
   <div class="row">
     <div class="col">
       <form action="{{route('admin.apartments.update',$apartment->id)}}" method="POST" enctype="multipart/form-data" autocomplete="off" id="create_form">
@@ -120,7 +119,8 @@
           <input type="checkbox" class="form-check-input" id="visible" name="visible" {{$apartment->visible ? 'checked': ''}}>
           <label class="form-check-label" for="visible">Pubblica</label>
         </div>
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <a class="btn btn-link my-2" href="{{route('admin.apartments.index')}}"><i class="fa-solid fa-rotate-left"></i> Torna agli appartamenti</a>
+        <button type="submit" class="btn btn-primary mx-2">Salva</button>
       </form>
     </div>
   </div>

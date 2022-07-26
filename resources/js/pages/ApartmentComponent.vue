@@ -87,6 +87,7 @@ export default {
                 content: "",
                 apartment_id: "",
             },
+            userEmail: ''
         };
     },
     methods: {
@@ -120,11 +121,22 @@ export default {
         },
     },
     mounted() {
+        // salvo lo slug passato dall'url
         const slug = this.$route.params.slug;
+        // chiamo l'api passandole lo slug per ottenere il singolo appartamento
         axios.get(`/api/apartments/${slug}`).then((res) => {
             this.apartment = res.data;
             this.formData.apartment_id = this.apartment.id;
+        }).catch((error) => {
+            console.log(error)
         });
+        // chiamo l'api che determina se l'utente è autenticato ed eventualmente mi restituisce la sua email
+        axios.get(`/admin/users`).then((res) => {
+            // inserisco nel campo dell'email ciò che torna dall'api
+            this.formData.email = res.data
+        }).catch((error) => {
+            console.log(error)
+        })
     },
 };
 </script>

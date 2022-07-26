@@ -364,6 +364,12 @@ export default {
     z-index: 991;
     cursor: pointer;
 
+    @media (max-width: 570px) {
+        width: 60px;
+        height: 60px;
+
+    }
+
     .first {
         color: white;
         font-size: 50px;
@@ -372,7 +378,15 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 992;
+
+
+        @media (max-width: 570px) {
+            font-size: 30px;
+
+        }
     }
+
+
 
     .chat {
         width: 400px;
@@ -384,6 +398,13 @@ export default {
         background-color: white;
         font-size: 14px;
         border-radius: 10px;
+
+        @media (max-width: 400px) {
+            width: 300px;
+            height: 500px;
+
+
+        }
 
         .chat-closer {
             font-size: 2em;

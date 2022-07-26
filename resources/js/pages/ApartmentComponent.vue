@@ -1,6 +1,6 @@
 <template>
     <section class="container py-5">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" v-if="apartment">
             <div class="col-12 font-weigth-bold text-center">
                 <h1>{{ apartment.title }}</h1>
             </div>
@@ -36,6 +36,7 @@
                     <p>{{ service.name }}</p>
                 </div>
             </div>
+            <map-component :apartment="apartment" />
         </div>
         <div class="chat-image">
             <i class="first fa-solid fa-comments left" @click="display = true"></i>
@@ -63,7 +64,6 @@
                 </form>
             </div>
         </div>
-        <map-component :apartment="apartment" />
     </section>
 </template>
 

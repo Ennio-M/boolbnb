@@ -21,16 +21,19 @@
                     name="search"
                     v-model="inputText"
                     autocomplete="off"
+                    @keydown.enter="$router.push({ name: 'research', params: { userInput: inputText } })"
                 />
-                <router-link
+                <!-- <router-link
                     :to="{ name: 'research', params: { userInput: inputText } }"
-                >
+                > -->
+                <div @click="$router.push({ name: 'research', params: { userInput: inputText } })">
                     <div
                         class="magnifying-box d-flex align-items-center justify-content-center"
                     >
                         <i class="text-white fa-solid fa-magnifying-glass"></i>
                     </div>
-                </router-link>
+                </div>
+                <!-- </router-link> -->
             </div>
             <div
                 class="col-12 col-md-3  d-flex align-items-center justify-content-center px-3"

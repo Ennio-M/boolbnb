@@ -1,9 +1,19 @@
 <template>
-    <section class="container py-5 bg-white">
+    <section class="container pt-3 pb-5 bg-white">
+        <div class="return-wrapper mb-3 "> <a href="/research"><button class="return-button rounded w-100"
+                    type="button">
+                    Torna alla ricerca
+                </button></a></div>
+
 
         <LoaderComponent v-if="loading" />
         <div class="row justify-content-center py-3" v-if="apartment">
+
+
+            <!-- scheda appartamento -->
+
             <div class="col-12 font-weigth-bold text-center">
+
                 <h1 class="font-weight-bold">{{ apartment.title }}</h1>
             </div>
             <div class="col-12">
@@ -39,7 +49,7 @@
                 </div>
             </div>
             <div class="border rounded">
-               <map-component :apartment="apartment" />
+                <map-component :apartment="apartment" />
             </div>
         </div>
 
@@ -76,8 +86,16 @@
                 </form>
             </div>
         </div>
+
+        <div class="return-wrapper mt-3 mb-4"> <a href="/research"><button class="return-button rounded w-100"
+                    type="button">
+                    Torna alla ricerca
+                </button></a></div>
     </section>
 </template>
+
+
+<!--/////////////////////////////////////////////// Script ///////////////////////////////////////////////////////-->
 
 <script>
 import MapComponent from "../components/MapComponent.vue";
@@ -174,7 +192,31 @@ export default {
 };
 </script>
 
+
+<!--/////////////////////////////////////////////////// Style //////////////////////////////////////////////////////////-->
+
 <style scoped lang="scss">
+.return-wrapper {
+
+    width: 150px;
+    height: 50px;
+
+}
+
+.return-button {
+    margin-top: 7%;
+    background-color: #e61954;
+    color: white;
+    border: none;
+
+    width: 150px;
+    height: 50px;
+
+    &:hover {
+        background-color: #e6195363;
+    }
+}
+
 .slider-wrapper {
     outline: 0;
 
@@ -271,6 +313,7 @@ export default {
         padding: 10px;
     }
 }
+
 .chat-image {
     border-radius: 50%;
     background-color: #e61c54;
@@ -331,14 +374,17 @@ export default {
         }
     }
 }
+
 @media (max-width: 570px) {
     .chat-image {
         width: 50px;
         height: 50px;
         border-radius: 50%;
+
         .first {
             font-size: 20px;
         }
+
         .chat {
             width: 100px;
             height: 200px;

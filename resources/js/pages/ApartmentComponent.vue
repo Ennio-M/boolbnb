@@ -183,9 +183,6 @@ export default {
 }
 
 @media (max-width: 570px) {
-
-
-
     .chat-image {
         border-radius: 50%;
         background-color: #e61c54;

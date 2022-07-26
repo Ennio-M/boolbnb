@@ -112,9 +112,9 @@ export default {
 
 
     },
-    props: {
-        msg: String
-    },
+    // props: {
+    //     msg: String
+    // },
 
     data() {
         return {
@@ -155,17 +155,17 @@ export default {
 
         // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
         this.search();
-        
+
         // salvo tutti i servizi nel db tramite api
         axios
             .get("/api/services")
             .then((response) => {
                 this.services = response.data;
-                
+
             })
             .catch((error) => {
                 console.log(error);
-                
+
             });
 
 

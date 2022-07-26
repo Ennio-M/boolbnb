@@ -1,5 +1,7 @@
 <template>
+
     <section class="container py-5">
+        <LoaderComponent v-if="loading" />
         <div class="row justify-content-center" v-if="apartment">
             <div class="col-12 font-weigth-bold text-center">
                 <h1>{{ apartment.title }}</h1>
@@ -69,11 +71,13 @@
 
 <script>
 import MapComponent from "../components/MapComponent.vue";
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 export default {
     name: "ApartmentComponent",
     components: {
         MapComponent,
+        LoaderComponent,
     },
     data() {
         return {
@@ -81,6 +85,7 @@ export default {
             indexActive: 0,
             intervallo: null,
             display: false,
+            loading: true,
             formData: {
                 name: "",
                 email: "",
@@ -121,13 +126,16 @@ export default {
         },
     },
     mounted() {
+        this.loading = true;
         // salvo lo slug passato dall'url
         const slug = this.$route.params.slug;
         // chiamo l'api passandole lo slug per ottenere il singolo appartamento
         axios.get(`/api/apartments/${slug}`).then((res) => {
             this.apartment = res.data;
             this.formData.apartment_id = this.apartment.id;
+            this.loading = false;
         }).catch((error) => {
+            this.loading = false;
             console.log(error)
         });
         // chiamo l'api che determina se l'utente è autenticato ed eventualmente mi restituisce la sua email
@@ -135,6 +143,7 @@ export default {
             // inserisco nel campo dell'email ciò che torna dall'api
             this.formData.email = res.data
         }).catch((error) => {
+            this.loading = false;
             console.log(error)
         })
     },

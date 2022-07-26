@@ -122,12 +122,14 @@ export default {
                     console.log(this.apartment.messages);
                     this.apartment.messages.push(response.data);
 
+
                 })
                 .catch((error) => {
                     console.log(error);
                 });
 
             this.display = false;
+            alert("Il messaggio è stato inviato correttamente all'host!");
         },
     },
     mounted() {

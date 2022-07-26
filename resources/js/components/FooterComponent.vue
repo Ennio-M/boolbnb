@@ -1,6 +1,6 @@
 <template>
-    <footer class="container-fluid row m-0 d-flex justify-content-between">
-        <div class="footer-left col-6 text-center pt-2">
+    <footer class="container-fluid col-12 col-md-12 row m-0 d-flex justify-content-between">
+        <div class="footer-left  col-md-6 text-center pt-2">
             <ul>
                 <li>© 2022 Boolbnb</li>
                 <li>·</li>
@@ -11,7 +11,7 @@
                 <li>Destinazioni</li>
             </ul>
         </div>
-        <div class="footer-right col-6 text-center pt-2">
+        <div class="footer-right col-md-6 text-center pt-2">
             <ul>
                 <li><i class="fa-solid fa-globe"></i> Italiano (IT)</li>
                 <li>·</li>
@@ -34,6 +34,23 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
+
+    @media only screen and (max-width: 415px) {
+
+
+        max-height: 10%;
+
+        .footer-left {
+            display: none;
+        }
+
+        // .footer-right {
+        //     display: none;
+        // }
+
+
+    }
+
 
     .footer-left {
 

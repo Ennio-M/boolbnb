@@ -43,14 +43,16 @@
 
                     <!-- Filter button -->
 
-                    <button class="filter-button rounded w-100" type="button" @click="search()">
-                        Filtra
-                    </button>
+                    <a href="#"><button class="filter-button rounded w-100" type="button" @click="search()">
+                            Filtra
+                        </button></a>
                 </div>
             </div>
 
             <!-- Appartamenti ricercati -->
-            <div class="col-12 col-lg-8 offset-1">
+
+            <LoaderComponent v-if="loading" />
+            <div v-if="apartments !== null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
@@ -85,13 +87,35 @@
                     </div>
                 </div>
             </div>
+
+            <div v-else-if="apartments !== null" class="failed-research py-5 col-12 col-lg-8 offset-1">
+                <div class="row justify-content-center"></div>
+                <h1>
+                    Siamo spiacenti, la tua ricerca non ha prodotto alcun risultato.
+                </h1>
+            </div>
+
         </section>
     </div>
 </template>
 
 <script>
+
+import LoaderComponent from '../components/LoaderComponent.vue';
+
+
 export default {
     name: "ResearchComponent",
+
+    components: {
+        LoaderComponent
+
+
+    },
+    props: {
+        msg: String
+    },
+
     data() {
         return {
             apartments: null,
@@ -101,52 +125,76 @@ export default {
             userBeds: null,
             userRange: 20,
             userServices: [],
+            loading: false,
+
         };
     },
     methods: {
         // definisco la funzione di ricerca
         search() {
+            this.apartments = null;
             // trasformo in stringa l'array di servizi scelti dall'utente
             const inputServices = JSON.stringify(this.userServices);
             // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
             const inputText = this.$route.params.userInput;
+
             axios
-                .get(
-                    `/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`
-                )
+                .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
                 .then((response) => {
                     this.apartments = response.data;
+
                 })
                 .catch((error) => {
                     console.log(error);
+
                 });
         },
     },
-
     mounted() {
+
+
+
         // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
         this.search();
-
+        this.loading = true;
         // salvo tutti i servizi nel db tramite api
         axios
             .get("/api/services")
             .then((response) => {
                 this.services = response.data;
+                this.loading = false;
             })
             .catch((error) => {
                 console.log(error);
+                this.loading = false;
             });
+
+
     },
+
+
+
     // quando l'url del componente cambia, viene eseguita di nuovo la funzione search
     watch: {
         $route(to, from) {
             this.search();
         },
     },
+
+
+
 };
 </script>
 
 <style scoped lang="scss">
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
 p.abstract {
     max-height: 200px;
     overflow-y: auto;

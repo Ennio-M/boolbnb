@@ -20,7 +20,7 @@ class SponsorshipController extends Controller
         // interrogo il db unendo la tabella appartamenti con la tabella ponte delle sponsorizzazioni, e prendo solo gli appartamenti la cui sponsorizzazione non è ancora scaduta
         // non rischio di prendere più volte lo stesso appartamento perchè l'utente non può comprare una sponsorizzazione se quell'appartamento ne ha ancora una valida
         $sponsorships = Apartment::join('apartment_sponsorship', 'apartment_sponsorship.apartment_id', '=', 'apartments.id')
-        ->where('apartment_sponsorship.expiry', '>', $today)->with("images", "services")->select('apartments.*')->get();
+        ->where('apartment_sponsorship.expiry', '>=', $today)->with("images", "services")->select('apartments.*')->get();
         return response()->json($sponsorships);
     }
 

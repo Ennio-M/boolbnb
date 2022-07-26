@@ -79,6 +79,20 @@
         <main class="py-4 bg-white">
             @yield('content')
         </main>
+        <footer class="container-fluid">
+            <div class="row">
+                <ul class="col-md-6 py-2 d-flex justify-content-center">
+                    <li class="px-2">© 2022 Boolbnb</li>
+                    <li class="px-2"> · Privacy</li>
+                    <li class="px-2"> · Termini</li>
+                    <li class="px-2"> · Destinazioni</li>
+                </ul>
+                <ul class="col-md-6 py-2 d-flex justify-content-center">
+                    <li class="px-2"><i class="fa-solid fa-globe"></i> Italiano (IT)</li>
+                    <li class="px-2">Supporto e risorse</li>
+                </ul>
+            </div>
+        </footer>
     </div>
     @yield('script')
 </body>

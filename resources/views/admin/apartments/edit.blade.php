@@ -120,7 +120,7 @@
           <label class="form-check-label" for="visible">Pubblica</label>
         </div>
         <a class="btn btn-link my-2" href="{{route('admin.apartments.index')}}"><i class="fa-solid fa-rotate-left"></i> Torna agli appartamenti</a>
-        <button type="submit" class="btn btn-primary mx-2">Salva</button>
+        <button type="submit" class="btn-success p-2 rounded">Salva</button>
       </form>
     </div>
   </div>

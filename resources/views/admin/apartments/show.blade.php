@@ -23,9 +23,9 @@
                <p class="card-text">Stanze : {{$apartment->rooms}}</p>
                <p class="card-text">Letti : {{$apartment->beds}}</p>
                <p class="card-text">Bagni : {{$apartment->bathrooms}}</p>
-               <p class="card-text" @if ($apartment->square_meters == !null) @endif>
-                  Metri quadrati : - {{$apartment->square_meters}}
-               </p>
+               @if(isset($apartment->square_meters))
+                  <p class="card-text">Metri quadrati: {{$apartment->square_meters}}</p>
+               @endif
                <p class="card-text">Prezzo : €{{$apartment->price}}/notte</p>
                <span class="card-text">Indirizzo : {{$apartment->address}}</span>
                <p>Servizi :</p>

@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-<a class="btn btn-link m-2" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
 <div class="container">
   <div class="row">
     <div class="col">
       <form action="{{route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data" autocomplete="off" id="create_form">
         @csrf
         <div class="form-group">
-          <label for="Title">Titolo</label>
+          <label for="Title">Titolo *</label>
           <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="title" placeholder="Inserisci titolo" name="title" value="{{old('title')}}" required minlength="5">
           @error('title')
               <div class="alert alert-danger">{{$message}}</div>
@@ -22,21 +21,21 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="rooms">Numero di stanze</label>
+          <label for="rooms">Numero di stanze *</label>
           <input type="number" class="form-control @error('rooms') is-invalid @enderror" id="rooms" aria-describedby="rooms" placeholder="Numero di Stanze" name="rooms" value="{{old('rooms')}}" min=1 max=50 required>
           @error('rooms')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="beds">Posti letto</label>
+          <label for="beds">Posti letto *</label>
           <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds" aria-describedby="beds" placeholder="Posti letto" name="beds" value="{{old('beds')}}" min=1 max=50 required>
           @error('beds')
               <div class="alert alert-danger">{{$message}}</div>
           @enderror
         </div>
         <div class="form-group">
-          <label for="bathrooms">Bagni in casa</label>
+          <label for="bathrooms">Bagni in casa *</label>
           <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms" aria-describedby="bathrooms" placeholder="Bagni" name="bathrooms" value="{{old('bathrooms')}}" min=1 max=50 required>
           @error('bathrooms')
               <div class="alert alert-danger">{{$message}}</div>
@@ -50,7 +49,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="price">Prezzo per notte</label>
+          <label for="price">Prezzo per notte *</label>
           <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" aria-describedby="price" placeholder="Prezzo per notte" step=".01" name="price" value="{{old('price')}}" required min="1">
           @error('price')
               <div class="alert alert-danger">{{$message}}</div>
@@ -60,7 +59,7 @@
         {{-- select --}}
 
         <div class="form-group">
-          <label for="nation" class="form-label">Nazione</label>
+          <label for="nation" class="form-label">Nazione *</label>
           <select name="nation" id="nation" class="form-control @error('nation') is-invalid @enderror" required>
             <option value="">Seleziona la nazione</option>
             @foreach($countries as $key => $country)
@@ -75,7 +74,7 @@
         {{-- /select --}}
 
         <div class="form-group">
-          <label for="address">Indirizzo</label>
+          <label for="address">Indirizzo *</label>
           <input type="address" class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" placeholder="Inserisci indirizzo, municipio" name="address" value="{{old('address')}}" required>
           @error('address')
               <div class="alert alert-danger">{{$message}}</div>
@@ -95,7 +94,7 @@
           @enderror
         </div>
         <div class="form-group">
-        <h5>Servizi</h5>
+        <h5>Servizi *(min un servizio)</h5>
         @foreach($services as $service)
           <div class="form-check-inline">
               <div class="form-check">
@@ -109,7 +108,8 @@
           <input type="checkbox" class="form-check-input" id="visible" name="visible" {{old('visible') ? 'checked': ''}}>
           <label class="form-check-label" for="visible">Pubblica</label>
         </div>
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <a class="btn btn-link my-2" href="{{route('admin.home')}}"><i class="fa-solid fa-rotate-left"></i> Torna alla Home</a>
+        <button type="submit" class="btn-success p-2 rounded">Salva</button>
       </form>
     </div>
   </div>

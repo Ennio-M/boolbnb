@@ -11,8 +11,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                <button type="button" class="btn btn-primary" onclick="boolbnb.submitForm()">Si cancella</button>
+                <button type="button" class="btn-success p-2 rounded" data-dismiss="modal">Annulla</button>
+                <button type="button" class="btn-danger p-2 rounded" onclick="boolbnb.submitForm()">Si cancella</button>
             </div>
         </div>
     </div>

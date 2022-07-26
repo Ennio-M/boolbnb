@@ -34,49 +34,33 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-
-    @media only screen and (max-width: 415px) {
-
-
-        max-height: 10%;
-
-        .footer-left {
-            display: none;
+    margin-top: 50px;
+    .footer-left {
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+            }
         }
+    }
+    .footer-right {
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
 
-        // .footer-right {
+            }
+        }
+    }
+    @media only screen and (max-width: 575px) {
+        max-height: 10%;
+        // .footer-left {
         //     display: none;
         // }
-
-
-    }
-
-
-    .footer-left {
-
-        ul {
-            list-style: none;
-
-            li {
-                display: inline-block;
-
-            }
+        .footer-right {
+            display: none;
         }
-    }
-
-    .footer-right {
-
-
-
-        ul {
-            list-style: none;
-
-            li {
-                display: inline-block;
-
-            }
-        }
-
     }
 }
+
 </style>

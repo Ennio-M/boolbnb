@@ -3,7 +3,7 @@
     <section class="container py-5">
 
         <LoaderComponent v-if="loading" />
-        <div class="row justify-content-center" v-if="apartment">
+        <div class="row separator justify-content-center" v-if="apartment">
             <div class="col-12 font-weigth-bold text-center">
                 <h1>{{ apartment.title }}</h1>
             </div>
@@ -174,6 +174,82 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media (max-width: 768px) {
+    .separator {
+
+        padding-top: 7%;
+
+    }
+}
+
+@media (max-width: 570px) {
+
+
+
+    .chat-image {
+        border-radius: 50%;
+        background-color: #e61c54;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        right: 2%;
+        bottom: 6%;
+        z-index: 991;
+        cursor: pointer;
+
+        .first {
+            color: white;
+            font-size: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 992;
+        }
+
+        .chat {
+            width: 100px;
+            height: 200px;
+            position: fixed;
+            bottom: 5%;
+            right: 2%;
+            z-index: 996;
+            background-color: white;
+            font-size: 14px;
+            border-radius: 10px;
+
+            .chat-closer {
+                font-size: 2em;
+                color: #e61c54;
+                font-weight: bolder;
+                position: absolute;
+                top: 0px;
+                right: 10px;
+            }
+
+            .chat-title {
+                font-size: 1.5em;
+                color: #e61c54;
+            }
+
+            button {
+                padding: 8px 28px;
+                background-color: #e61c54;
+                color: white;
+                font-size: 1.2em;
+                border: none;
+                border-radius: 5px;
+
+                &:hover {
+                    background: #bc1746;
+                }
+            }
+        }
+    }
+
+}
+
+
 .slider-wrapper {
     outline: 0;
 

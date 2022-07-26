@@ -1,6 +1,9 @@
 <template>
     <div class="container">
+        <LoaderComponent v-if="loading" />
+
         <section class="row d-flex justify-content-center mb-5">
+
             <!-- leftbar -->
 
             <div
@@ -43,15 +46,15 @@
 
                     <!-- Filter button -->
 
-                    <a href="#"><button class="filter-button rounded w-100" type="button" @click="search()">
-                            Filtra
-                        </button></a>
+                    <button class="filter-button rounded w-100" type="button" @click="search()">
+                        Filtra
+                    </button>
                 </div>
             </div>
 
             <!-- Appartamenti ricercati -->
 
-            <LoaderComponent v-if="loading" />
+
             <div v-if="apartments !== null && apartments.length > 0" class="found-apartments col-12 col-lg-8 offset-1">
                 <div class="apartments-box row justify-content-center">
                     <!-- <h1>Appartamenti ricercati:</h1> -->
@@ -223,7 +226,6 @@ section {
     border-radius: 5px;
     width: 100%;
     padding: 10%;
-    // background-color: #febb02;
 
     h5 {
         font-weight: bold;
@@ -254,6 +256,14 @@ section {
     text-transform: uppercase;
 }
 
+.img-fluid {
+    object-fit: cover;
+    height: 100%;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+
 /*.apartments-box {
     background-color: white;
     max-width: 70%;
@@ -267,11 +277,4 @@ section {
 
 //
 // }
-
-.img-fluid {
-    object-fit: cover;
-    height: 100%;
-    max-width: 90%;
-    max-height: 90%;
-}
 </style>

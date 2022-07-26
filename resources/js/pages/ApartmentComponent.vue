@@ -62,7 +62,10 @@
                             laceholder="Inserisci messaggio" v-model="formData.content" required
                             autocomplete="off"></textarea>
                     </div>
-                    <button type="submit">Invia Messaggio</button>
+                    <button v-if="!savingSuccessful" type="submit ">Invia Messaggio</button>
+                    <div class="success" v-if="savingSuccessful">
+                        <h1>Success</h1>
+                    </div>
                 </form>
             </div>
         </div>
@@ -86,6 +89,7 @@ export default {
             intervallo: null,
             display: false,
             loading: true,
+            savingSuccessful: false,
             formData: {
                 name: "",
                 email: "",
@@ -111,12 +115,15 @@ export default {
             }
         },
         addMessage() {
+
             axios
                 .post("/api/messages", this.formData)
                 .then((response) => {
+
                     console.log(this.apartment);
                     console.log(this.apartment.messages);
                     this.apartment.messages.push(response.data);
+                    this.savingSuccessful = true;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -151,6 +158,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.successful {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #bc1746;
+
+}
+
 .slider-wrapper {
     outline: 0;
 

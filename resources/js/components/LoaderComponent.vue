@@ -23,12 +23,12 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgb(114, 116, 116);
+    background-color: white;
     z-index: 3;
 
     h1 {
 
-        color: white;
+        color: black;
     }
 
 }

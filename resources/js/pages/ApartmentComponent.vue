@@ -1,8 +1,9 @@
 <template>
 
     <section class="container py-5">
+
         <LoaderComponent v-if="loading" />
-        <div class="row justify-content-center" v-if="apartment">
+        <div class="row separator justify-content-center" v-if="apartment">
             <div class="col-12 font-weigth-bold text-center">
                 <h1>{{ apartment.title }}</h1>
             </div>
@@ -40,6 +41,13 @@
             </div>
             <map-component :apartment="apartment" />
         </div>
+
+        <div id="message-sent-container">
+            <div class="message-sent">
+                <span>Il messaggio è stato inviato correttamente all'host!</span>
+            </div>
+
+        </div>
         <div class="chat-image">
             <i class="first fa-solid fa-comments left" @click="display = true"></i>
             <div class="chat p-3 shadow-sm" v-if="display == true">
@@ -62,10 +70,8 @@
                             laceholder="Inserisci messaggio" v-model="formData.content" required
                             autocomplete="off"></textarea>
                     </div>
-                    <button v-if="!savingSuccessful" type="submit ">Invia Messaggio</button>
-                    <div class="success" v-if="savingSuccessful">
-                        <h1>Success</h1>
-                    </div>
+                    <button type="submit ">Invia Messaggio</button>
+
                 </form>
             </div>
         </div>
@@ -89,7 +95,7 @@ export default {
             intervallo: null,
             display: false,
             loading: true,
-            savingSuccessful: false,
+
             formData: {
                 name: "",
                 email: "",
@@ -114,6 +120,9 @@ export default {
                 this.indexActive += 1;
             }
         },
+
+        // Funzione di invio messaggio all'host
+
         addMessage() {
 
             axios
@@ -123,13 +132,20 @@ export default {
                     console.log(this.apartment);
                     console.log(this.apartment.messages);
                     this.apartment.messages.push(response.data);
-                    this.savingSuccessful = true;
+
+
                 })
                 .catch((error) => {
                     console.log(error);
                 });
 
             this.display = false;
+            // alert("Il messaggio è stato inviato correttamente all'host!");
+            document.getElementById("message-sent-container").style.display = 'block';
+            setTimeout(function () {
+                let alert = document.getElementById("message-sent-container");
+                alert.style.display = 'none';
+            }, 4000);
         },
     },
     mounted() {
@@ -158,14 +174,78 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.successful {
+@media (max-width: 768px) {
+    .separator {
 
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #bc1746;
+        padding-top: 7%;
+
+    }
+}
+
+@media (max-width: 570px) {
+    .chat-image {
+        border-radius: 50%;
+        background-color: #e61c54;
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        right: 2%;
+        bottom: 6%;
+        z-index: 991;
+        cursor: pointer;
+
+        .first {
+            color: white;
+            font-size: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 992;
+        }
+
+        .chat {
+            width: 100px;
+            height: 200px;
+            position: fixed;
+            bottom: 5%;
+            right: 2%;
+            z-index: 996;
+            background-color: white;
+            font-size: 14px;
+            border-radius: 10px;
+
+            .chat-closer {
+                font-size: 2em;
+                color: #e61c54;
+                font-weight: bolder;
+                position: absolute;
+                top: 0px;
+                right: 10px;
+            }
+
+            .chat-title {
+                font-size: 1.5em;
+                color: #e61c54;
+            }
+
+            button {
+                padding: 8px 28px;
+                background-color: #e61c54;
+                color: white;
+                font-size: 1.2em;
+                border: none;
+                border-radius: 5px;
+
+                &:hover {
+                    background: #bc1746;
+                }
+            }
+        }
+    }
 
 }
+
 
 .slider-wrapper {
     outline: 0;
@@ -234,6 +314,44 @@ export default {
         border-bottom: 3px solid grey;
     }
 }
+
+#message-sent-container {
+
+
+    position: fixed;
+    right: 2%;
+    bottom: 20%;
+    // top: 50%;
+    // left: 50%;
+    z-index: 5;
+    display: none;
+
+
+    .message-sent {
+
+        height: 150px;
+        width: 300px;
+        position: relative;
+        border: 1px solid #e61954;
+        border-radius: 10px;
+        background-color: white;
+        color: black;
+        font-size: 26px;
+        font-weight: bold;
+        z-index: 5;
+        text-align: left;
+        padding: 10px;
+
+
+
+
+
+
+    }
+
+
+}
+
 
 .chat-image {
     border-radius: 50%;

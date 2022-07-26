@@ -27,6 +27,7 @@ Route::middleware('auth')
         Route::resource('/sponsorships','SponsorshipController');
         Route::post('/sponsorships/{apartment_id}', 'SponsorshipController@store')->name('sponsorships.store');
         Route::resource('/images', 'ImageController');
+        Route::get('/users', 'UserController@check');
     });
 
 Route::get("{any?}", function(){

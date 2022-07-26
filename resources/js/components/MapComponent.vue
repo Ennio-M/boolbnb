@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="map-container w-100">
         <div id="map"></div>
     </div>
 </template>
@@ -34,5 +34,21 @@ export default {
 #map {
     height: 50vh;
     width: 50vw;
+}
+
+
+@media only screen and (max-width: 570px) {
+    #map {
+        height: 50vh;
+        width: 80vw;
+    }
+
+    .map-container {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
 </style>

@@ -2,12 +2,12 @@
 <div>
   <section class="jumbo text-center">
     <div class="text-jumbo">
-      <h2>Cerca l'appartamento dei tuoi sogni!</h2>
-      <p>BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
+      <p class="h1">Cerca l'appartamento dei tuoi sogni!</p>
+      <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
     </div>
   </section>
-  <h2 class="display-6 text-center py-2">Appartamenti in evidenza</h2>
   <div class="container">
+    <h1 class="display-6 text-center py-3 h2">Appartamenti in evidenza</h1>
       <div class="row justify-content-center">
         <div class="col-10 col-md-6 col-lg-4 col-xl-3 p-2" v-for="(apartment,index) in apartments" :key="index">
           <router-link :to="{ name: 'apartment', params: { slug: apartment.slug } }">
@@ -43,15 +43,10 @@ export default {
 
 <style scoped lang="scss">
 .jumbo{
-  background-image: url('/storage/uploads/pink-suitcase-with-hat-globe-it.jpg');
-  background-size: 99%;
-  background-position: 100%;
-  height: 300px;
-  position: relative;
   .text-jumbo{
     width: 40%;
     position:absolute;
-    bottom: 0;
+    bottom: 5%;
     right: 5%;
   }
 }

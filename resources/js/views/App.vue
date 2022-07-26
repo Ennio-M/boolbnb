@@ -1,11 +1,9 @@
 <template>
-
-    <body>
+    <div class="h-100">
         <HeaderComponent />
         <MainComponent />
         <FooterComponent />
-
-    </body>
+    </div>
 </template>
 
 <script>

@@ -44,8 +44,8 @@
                     {{ apartment.bathrooms }} bagni</span>
                 <p v-html="apartment.description"></p>
             </div>
-            <div class="col-4 py-2">
-                <h1 class="price">&#8364; {{ apartment.price }} / notte</h1>
+            <div class="price col-4 py-2">
+                <h1>&#8364; {{ apartment.price }} / notte</h1>
             </div>
             <div class="col-12 py-2">
                 <h3>Cosa Troverai</h3>
@@ -206,10 +206,11 @@ export default {
     width: 150px;
     height: 50px;
 
+
 }
 
 .return-button {
-    margin-top: 7%;
+
     background-color: #e61954;
     color: white;
     border: none;
@@ -395,5 +396,24 @@ export default {
             height: 200px;
         }
     }
+}
+
+@media (max-width: 770px) {
+
+    .return-wrapper {
+
+        width: 130px;
+        height: 30px;
+        margin-top: 15%;
+
+
+    }
+
+    .price h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+
 }
 </style>

@@ -133,6 +133,7 @@ export default {
         // definisco la funzione di ricerca
         search() {
             this.apartments = null;
+            this.loading = true;
             // trasformo in stringa l'array di servizi scelti dall'utente
             const inputServices = JSON.stringify(this.userServices);
             // chiamo l'api impostata nel controller passandole gli input dell'utente e salvo la lista di appartamenti restituita
@@ -142,31 +143,29 @@ export default {
                 .get(`/api/apartments/${inputText}/${this.userRange}/${this.userRooms}/${this.userBeds}/${inputServices}`)
                 .then((response) => {
                     this.apartments = response.data;
-
+                    this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
-
+                    this.loading = false;
                 });
         },
     },
     mounted() {
 
-
-
         // al caricamento del componente chiamo la funzione per ricercare gli appartamenti (verrà eseguita una prima ricerca senza filtri, solo per distanza)
         this.search();
-        this.loading = true;
+        
         // salvo tutti i servizi nel db tramite api
         axios
             .get("/api/services")
             .then((response) => {
                 this.services = response.data;
-                this.loading = false;
+                
             })
             .catch((error) => {
                 console.log(error);
-                this.loading = false;
+                
             });
 
 

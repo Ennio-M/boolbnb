@@ -3,8 +3,8 @@
 @include('partials/popupdelete')
 
 @section('content')
-    <a class="btn btn-link m-2 text-decoration-none" href="{{route('admin.apartments.index')}}"><i class="fa-solid fa-rotate-left"></i> Torna ai tuoi appartamenti</a>
 <div class="container">
+         <a class="btn btn-link m-2 text-decoration-none" href="{{route('admin.apartments.index')}}"><i class="fa-solid fa-rotate-left"></i> Torna ai tuoi appartamenti</a>
    <div class="row">
       <div class="col">
          <div class="" class="w-100">

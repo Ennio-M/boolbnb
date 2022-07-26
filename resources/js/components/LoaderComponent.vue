@@ -1,17 +1,8 @@
 <template>
 
-    <div class="preloader d-flex row justify-content-center align-items-center">
-
-        <container class="col-6 loader-container d-flex justify-content-center align-items-center">
-            <h1 class="m-3">Pagina in fase di caricamento...</h1>
-
-
-            <div class="loader"></div>
-        </container>
-
-
-
-
+    <div class="preloader d-flex justify-content-center text-center align-items-center">
+        <h1 class="m-3">Pagina in fase di caricamento...</h1>
+        <div class="loader"></div>
     </div>
 </template>
 
@@ -42,23 +33,22 @@ export default {
 
 }
 
-.loader-container {
-
-    width: 50%;
-    height: 50%;
-}
 
 
 
 .loader {
-    border: 16px solid #f3f3f3;
 
+    border: 16px solid #f3f3f3;
     border-top: 16px solid #e61954;
     border-bottom: 16px solid #e61954;
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
 
 
 }

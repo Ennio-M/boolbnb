@@ -34,15 +34,20 @@
                 </div>
             </div>
 
-            <div class="col-12 py-2">
-                <h5>Intero Alloggio - Host : {{ apartment.user_id }}</h5>
-                <span>{{ apartment.beds * 2 }} Ospiti -
+            <div class="col-8 py-2">
+
+                <h4>Intero Alloggio - Host : {{ apartment.user_id }}</h4>
+
+                <span class="font-italic">{{ apartment.beds * 2 }} Ospiti -
                     {{ apartment.rooms }} camere da letto -
                     {{ apartment.beds }} letti -
                     {{ apartment.bathrooms }} bagni</span>
                 <p v-html="apartment.description"></p>
             </div>
-            <div class="col-12">
+            <div class="col-4 py-2">
+                <h1 class="price">&#8364; {{ apartment.price }} / notte</h1>
+            </div>
+            <div class="col-12 py-2">
                 <h3>Cosa Troverai</h3>
                 <div v-for="(service, index) in apartment.services" :key="index">
                     <p>{{ service.name }}</p>

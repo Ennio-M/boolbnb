@@ -5,7 +5,7 @@
     <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
   </div>
   <div class="container">
-    <h1 class="display-6 text-center py-3 my-3 h2">Appartamenti in evidenza</h1>
+    <h1 class="display-6 text-center py-3 my-3">Appartamenti in evidenza</h1>
       <div class="row justify-content-center">
         <div class="col-8 card m-3 col-md-6 col-lg-3 py-2 shadow" v-for="(apartment,index) in apartments" :key="index">
           <router-link :to="{ name: 'apartment', params: { slug: apartment.slug } }">

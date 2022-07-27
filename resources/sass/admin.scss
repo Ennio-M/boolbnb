@@ -25,6 +25,10 @@ body {
 
 }
 
+main{
+    margin-bottom: 60px;
+}
+
 .logo {
     min-width: 100px;
     max-width: 170px;
@@ -101,4 +105,6 @@ input[type="number"] {
 footer{
     position: fixed;
     bottom: 0;
+    margin-top: 60px;
+    background-color: #FFFFFF;
 }

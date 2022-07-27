@@ -1,8 +1,8 @@
 <template>
-    <section class="container pt-3 pb-5 bg-white my-3">
+    <section class="container  pt-3 pb-5 bg-white my-3">
 
         <LoaderComponent v-if="loading" />
-        <div class="row justify-content-center py-3" v-if="apartment">
+        <div class="row top justify-content-center py-3" v-if="apartment">
 
 
             <!-- scheda appartamento -->
@@ -411,14 +411,20 @@ export default {
 
 @media (max-width: 770px) {
 
-    .return-wrapper {
+    .top {
 
-        width: 130px;
-        height: 30px;
-        margin-top: 15%;
-
+        margin-top: 10%;
 
     }
+
+    // .return-wrapper {
+
+    //     width: 130px;
+    //     height: 30px;
+    //     margin-top: 15%;
+
+
+    // }
 
     .price h1 {
         font-size: 1.5rem;

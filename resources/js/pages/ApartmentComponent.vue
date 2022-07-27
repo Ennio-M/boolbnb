@@ -70,17 +70,17 @@
                 <span class="chat-closer" @click="display = false">X</span>
                 <form @submit.prevent="addMessage()">
                     <div class="form-group">
-                        <label for="name">Nome</label>
+                        <label for="name">Nome*</label>
                         <input type="text" class="form-control" id="name" aria-describedby="name"
                             placeholder="Inserisci Name" v-model="formData.name" required autocomplete="off" />
                     </div>
                     <div class="form-group">
-                        <label for="username">Email</label>
+                        <label for="username">Email*</label>
                         <input type="text" class="form-control" id="email" aria-describedby="email"
                             placeholder="Inserisci email" v-model="formData.email" required autocomplete="off" />
                     </div>
                     <div class="form-group">
-                        <label for="content">Messaggio</label>
+                        <label for="content">Messaggio*</label>
                         <textarea class="form-control" id="content" aria-describedby="content" cols="30" rows="7"
                             laceholder="Inserisci messaggio" v-model="formData.content" required
                             autocomplete="off"></textarea>

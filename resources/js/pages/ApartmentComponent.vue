@@ -51,6 +51,7 @@
                     </ul>
                 </div>
             </div>
+            <p class="col-12 font-weight-bold"><i class="fa-solid fa-location-dot"></i> {{apartment.address}} </p> 
             <div class="border rounded">
                 <map-component :apartment="apartment" />
             </div>

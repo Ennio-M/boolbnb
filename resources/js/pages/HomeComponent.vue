@@ -20,7 +20,6 @@
       <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
     </div>
 </div>
-
 </template>
 
 <script>

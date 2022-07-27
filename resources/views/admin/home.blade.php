@@ -19,7 +19,7 @@
             <img class="img-fluid py-2" src="{{asset('/images/creaappartamento.png')}}" alt="">
         </div>
         <div class="col-12 col-md-6">
-            <p class="font-weight-bold">Inerisci un altro appartamento sulla nostra piattaforma, noi penseremo a metterti in contatto con viaggiatori da tutto il mondo!</p>
+            <p class="font-weight-bold">Inserisci un altro appartamento sulla nostra piattaforma, noi penseremo a metterti in contatto con viaggiatori da tutto il mondo!</p>
             <a class="btn btn-link my-3 text-decoration-none"href="{{route('admin.apartments.create')}}"><i class="fa-solid fa-house-chimney"></i> Crea appartamento</a>
         </div>
     </div>

@@ -36,7 +36,7 @@
             <input type="hidden" name="duration" value="{{$sponsor->duration}}">
             <button class="btn silver-btn" type="submit">{{$sponsor->name}}</button>
           </form> --}}
-          <a href="{{route('token')}}">{{$sponsor->name}}</a>
+          <a href="{{route('admin.token')}}">{{$sponsor->name}}</a>
         </td>
         @endforeach
       </tr>

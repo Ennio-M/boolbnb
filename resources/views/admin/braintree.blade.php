@@ -24,7 +24,7 @@
                 });
                 $.ajax({
                     type: "POST",
-                    url: "{{route('token')}}",
+                    url: "{{route('admin.token')}}",
                     data: {nonce : payload.nonce},
                     success: function (data) {
                         console.log('success',payload.nonce)

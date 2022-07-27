@@ -28,8 +28,12 @@ Route::middleware('auth')
         Route::post('/sponsorships/{apartment_id}', 'SponsorshipController@store')->name('sponsorships.store');
         Route::resource('/images', 'ImageController');
         Route::get('/users', 'UserController@check');
+
     });
+
+    Route::any('/payment', 'BraintreeController@token')->name('token')->middleware('auth');
 
 Route::get("{any?}", function(){
     return view("guest.home");
 })->where("any",".*");
+

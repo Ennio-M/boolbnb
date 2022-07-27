@@ -30,12 +30,13 @@
         <td><a href="{{route('admin.apartments.show',$apartment->id)}}" class="apartment_card text-decoration-none text-muted text-black">{{$apartment->title}}</a></td>
         @foreach($sponsors as $sponsor)
         <td>
-          <form action="{{ route('admin.sponsorships.store', $apartment->id) }}" method="POST">
+          {{-- <form action="{{ route('admin.sponsorships.store', $apartment->id) }}" method="POST">
             @csrf
             <input type="hidden" name="sponsorship_id" value="{{$sponsor->id}}">
             <input type="hidden" name="duration" value="{{$sponsor->duration}}">
             <button class="btn silver-btn" type="submit">{{$sponsor->name}}</button>
-          </form>
+          </form> --}}
+          <a href="{{route('token')}}">{{$sponsor->name}}</a>
         </td>
         @endforeach
       </tr>

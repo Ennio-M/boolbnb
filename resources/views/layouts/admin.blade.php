@@ -10,6 +10,8 @@
     <title>BoolBnB</title>
 
     <!-- Scripts -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+
     <script src="{{ asset('js/admin.js') }}" defer></script>
 
     <!-- Fonts -->

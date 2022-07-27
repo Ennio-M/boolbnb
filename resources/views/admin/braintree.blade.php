@@ -25,11 +25,14 @@
                 $.ajax({
                     type: "POST",
                     url: "{{route('admin.token')}}",
-                    data: {nonce : payload.nonce,},
+                    data: {nonce : payload.nonce, amount: {{$amount}}},
                     success: function (data) {
+                        window.location.replace("/admin");
+
                         console.log('success',payload.nonce)
                     },
                     error: function (data) {
+                        
                         console.log('error',payload.nonce)
                     }
                 });

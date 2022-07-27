@@ -44,9 +44,11 @@
                 <h1>&#8364; {{ apartment.price }} / notte</h1>
             </div>
             <div class="col-12 py-2">
-                <h3>Cosa Troverai</h3>
+                <h3>Cosa Troverai:</h3>
                 <div v-for="(service, index) in apartment.services" :key="index">
-                    <p>{{ service.name }}</p>
+                    <ul>
+                        <li>{{ service.name }}</li>
+                    </ul>
                 </div>
             </div>
             <div class="border rounded">

@@ -1,10 +1,5 @@
 <template>
-    <section class="container pt-3 pb-5 bg-white">
-        <div class="return-wrapper mb-3 "> <a href="/research"><button class="return-button rounded w-100"
-                    type="button">
-                    Torna alla ricerca
-                </button></a></div>
-
+    <section class="container pt-3 pb-5 bg-white my-3">
 
         <LoaderComponent v-if="loading" />
         <div class="row justify-content-center py-3" v-if="apartment">
@@ -91,11 +86,6 @@
                 </form>
             </div>
         </div>
-
-        <div class="return-wrapper mt-3 mb-4"> <a href="/research"><button class="return-button rounded w-100"
-                    type="button">
-                    Torna alla ricerca
-                </button></a></div>
     </section>
 </template>
 

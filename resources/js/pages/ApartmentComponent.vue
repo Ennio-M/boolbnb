@@ -1,11 +1,15 @@
 <template>
-
-    <section class="container py-5">
+    <section class="container pt-3 pb-5 bg-white my-3">
 
         <LoaderComponent v-if="loading" />
-        <div class="row separator justify-content-center" v-if="apartment">
+        <div class="row justify-content-center py-3" v-if="apartment">
+
+
+            <!-- scheda appartamento -->
+
             <div class="col-12 font-weigth-bold text-center">
-                <h1>{{ apartment.title }}</h1>
+
+                <h1 class="font-weight-bold">{{ apartment.title }}</h1>
             </div>
             <div class="col-12">
                 <div class="slider-wrapper rounded" tabindex="0" @keydown.left="slidePrev" @keydown.right="slideNext">
@@ -25,21 +29,29 @@
                 </div>
             </div>
 
-            <div class="col-12 py-2">
-                <h5>Intero Alloggio - Host : {{ apartment.user_id }}</h5>
-                <span>{{ apartment.beds * 2 }} Ospiti -
+            <div class="col-8 py-2">
+
+                <h4>Intero Alloggio - Host : {{ apartment.user_id }}</h4>
+
+                <span class="font-italic">{{ apartment.beds * 2 }} Ospiti -
                     {{ apartment.rooms }} camere da letto -
                     {{ apartment.beds }} letti -
-                    {{ apartment.bathrooms }} bagni</span>
+                    {{ apartment.bathrooms }} bagni
+                </span>
                 <p v-html="apartment.description"></p>
             </div>
-            <div class="col-12">
+            <div class="price col-4 py-2">
+                <h1>&#8364; {{ apartment.price }} / notte</h1>
+            </div>
+            <div class="col-12 py-2">
                 <h3>Cosa Troverai</h3>
                 <div v-for="(service, index) in apartment.services" :key="index">
                     <p>{{ service.name }}</p>
                 </div>
             </div>
-            <map-component :apartment="apartment" />
+            <div class="border rounded">
+                <map-component :apartment="apartment" />
+            </div>
         </div>
 
         <div id="message-sent-container">
@@ -77,6 +89,9 @@
         </div>
     </section>
 </template>
+
+
+<!--/////////////////////////////////////////////// Script ///////////////////////////////////////////////////////-->
 
 <script>
 import MapComponent from "../components/MapComponent.vue";
@@ -173,79 +188,30 @@ export default {
 };
 </script>
 
+
+<!--/////////////////////////////////////////////////// Style //////////////////////////////////////////////////////////-->
+
 <style scoped lang="scss">
-@media (max-width: 768px) {
-    .separator {
+.return-wrapper {
 
-        padding-top: 7%;
-
-    }
-}
-
-@media (max-width: 570px) {
-    .chat-image {
-        border-radius: 50%;
-        background-color: #e61c54;
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        right: 2%;
-        bottom: 6%;
-        z-index: 991;
-        cursor: pointer;
-
-        .first {
-            color: white;
-            font-size: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 992;
-        }
-
-        .chat {
-            width: 100px;
-            height: 200px;
-            position: fixed;
-            bottom: 5%;
-            right: 2%;
-            z-index: 996;
-            background-color: white;
-            font-size: 14px;
-            border-radius: 10px;
-
-            .chat-closer {
-                font-size: 2em;
-                color: #e61c54;
-                font-weight: bolder;
-                position: absolute;
-                top: 0px;
-                right: 10px;
-            }
-
-            .chat-title {
-                font-size: 1.5em;
-                color: #e61c54;
-            }
-
-            button {
-                padding: 8px 28px;
-                background-color: #e61c54;
-                color: white;
-                font-size: 1.2em;
-                border: none;
-                border-radius: 5px;
-
-                &:hover {
-                    background: #bc1746;
-                }
-            }
-        }
-    }
+    width: 150px;
+    height: 50px;
 
 }
 
+.return-button {
+
+    background-color: #e61954;
+    color: white;
+    border: none;
+
+    width: 150px;
+    height: 50px;
+
+    &:hover {
+        background-color: #e6195363;
+    }
+}
 
 .slider-wrapper {
     outline: 0;
@@ -341,17 +307,8 @@ export default {
         z-index: 5;
         text-align: left;
         padding: 10px;
-
-
-
-
-
-
     }
-
-
 }
-
 
 .chat-image {
     border-radius: 50%;
@@ -433,5 +390,41 @@ export default {
             }
         }
     }
+}
+
+@media (max-width: 570px) {
+    .chat-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+
+        .first {
+            font-size: 20px;
+        }
+
+        .chat {
+            width: 350px;
+            height: 500px;
+        }
+    }
+}
+
+@media (max-width: 770px) {
+
+    .return-wrapper {
+
+        width: 130px;
+        height: 30px;
+        margin-top: 15%;
+
+
+    }
+
+    .price h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="h-100">
     <router-view></router-view>
   </main>
 </template>
@@ -15,12 +15,10 @@ export default {
 
 <style  lang="scss">
 main {
+  background-color: #9BD6CC;
+  overflow: auto;
   margin-top: 70px;
-  margin-bottom: 100px;
-  background-image: url('/storage/uploads/pink-suitcase-with-hat-globe-it.jpg');
-  background-size: cover;
-  background-position: 10% 70%;
-  height: 100%;
-  position: relative;
+  overflow-y: auto;
 }
+
 </style>

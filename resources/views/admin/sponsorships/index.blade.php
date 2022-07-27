@@ -34,6 +34,7 @@
             @csrf
             <input type="hidden" name="sponsorship_id" value="{{$sponsor->id}}">
             <input type="hidden" name="duration" value="{{$sponsor->duration}}">
+            <input type="hidden" name="apartment" value="{{$apartment->id}}">
             <input type="hidden" name="price" value="{{$sponsor->price}}">
             <button class="btn silver-btn" type="submit">{{$sponsor->name}}</button>
           </form>

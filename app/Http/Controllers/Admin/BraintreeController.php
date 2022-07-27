@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\SponsorshipController;
+
 use Illuminate\Http\Request;
 use Braintree\Gateway;
+use App\Apartment;
+use App\Sponsorship;
 
 
 class BraintreeController extends Controller
@@ -20,6 +24,7 @@ class BraintreeController extends Controller
         if($request->input('nonce') != null){
             $nonceFromTheClient = $request->input('nonce');
             $myAmount = $request->input('price');
+            $apartment = $request->input('apartment');
             $gateway->transaction()->sale([
                 'amount' => $myAmount,
                 'paymentMethodNonce' => $nonceFromTheClient,
@@ -27,7 +32,7 @@ class BraintreeController extends Controller
                 'submitForSettlement' => True
                 ]
             ]);
-            return view ('dashboard');
+            return view('admin.home');
             }else{
                 $clientToken = $gateway->clientToken()->generate();
                 return view ('admin.braintree',['token' => $clientToken]);

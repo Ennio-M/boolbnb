@@ -61,7 +61,7 @@
                     <div class="row my-3 mx-3" v-for="(apartment, index) in apartments" :key="index"
                         v-show="apartments">
                         <!-- inizio Card -->
-                        <div class="card shadow" style="width: 500px, height: 500px">
+                        <div class="card shadow" style="width: 500px, height: 500px" v-if="apartment.visible">
                             <div class="row no-gutters">
                                 <div class="col-sm-5 d-flex justify-content-center align-items-center">
                                     <img :src="`../storage/${apartment.images[0].image}`" class="img-fluid rounded"

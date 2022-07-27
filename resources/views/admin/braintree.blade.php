@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 
+<div id="feedback" class="container d-flex justify-content-center align-items-center">
+
+    <h4>Pagamento avvenuto con successo! Attendi mentre vieni reindirizzato ai tuoi appartamenti...</h4>
+
+</div>
+
 <div class="py-12">
     @csrf
     <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
@@ -27,8 +33,13 @@
                     url: "{{route('admin.token')}}",
                     data: {nonce : payload.nonce, amount: {{$amount}}},
                     success: function (data) {
-                        window.location.replace("/admin");
-
+                    document.getElementById("feedback").style.visibility = 'visible';
+                    setTimeout(function () {
+                     let alert = document.getElementById("feedback");
+                      alert.style.visibility = 'hidden';
+                       window.location.replace("/admin");
+                         },        3000);
+                        
                         console.log('success',payload.nonce)
                     },
                     error: function (data) {

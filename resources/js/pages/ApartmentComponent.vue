@@ -234,7 +234,7 @@ export default {
             background: white;
             position: absolute;
             cursor: pointer;
-            z-index: 990;
+            z-index: 980;
             line-height: 25px;
             text-transform: uppercase;
             padding: 10px;
@@ -289,7 +289,7 @@ export default {
     bottom: 20%;
     // top: 50%;
     // left: 50%;
-    z-index: 5;
+    z-index: 985;
     display: none;
 
 
@@ -304,7 +304,7 @@ export default {
         color: black;
         font-size: 26px;
         font-weight: bold;
-        z-index: 5;
+        z-index: 985;
         text-align: left;
         padding: 10px;
     }

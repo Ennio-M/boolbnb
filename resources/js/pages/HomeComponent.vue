@@ -1,10 +1,6 @@
 <template>
 <div class="home-main py-5">
-  <div class="text-jumbo">
-    <p class="h1">Cerca l'appartamento dei tuoi sogni!</p>
-    <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
-  </div>
-  <div class="container">
+  <div class="container" v-if="apartments !== null && apartments.length > 0">
     <h1 class="display-6 text-center py-3 my-3">Appartamenti in evidenza</h1>
       <div class="row justify-content-center">
         <div class="col-8 card m-3 col-md-6 col-lg-3 py-2 shadow" v-for="(apartment,index) in apartments" :key="index" v-show="apartment.visible">
@@ -18,6 +14,10 @@
           </router-link>
         </div>
       </div>
+    </div>
+    <div class="text-jumbo">
+      <p class="h1">Cerca l'appartamento dei tuoi sogni!</p>
+      <p class="h4">BoolBnB da oggi ti offre l'opportunità di trovare un alloggio che soddisfi a pieno le tue esigenze!</p>
     </div>
 </div>
 
@@ -49,13 +49,6 @@ export default {
   position: relative;
   background-color: #9BD6CC;
   overflow: auto;
-  .text-jumbo{
-    color: white;
-    width: 20%;
-    position:absolute;
-    bottom: 5%;
-    right: 5%;
-  }
   .card-box{
     text-decoration: none;
     color: black;
@@ -65,17 +58,22 @@ export default {
       width: 100%;
     }
   }
+  .text-jumbo{
+    width: 35%;
+    float: right;
+    margin-right: 20px;
+    }
 }
 @media (max-width: 992px) {
   .home-main{
     // background-image: url('/storage/uploads/background-mobil.png');
     // background-size: 80%;
     background-attachment: fixed;
-    .text-jumbo{
-      display: none;
-    }
+    clear: both;
   }
-
+  .text-jumbo{
+    display:none;
+  }
 }
 
 </style>

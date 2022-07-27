@@ -8,7 +8,7 @@
                     <a href="/"
                         ><img
                             class="logo"
-                            src="/storage/uploads/LogoBoolbnb.png"
+                            src="/images/LogoBoolbnb.png"
                             alt="boolbnblogo"
                     /></a>
                 </div>

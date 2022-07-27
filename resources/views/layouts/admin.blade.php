@@ -26,7 +26,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class=" col-4 col-sm-4 col-md-4 col-lg-3">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img class="img-fluid logo" src="{{asset('storage/uploads/LogoBoolbnb.png')}}" alt="">
+                            <img class="img-fluid logo" src="{{asset('images/LogoBoolbnb.png')}}" alt="">
                         </a>
                     </div>
                 </div>

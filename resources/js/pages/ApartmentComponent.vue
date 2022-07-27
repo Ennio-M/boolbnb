@@ -31,12 +31,12 @@
 
             <div class="col-8 py-2">
 
-                <h4>Intero Alloggio - Host : {{ apartment.user_id }}</h4>
+                <h4>Intero Alloggio</h4>
 
-                <span class="font-italic">{{ apartment.beds * 2 }} Ospiti -
-                    {{ apartment.rooms }} camere da letto -
-                    {{ apartment.beds }} letti -
-                    {{ apartment.bathrooms }} bagni
+                <span class="font-italic">
+                    {{ apartment.rooms }} Camere -
+                    {{ apartment.beds }} Posti Letto -
+                    {{ apartment.bathrooms }} Bagni
                 </span>
                 <p v-html="apartment.description"></p>
             </div>

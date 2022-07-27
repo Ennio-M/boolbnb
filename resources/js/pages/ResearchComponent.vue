@@ -80,7 +80,7 @@
                                             params: {
                                                 slug: apartment.slug,
                                             },
-                                        }">Visualizza
+                                        }" target="_blank">Visualizza
                                             appartamento</router-link>
                                     </div>
                                 </div>

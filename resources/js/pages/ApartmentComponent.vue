@@ -36,7 +36,8 @@
                 <span class="font-italic">{{ apartment.beds * 2 }} Ospiti -
                     {{ apartment.rooms }} camere da letto -
                     {{ apartment.beds }} letti -
-                    {{ apartment.bathrooms }} bagni</span>
+                    {{ apartment.bathrooms }} bagni
+                </span>
                 <p v-html="apartment.description"></p>
             </div>
             <div class="price col-4 py-2">

@@ -39,11 +39,11 @@ class BraintreeController extends Controller
                 ]
             ]);
             if ($response == "Braintree\Result\Successful[transaction]"){
-                $apartmentId = $request->input('apartment');
-                $sponsorshipId = $request->input('sponsorship_id');
-                $sponsorshipDuration = $request->input('duration');
+                $apartmentId = $request->input('apartmentId');
+                $sponsorshipId = $request->input('sponsorshipId');
+                $sponsorshipDuration = $request->input('sponsorshipDuration');
 
-                $this->sponsorshipController->store($sponsorshipId, $apartmentId, $sponsorshipDuration);
+                $this->sponsorshipController->store($sponsorshipId, $sponsorshipDuration, $apartmentId);
             }
             return redirect()->route('admin.home');
             }else{

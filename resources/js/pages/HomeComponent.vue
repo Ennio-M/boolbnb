@@ -49,7 +49,7 @@ export default {
   background-color: #9BD6CC;
   overflow: auto;
   .link-router{
-    text-decoration: none;
+    text-decoration-color: #E61C54;
   }
   .card-box{
     text-decoration: none;

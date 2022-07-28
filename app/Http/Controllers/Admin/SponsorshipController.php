@@ -40,7 +40,7 @@ class SponsorshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $apartment_id)
+    public function store( $sponsorship_id, $duration, $apartment_id)
     {   
         // salvo la data di oggi
         $today = date_create(date("Y-m-d"));

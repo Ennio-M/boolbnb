@@ -10,9 +10,13 @@ use Braintree\Gateway;
 use App\Apartment;
 use App\Sponsorship;
 
-
 class BraintreeController extends Controller
 {
+    private $sponsorshipController;
+    public function __construct(SponsorshipController $ssController)
+    {
+        $this->sponsorshipController = $ssController;
+    }
 
      public function token(Request $request){
         $gateway = new \Braintree\Gateway([
@@ -39,7 +43,7 @@ class BraintreeController extends Controller
                 $sponsorshipId = $request->input('sponsorship_id');
                 $sponsorshipDuration = $request->input('duration');
 
-                
+                $this->sponsorshipController->store($sponsorshipId, $apartmentId, $sponsorshipDuration);
             }
             return redirect()->route('admin.home');
             }else{

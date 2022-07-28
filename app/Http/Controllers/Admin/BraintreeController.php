@@ -25,7 +25,8 @@ class BraintreeController extends Controller
         if($request->input('nonce') != null){
             $nonceFromTheClient = $request->input('nonce');
             $amount = $request->input('amount');
-            $apartment = $request->input('apartment');
+            
+
             $response = $gateway->transaction()->sale([
                 'amount' => $amount,
                 'paymentMethodNonce' => $nonceFromTheClient,
@@ -33,11 +34,21 @@ class BraintreeController extends Controller
                 'submitForSettlement' => True
                 ]
             ]);
+            if ($response == "Braintree\Result\Successful[transaction]"){
+                $apartmentId = $request->input('apartment');
+                $sponsorshipId = $request->input('sponsorship_id');
+                $sponsorshipDuration = $request->input('duration');
+
+                
+            }
             return redirect()->route('admin.home');
             }else{
                 $clientToken = $gateway->clientToken()->generate();
                 $amount = $request->input('price');
-                return view ('admin.braintree',['token' => $clientToken, 'amount' => $amount]);
+                $apartmentId = $request->input('apartment');
+                $sponsorshipId = $request->input('sponsorship_id');
+                $sponsorshipDuration = $request->input('duration');
+                return view ('admin.braintree',['token' => $clientToken, 'amount' => $amount, 'apartmentId' => $apartmentId, 'sponsorshipId' => $sponsorshipId, 'duration' => $sponsorshipDuration]);
             }
         }
 }

@@ -31,7 +31,7 @@
                 $.ajax({
                     type: "POST",
                     url: "{{route('admin.token')}}",
-                    data: {nonce : payload.nonce, amount: {{$amount}}},
+                    data: {nonce : payload.nonce, amount: {{$amount}}, sponsorshipId: {{$sponsorshipId}},  sponsorshipDuration: {{$duration}}, sponsorshipId: {{$sponsorshipId}}},
                     success: function (data) {
                     document.getElementById("feedback").style.visibility = 'visible';
                     setTimeout(function () {

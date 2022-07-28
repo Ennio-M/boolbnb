@@ -4,7 +4,7 @@
     <h1 class="display-6 text-center py-3 my-3">Appartamenti in evidenza</h1>
       <div class="row justify-content-center">
         <div class="col-8 card m-3 col-md-6 col-lg-3 py-2 shadow" v-for="(apartment,index) in apartments" :key="index" v-show="apartment.visible">
-          <router-link :to="{ name: 'apartment', params: { slug: apartment.slug } }" target="_blank">
+          <router-link :to="{ name: 'apartment', params: { slug: apartment.slug } }" target="_blank" class="link-router">
             <div class="card-box">
               <img class="rounded" :src="`../storage/${apartment.images[0].image}`" alt="">
               <h6 class="font-weight-bold pt-1">{{apartment.title}}</h6>
@@ -48,6 +48,9 @@ export default {
   position: relative;
   background-color: #9BD6CC;
   overflow: auto;
+  .link-router{
+    text-decoration: none;
+  }
   .card-box{
     text-decoration: none;
     color: black;

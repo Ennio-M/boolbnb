@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Sponsorship;
-use App\Apartment;
 use App\User;
+use App\Apartment;
+use App\Sponsorship;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class SponsorshipController extends Controller
@@ -34,21 +36,25 @@ class SponsorshipController extends Controller
         //
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Stores a sponsorship on db
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param number $sponsorship_id
+     * @param number $duration
+     * @param number $apartment_id
+     * 
+     * @return Response $response
+     * 
      */
-    public function store(Request $request, $apartment_id)
+    public function store($sponsorship_id, $duration, $apartment_id)
     {   
         // salvo la data di oggi
         $today = date_create(date("Y-m-d"));
-        // salvo i dati in arrivo dal form
-        $data = $request->all();
-        // salvo l'appartamento interessato dalla sponsorizzazione
+        // // salvo l'appartamento interessato dalla sponsorizzazione
         $apartment = Apartment::findOrFail($apartment_id);
-        // salvo tutte le sponsorizzazioni dell'appartamento interesasto
+
+        // // salvo tutte le sponsorizzazioni dell'appartamento interesasto
         $sponsorships = Sponsorship::join('apartment_sponsorship', 'apartment_sponsorship.sponsorship_id', '=', 'sponsorships.id')
         ->where('apartment_id', '=', $apartment_id)->select('apartment_sponsorship.*')->get();
 
@@ -57,11 +63,13 @@ class SponsorshipController extends Controller
             // controllo che la data di fine della sponsorizzazione più recente sia passata
             if(date_create($sponsorships[count($sponsorships) - 1]->expiry) < $today){
                 // creo una stringa che indichi le ore totali della sponsorizzazione
-                $duration = $data['duration'] . ' hours';
+                $duration = $duration .' hours';
                 // salvo la data di fine della sponsorizzazione aggiungendo a oggi la stringa creata in precendeza
                 $expiry = date_add($today, date_interval_create_from_date_string($duration));
                 // salvo la sponsorizzazione
-                $apartment->sponsorships()->attach($data['sponsorship_id'], ['expiry' => $expiry]);
+                $apartment->sponsorships()->attach($sponsorship_id, ['expiry' => $expiry]);
+            
+
                 // reindirizzo alla stessa pagina con un messaggio di successo
                 return redirect()->route('admin.sponsorships.index')->with("success_message","Hai sponsorizzato l'appartamento \"{$apartment->title}\" fino al {$expiry->format('d-m-Y')}");
             } else { // se la data di fine della sponsorizzazione non è ancora passata, reindirizzo alla stessa pagina con un messaggio di errore
@@ -69,9 +77,9 @@ class SponsorshipController extends Controller
                 return redirect()->route('admin.sponsorships.index')->with("error_message","L'appartamento \"{$apartment->title}\" è già sponsorizzato fino al {$until}");
             }
         } else { // se non ci sono sponsorizzazioni, salto il controllo della data e salvo direttamente la sponsorizzazione
-            $duration = $data['duration'] . ' hours';
+            $duration = $duration . ' hours';
             $expiry = date_add($today, date_interval_create_from_date_string($duration));
-            $apartment->sponsorships()->attach($data['sponsorship_id'], ['expiry' => $expiry]);
+            $apartment->sponsorships()->attach($sponsorship_id, ['expiry' => $expiry]);
             return redirect()->route('admin.sponsorships.index')->with("success_message","Hai sponsorizzato l'appartamento \"{$apartment->title}\" fino al {$expiry->format('d-m-Y')}");
         }
 
